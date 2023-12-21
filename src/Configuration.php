@@ -10,7 +10,7 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito;
 
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Scopes;
+use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Scopes;
 
 class  Configuration
 {

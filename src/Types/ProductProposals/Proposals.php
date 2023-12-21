@@ -6,7 +6,9 @@ use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
 use O4l3x4ndr3\SdkEasyCredito\Types\ProductProposal;
 class Proposals extends ProductProposal
 {
+    private float $value;
     private int $installments;
+    private float $installmentValue;
     private float $monthlyTax;
     private float $iofValue;
     private float $grossValue;
@@ -25,8 +27,10 @@ class Proposals extends ProductProposal
         ?string $logo,
         ?string $dateCreated,
         ?string $lastUpdated,
+        ?float $value,
         ?int $installments,
         ?float $monthlyTax,
+        ?float $installmentValue,
         ?float $iofValue,
         ?float $grossValue,
         ?string $firstPaymentDate,
@@ -45,7 +49,9 @@ class Proposals extends ProductProposal
             $dateCreated,
             $lastUpdated
         );
+        $this->value = $value;
         $this->installments = $installments;
+        $this->installmentValue = $installmentValue;
         $this->monthlyTax = $monthlyTax;
         $this->iofValue = $iofValue;
         $this->grossValue = $grossValue;
@@ -54,6 +60,40 @@ class Proposals extends ProductProposal
         $this->releaseDate = $releaseDate;
     }
 
+    /**
+     * @return float
+     */
+    public function getInstallmentValue(): float
+    {
+        return $this->installmentValue;
+    }
+
+    /**
+     * @param float $installmentValue
+     * @return Proposals
+     */
+    public function setInstallmentValue(float $installmentValue): Proposals
+    {
+        $this->installmentValue = $installmentValue;
+        return $this;
+    }
+    /**
+     * @return float
+     */
+    public function getValue(): float
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param float $value
+     * @return Proposals
+     */
+    public function setValue(float $value): Proposals
+    {
+        $this->value = $value;
+        return $this;
+    }
     /**
      * @return int
      */
@@ -190,8 +230,10 @@ class Proposals extends ProductProposal
         return array_merge(
             parent::toArray(),
             array_filter([
+                'value' => $this->value,
                 'installments' => $this->installments,
                 'monthlyTax' => $this->monthlyTax,
+                'installmentValue' => $this->installmentValue,
                 'iofValue' => $this->iofValue,
                 'grossValue' => $this->grossValue,
                 'firstPaymentDate' => $this->firstPaymentDate,

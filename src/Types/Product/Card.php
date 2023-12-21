@@ -12,16 +12,14 @@ class Card extends Product
     protected int $payday;
 
     /**
-     * @param ProductTypestring|null $typestring
      * @param Network|null $network
      * @param int|null $payday
      */
     public function __construct(
-        ?ProductTypestring $typestring,
         ?Network           $network,
         ?int               $payday
     ) {
-        parent::__construct($typestring);
+        parent::__construct(null, ProductTypestring::CARD);
         $this->network = $network;
         $this->payday = $payday;
     }
@@ -67,7 +65,8 @@ class Card extends Product
         return array_merge(
             parent::toArray(),
             array_filter([
-                'typestring' => $this->typestring
+                'network' => $this->network,
+                'payday' => $this->payday
             ], function ($v) {
                 return !is_null($v);
             })

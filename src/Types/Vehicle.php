@@ -10,7 +10,6 @@ class Vehicle
     protected string $vehicleModel;
     protected string $codeFipe;
     protected float $vehicleFipeValue;
-    protected int $vehicleType;
     protected int $vehicleYear;
 
     /**
@@ -18,16 +17,14 @@ class Vehicle
      * @param string $vehicleModel
      * @param string $codeFipe
      * @param float $vehicleFipeValue
-     * @param int $vehicleType
      * @param int $vehicleYear
      */
-    public function __construct(string $vehicleBrand, string $vehicleModel, string $codeFipe, float $vehicleFipeValue, int $vehicleType, int $vehicleYear)
+    public function __construct(string $vehicleBrand, string $vehicleModel, string $codeFipe, float $vehicleFipeValue, int $vehicleYear)
     {
         $this->vehicleBrand = $vehicleBrand;
         $this->vehicleModel = $vehicleModel;
         $this->codeFipe = $codeFipe;
         $this->vehicleFipeValue = $vehicleFipeValue;
-        $this->vehicleType = $vehicleType;
         $this->vehicleYear = $vehicleYear;
     }
     /**
@@ -42,7 +39,6 @@ class Vehicle
             'vehicleModel' => $this->vehicleModel,
             'codeFipe' => $this->codeFipe,
             'vehicleFipeValue' => $this->vehicleFipeValue,
-            'vehicleType' => $this->vehicleType,
             'vehicleYear' => $this->vehicleYear
         ], function ($v) {
             return ! is_null($v);

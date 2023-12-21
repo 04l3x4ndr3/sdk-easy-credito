@@ -4,7 +4,7 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
 use O4l3x4ndr3\SdkEasyCredito\Types\Product;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\RealEstateType;
+use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\RealEstateType;
 
 class RefinancingHome extends Product
 {
@@ -15,7 +15,6 @@ class RefinancingHome extends Product
     protected float $outstandingBalance;
 
     /**
-     * @param ProductTypestring|null $typestring
      * @param float|null $value
      * @param int|null $installments
      * @param RealEstateType|null $realEstateType
@@ -23,14 +22,13 @@ class RefinancingHome extends Product
      * @param float|null $outstandingBalance
      */
     public function __construct(
-        ?ProductTypestring $typestring,
         ?float  $value,
         ?int    $installments,
         ?RealEstateType $realEstateType,
         ?float  $realEstateValue,
         ?float  $outstandingBalance
     ) {
-        parent::__construct($typestring);
+        parent::__construct(null, ProductTypestring::REFINANCING_HOME);
         $this->value = $value;
         $this->installments = $installments;
         $this->realEstateType = $realEstateType;

@@ -2,9 +2,6 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
-use O4l3x4ndr3\SdkEasyCredito\Types\Product;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
-
 class FinancingAuto
 {
     protected RefinancingAuto $refinancingAuto;

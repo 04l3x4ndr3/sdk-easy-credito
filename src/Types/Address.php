@@ -9,7 +9,7 @@ use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\States;
  */
 class Address
 {
-    protected int $zipCode;
+    protected ?string $zipCode;
     protected string $address;
     protected int $number;
     protected string $complement;
@@ -20,7 +20,7 @@ class Address
     protected HomeSince $homeSince;
 
     /**
-     * @param int $zipCode
+     * @param ?string $zipCode
      * @param string $address
      * @param int $number
      * @param string $complement
@@ -30,7 +30,7 @@ class Address
      * @param HomeType $homeType
      * @param HomeSince $homeSince
      */
-    public function __construct(int $zipCode, string $address, int $number, string $complement, string $district, States $state, string $city, HomeType $homeType, HomeSince $homeSince)
+    public function __construct(?string $zipCode, string $address, int $number, string $complement, string $district, States $state, string $city, HomeType $homeType, HomeSince $homeSince)
     {
         $this->zipCode = $zipCode;
         $this->address = $address;
@@ -46,16 +46,16 @@ class Address
     /**
      * @return int
      */
-    public function getZipCode(): int
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
 
     /**
-     * @param int $zipCode
+     * @param ?string $zipCode
      * @return Address
      */
-    public function setZipCode(int $zipCode): Address
+    public function setZipCode(?string $zipCode): Address
     {
         $this->zipCode = $zipCode;
         return $this;

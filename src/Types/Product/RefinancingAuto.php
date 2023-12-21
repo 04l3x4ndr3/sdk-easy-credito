@@ -18,12 +18,11 @@ class RefinancingAuto extends Product
      * @param Vehicle $vehicle
      */
     public function __construct(
-        ProductTypestring $typeString,
         float $value,
         int $installments,
         Vehicle $vehicle
     ) {
-        parent::__construct($typeString);
+        parent::__construct(null, ProductTypestring::REFINANCING_AUTO);
         $this->value = $value;
         $this->installments = $installments;
         $this->vehicle = $vehicle;

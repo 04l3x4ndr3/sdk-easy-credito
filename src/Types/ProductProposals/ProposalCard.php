@@ -1,6 +1,7 @@
 <?php
 namespace O4l3x4ndr3\SdkEasyCredito\Types\ProductProposals;
 
+use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\CreditStatus;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
 use O4l3x4ndr3\SdkEasyCredito\Types\ProductProposal;
 class ProposalCard extends ProductProposal
@@ -12,13 +13,12 @@ class ProposalCard extends ProductProposal
     private bool $digitalAccount;
 
     public function __construct(
-        ?ProductTypestring $typeString,
         ?int $customerServiceNumber,
         ?string $product,
         ?int $productId,
         ?bool $hasDocuments,
         ?bool $hasContract,
-        ?string $lastStatus,
+        ?CreditStatus $lastStatus,
         ?string $logo,
         ?string $dateCreated,
         ?string $lastUpdated,
@@ -29,7 +29,7 @@ class ProposalCard extends ProductProposal
         ?bool $digitalAccount
     ) {
         parent::__construct(
-            $typeString,
+            ProductTypestring::CARD,
             $customerServiceNumber,
             $product,
             $productId,

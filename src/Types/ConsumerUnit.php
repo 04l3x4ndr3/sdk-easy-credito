@@ -6,12 +6,12 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
  */
 class ConsumerUnit
 {
-    protected int $number;
+    protected ?string $number;
 
     /**
-     * @param int|null $number
+     * @param string|null $number
      */
-    public function __construct(?int $number)
+    public function __construct(?string $number)
     {
         $this->number = $number;
     }
@@ -19,16 +19,16 @@ class ConsumerUnit
     /**
      * @return int
      */
-    public function getNumber(): int
+    public function getNumber(): ?string
     {
         return $this->number;
     }
 
     /**
-     * @param int $number
-     * @return Document
+     * @param string|null $number
+     * @return ConsumerUnit
      */
-    public function setNumber(int $number): ConsumerUnit
+    public function setNumber(?string $number): ConsumerUnit
     {
         $this->number = $number;
         return $this;

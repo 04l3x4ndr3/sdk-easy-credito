@@ -11,17 +11,15 @@ class Loan extends Product
     protected int $installments;
 
     /**
-     * @param ProductTypestring|null $typestring
      * @param float|null $value
      * @param int|null $installments
      */
     public function __construct(
-        ?ProductTypestring $typestring,
         ?float             $value,
         ?int               $installments
     )
     {
-        parent::__construct($typestring);
+        parent::__construct(null, ProductTypestring::LOAN);
         $this->value = $value;
         $this->installments = $installments;
     }

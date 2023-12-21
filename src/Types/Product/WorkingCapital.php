@@ -18,13 +18,12 @@ class WorkingCapital extends Product
     protected EmployeesCount $employeesCount;
     protected float $businessIncomeCpnj;
     protected WorkingCapitalLoanObjectives $loanObjectives;
-    protected int $bank;
+    protected ?string $bank;
     protected AccountType $accountType;
-    protected int $agency;
+    protected ?string $agency;
     protected string $account;
 
     /**
-     * @param ProductTypestring|null $typestring
      * @param float $value
      * @param int $installments
      * @param string $cpnj
@@ -32,13 +31,12 @@ class WorkingCapital extends Product
      * @param EmployeesCount $employeesCount
      * @param float $businessIncomeCpnj
      * @param WorkingCapitalLoanObjectives $loanObjectives
-     * @param int $bank
+     * @param string $bank
      * @param AccountType $accountType
-     * @param int $agency
+     * @param ?string $agency
      * @param string $account
      */
     public function __construct(
-        ?ProductTypestring $typestring,
         float              $value,
         int                $installments,
         string             $cpnj,
@@ -46,12 +44,12 @@ class WorkingCapital extends Product
         EmployeesCount     $employeesCount,
         float              $businessIncomeCpnj,
         WorkingCapitalLoanObjectives     $loanObjectives,
-        int               $bank,
+        ?string               $bank,
         AccountType        $accountType,
-        int                $agency,
+        ?string                $agency,
         string             $account
     ) {
-        parent::__construct($typestring);
+        parent::__construct(null, ProductTypestring::WORKING_CAPITAL);
         $this->value = $value;
         $this->installments = $installments;
         $this->cpnj = $cpnj;
@@ -192,18 +190,18 @@ class WorkingCapital extends Product
     }
 
     /**
-     * @return int
+     * @return ?string
      */
-    public function getBank(): int
+    public function getBank(): ?string
     {
         return $this->bank;
     }
 
     /**
-     * @param int $bank
+     * @param ?string $bank
      * @return WorkingCapital
      */
-    public function setBank(int $bank): WorkingCapital
+    public function setBank(?string $bank): WorkingCapital
     {
         $this->bank = $bank;
         return $this;
@@ -228,18 +226,18 @@ class WorkingCapital extends Product
     }
 
     /**
-     * @return int
+     * @return ?string
      */
-    public function getAgency(): int
+    public function getAgency(): ?string
     {
         return $this->agency;
     }
 
     /**
-     * @param int $agency
+     * @param ?string $agency
      * @return WorkingCapital
      */
-    public function setAgency(int $agency): WorkingCapital
+    public function setAgency(?string $agency): WorkingCapital
     {
         $this->agency = $agency;
         return $this;

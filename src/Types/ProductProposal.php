@@ -171,7 +171,7 @@ abstract class ProductProposal
     /**
      * @return ?CreditStatus
      */
-    public function getLastStatus(): string
+    public function getLastStatus(): CreditStatus
     {
         return $this->lastStatus;
     }
