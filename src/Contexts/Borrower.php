@@ -2,10 +2,11 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Contexts;
 
+use GuzzleHttp\Exception\GuzzleException;
 use O4l3x4ndr3\SdkEasyCredito\Configuration;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\CallApi;
 
-class Sample extends CallApi
+class Borrower extends CallApi
 {
     /**
      * Properties list
@@ -21,17 +22,10 @@ class Sample extends CallApi
 
     /**
      * Public Methods
+     * @throws GuzzleException
      */
-
-    public function sample(int $appointmentId = null): object
+    public function get(?string $cpf = null): object
     {
-        return $this->call('', '');
-    }
-
-    public function toArray(): array
-    {
-        return [
-
-        ];
+        return $this->call('GET', '/v2/borrower?cpf=' . $cpf);
     }
 }

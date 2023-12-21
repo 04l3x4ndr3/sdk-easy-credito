@@ -1,190 +1,209 @@
 <?php
+namespace O4l3x4ndr3\SdkEasyCredito\Types;
+use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\HomeSince;
+use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\HomeType;
+use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\States;
 
-namespace O4l3x4ndr3\SdkDocway\Types;
-
+/**
+ * Modelo de Endereço
+ */
 class Address
 {
-    private ?string $street;
-    private ?string $number;
-    private ?string $complement;
-    private ?string $neighborhood;
-    private ?string $cep;
-    private ?string $city;
-    private ?string $state;
-    private ?string $latitude;
-    private ?string $longitude;
+    protected int $zipCode;
+    protected string $address;
+    protected int $number;
+    protected string $complement;
+    protected string $district;
+    protected States $state;
+    protected string $city;
+    protected HomeType $homeType;
+    protected HomeSince $homeSince;
 
     /**
-     * @param string|null $street
-     * @param string|null $number
-     * @param string|null $complement
-     * @param string|null $neighborhood
-     * @param string|null $cep
-     * @param string|null $city
-     * @param string|null $state
-     * @param string|null $latitude
-     * @param string|null $longitude
+     * @param int $zipCode
+     * @param string $address
+     * @param int $number
+     * @param string $complement
+     * @param string $district
+     * @param States $state
+     * @param string $city
+     * @param HomeType $homeType
+     * @param HomeSince $homeSince
      */
-    public function __construct(
-        ?string $street = null, ?string $number = null, ?string $complement = null, ?string $neighborhood = null, ?string $cep = null, ?string $city = null,
-        ?string $state = null, ?string $latitude = null, ?string $longitude = null
-    )
+    public function __construct(int $zipCode, string $address, int $number, string $complement, string $district, States $state, string $city, HomeType $homeType, HomeSince $homeSince)
     {
-        $this->street = $street;
+        $this->zipCode = $zipCode;
+        $this->address = $address;
         $this->number = $number;
         $this->complement = $complement;
-        $this->neighborhood = $neighborhood;
-        $this->cep = $cep;
-        $this->city = $city;
+        $this->district = $district;
         $this->state = $state;
-        $this->latitude = $latitude;
-        $this->longitude = $longitude;
+        $this->city = $city;
+        $this->homeType = $homeType;
+        $this->homeSince = $homeSince;
     }
 
     /**
-     * @return string|null
+     * @return int
      */
-    public function getStreet(): ?string
+    public function getZipCode(): int
     {
-        return $this->street;
+        return $this->zipCode;
     }
 
     /**
-     * @param string|null $street
+     * @param int $zipCode
+     * @return Address
      */
-    public function setStreet(?string $street): void
+    public function setZipCode(int $zipCode): Address
     {
-        $this->street = $street;
+        $this->zipCode = $zipCode;
+        return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getNumber(): ?string
+    public function getAddress(): string
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     * @return Address
+     */
+    public function setAddress(string $address): Address
+    {
+        $this->address = $address;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumber(): int
     {
         return $this->number;
     }
 
     /**
-     * @param string|null $number
+     * @param int $number
+     * @return Address
      */
-    public function setNumber(?string $number): void
+    public function setNumber(int $number): Address
     {
         $this->number = $number;
+        return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getComplement(): ?string
+    public function getComplement(): string
     {
         return $this->complement;
     }
 
     /**
-     * @param string|null $complement
+     * @param string $complement
+     * @return Address
      */
-    public function setComplement(?string $complement): void
+    public function setComplement(string $complement): Address
     {
         $this->complement = $complement;
+        return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getNeighborhood(): ?string
+    public function getDistrict(): string
     {
-        return $this->neighborhood;
+        return $this->district;
     }
 
     /**
-     * @param string|null $neighborhood
+     * @param string $district
+     * @return Address
      */
-    public function setNeighborhood(?string $neighborhood): void
+    public function setDistrict(string $district): Address
     {
-        $this->neighborhood = $neighborhood;
+        $this->district = $district;
+        return $this;
     }
 
     /**
-     * @return string|null
+     * @return States
      */
-    public function getCep(): ?string
-    {
-        return $this->cep;
-    }
-
-    /**
-     * @param string|null $cep
-     */
-    public function setCep(?string $cep): void
-    {
-        $this->cep = $cep;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param string|null $city
-     */
-    public function setCity(?string $city): void
-    {
-        $this->city = $city;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getState(): ?string
+    public function getState(): States
     {
         return $this->state;
     }
 
     /**
-     * @param string|null $state
+     * @param States $state
+     * @return Address
      */
-    public function setState(?string $state): void
+    public function setState(States $state): Address
     {
         $this->state = $state;
+        return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getLatitude(): ?string
+    public function getCity(): string
     {
-        return $this->latitude;
+        return $this->city;
     }
 
     /**
-     * @param string|null $latitude
+     * @param string $city
+     * @return Address
      */
-    public function setLatitude(?string $latitude): void
+    public function setCity(string $city): Address
     {
-        $this->latitude = $latitude;
+        $this->city = $city;
+        return $this;
     }
 
     /**
-     * @return string|null
+     * @return HomeType
      */
-    public function getLongitude(): ?string
+    public function getHomeType(): HomeType
     {
-        return $this->longitude;
+        return $this->homeType;
     }
 
     /**
-     * @param string|null $longitude
+     * @param HomeType $homeType
+     * @return Address
      */
-    public function setLongitude(?string $longitude): void
+    public function setHomeType(HomeType $homeType): Address
     {
-        $this->longitude = $longitude;
+        $this->homeType = $homeType;
+        return $this;
     }
 
+    /**
+     * @return HomeSince
+     */
+    public function getHomeSince(): HomeSince
+    {
+        return $this->homeSince;
+    }
+
+    /**
+     * @param HomeSince $homeSince
+     * @return Address
+     */
+    public function setHomeSince(HomeSince $homeSince): Address
+    {
+        $this->homeSince = $homeSince;
+        return $this;
+    }
     /**
      * Parse props to array
      *
@@ -193,15 +212,15 @@ class Address
     public function toArray(): array
     {
         return array_filter([
-            'street' => $this->street,
+            'zipCode' => $this->zipCode,
+            'address' => $this->address,
             'number' => $this->number,
             'complement' => $this->complement,
-            'neighborhood' => $this->neighborhood,
-            'cep' => $this->cep,
-            'city' => $this->city,
+            'district' => $this->district,
             'state' => $this->state,
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
+            'city' => $this->city,
+            'homeType' => $this->homeType,
+            'homeSince' => $this->homeSince
         ], function ($v) {
             return ! is_null($v);
         });

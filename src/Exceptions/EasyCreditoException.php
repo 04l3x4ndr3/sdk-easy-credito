@@ -1,10 +1,10 @@
 <?php
 
-namespace O4l3x4ndr3\SdkEasyCredito\Errors;
+namespace O4l3x4ndr3\SdkEasyCredito\Exceptions;
 
 use GuzzleHttp\Exception\GuzzleException;
 
-class EasyCreditoExceptions extends GuzzleException
+class EasyCreditoException extends Exception
 {
     public function __construct($message = '', $code = 0, GuzzleException $previous = null)
     {

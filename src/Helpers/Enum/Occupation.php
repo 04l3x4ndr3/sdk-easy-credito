@@ -1,0 +1,12 @@
+<?php
+namespace O4l3x4ndr3\SdkEasyCredito\Helpers\Enum;
+enum Occupation: string
+{
+    case APOSENTADO_PENSIONISTA = "APOSENTADO_PENSIONISTA";
+    case AUTONOMO = "AUTONOMO";
+    case EMPRESARIO = "EMPRESARIO";
+    case PROFISSIONAL_LIBERAL = "PROFISSIONAL_LIBERAL";
+    case ASSALARIADO = "ASSALARIADO";
+    case FUNCIONARIO_PUBLICO = "FUNCIONARIO_PUBLICO";
+    case DESEMPREGADO = "DESEMPREGADO";
+}

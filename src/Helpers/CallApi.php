@@ -75,25 +75,27 @@ class CallApi {
 			],
 			'form_params' => $this->config->getCredential()
 		];
-		$res = $client->request('POST', $this->config->getUrl() . 'auth/connect/token', $options);
+		$res = $client->request('POST',Configuration::URL_AUTH, $options);
 		return json_decode($res->getBody());
 	}
 
     /** TODO: Implements
-	 * @param string $method
-	 * @param string $endpoint
-	 * @param array|null $body
-	 * @return object
-	 * @throws GuzzleException
-	 */
+     * @param string $method
+     * @param string $endpoint
+     * @param array|null $body
+     * @return array|object
+     * @throws GuzzleException
+     */
 	public function call(string $method, string $endpoint, ?array $body = NULL): array | object
 	{
 		$token = $this->accessToken();
+        echo json_encode($body);
+
 		$client = new Client();
 		$options = array_filter([
 			'headers' => [
 				'Content-type' => CONTENT_TYPE_JSON,
-				'Authorization' => "{$token->token_type} {$token->access_token}"
+				'Authorization' => TOKEN_TYPE . " {$token->access_token}"
 			],
 			'json' => $body
 		]);
@@ -109,3 +111,8 @@ class CallApi {
 		return $this->config;
 	}
 }
+
+const USER_AGENT = "SdkEasyCredito";
+const CONTENT_TYPE_JSON = 'application/json';
+const CONTENT_TYPE_URL_URLENCODED = 'application/x-www-form-urlencoded';
+const TOKEN_TYPE = 'Bearer';

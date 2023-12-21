@@ -10,14 +10,15 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito;
 
-use O4l3x4ndr3\SdkEasyCredito\Enum\Scopes;
+use O4l3x4ndr3\SdkEasyCredito\Helpers\Scopes;
 
 class  Configuration
 {
     public const ENV_STAGE = "development";
     public const ENV_PRODUCTION = "production";
     public const URL_STAGE = "https://demo-api.easycredito.com.br/api/external";
-    public const URL_PRODUCTION = "https://auth.easycredito.com.br";
+    public const URL_AUTH = "https://auth.easycredito.com.br/client/auth";
+    public const URL_PRODUCTION = "";
 
     private ?string $environment;
     private ?array $credentials;
@@ -104,3 +105,11 @@ class  Configuration
         return self::URL_STAGE;
     }
 }
+
+
+const EASYCREDITO_AUTH = "https://auth.easycredito.com.br/client/auth";
+const EASYCREDITO_DOMAIN = "https://demo-api.easycredito.com.br/api/external";
+const EASYCREDITO_ENVIRONMENT = "development";
+const EASYCREDITO_CLIENT_ID = "224effd0-a24c-4500-873c-5b14bbde888e";
+const EASYCREDITO_CLIENT_SECRET = "7d953dc2cd63a2991ce1e572c089ce6aa6e6b0d3616ce047da50c903362ab814";
+const EASYCREDITO_SCOPE = "api-external";

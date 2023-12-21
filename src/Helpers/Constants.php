@@ -7,4 +7,3 @@ defined('EASYCREDITO_CLIENT_SECRET') or define('EASYCREDITO_CLIENT_SECRET', $_SE
 defined('USER_AGENT') or define('USER_AGENT', 'SdkEasyCredito');
 defined('CONTENT_TYPE_JSON') or define('CONTENT_TYPE_JSON', 'application/json');
 defined('CONTENT_TYPE_URL_URLENCODED') or define('CONTENT_TYPE_URL_URLENCODED', 'application/x-www-form-urlencoded');
-

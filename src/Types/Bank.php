@@ -1,0 +1,117 @@
+<?php
+
+namespace O4l3x4ndr3\SdkEasyCredito\Types;
+use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\AccountType;
+
+/**
+ * Modelo de Conta de Banco
+ */
+class Bank
+{
+    protected ?string $bank;
+    protected AccountType $type;
+    protected int $agency;
+    protected string $account;
+
+    /**
+     * @param ?string $bank
+     * @param AccountType $type
+     * @param int $agency
+     * @param string $account
+     */
+    public function __construct(?string $bank, AccountType $type, int $agency, string $account)
+    {
+        $this->bank = $bank;
+        $this->type = $type;
+        $this->agency = $agency;
+        $this->account = $account;
+    }
+
+    /**
+     * @return ?string
+     */
+    public function getBank(): int
+    {
+        return $this->bank;
+    }
+
+    /**
+     * @param ?string $bank
+     * @return Bank
+     */
+    public function setBank(?string $bank): Bank
+    {
+        $this->bank = $bank;
+        return $this;
+    }
+
+    /**
+     * @return AccountType
+     */
+    public function getType(): AccountType
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param AccountType $type
+     * @return Bank
+     */
+    public function setType(AccountType $type): Bank
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAgency(): int
+    {
+        return $this->agency;
+    }
+
+    /**
+     * @param int $agency
+     * @return Bank
+     */
+    public function setAgency(int $agency): Bank
+    {
+        $this->agency = $agency;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccount(): string
+    {
+        return $this->account;
+    }
+
+    /**
+     * @param string $account
+     * @return Bank
+     */
+    public function setAccount(string $account): Bank
+    {
+        $this->account = $account;
+        return $this;
+    }
+    /**
+     * Parse props to array
+     *
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return array_filter([
+            'bank' => $this->bank,
+            'type' => $this->type,
+            'agency' => $this->agency,
+            'account' => $this->account
+        ], function ($v) {
+            return ! is_null($v);
+        });
+    }
+}
