@@ -16,8 +16,8 @@ class Address
     protected string $district;
     protected States $state;
     protected string $city;
-    protected HomeType $homeType;
-    protected HomeSince $homeSince;
+    protected ?HomeType $homeType;
+    protected ?HomeSince $homeSince;
 
     /**
      * @param ?string $zipCode
@@ -30,7 +30,7 @@ class Address
      * @param HomeType $homeType
      * @param HomeSince $homeSince
      */
-    public function __construct(?string $zipCode, string $address, int $number, string $complement, string $district, States $state, string $city, HomeType $homeType, HomeSince $homeSince)
+    public function __construct(?string $zipCode, string $address, int $number, string $complement, string $district, States $state, string $city, ?HomeType $homeType, ?HomeSince $homeSince)
     {
         $this->zipCode = $zipCode;
         $this->address = $address;

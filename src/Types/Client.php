@@ -16,7 +16,7 @@ class Client implements LogData
     protected ?string $cpf;
     protected string $name;
     protected string $email;
-    protected string $birthday;
+    protected string $birthdate;
     protected string $phone;
     protected ?string $zipCode;
     protected bool $hasCreditCard;
@@ -35,7 +35,7 @@ class Client implements LogData
      * @param string|null $cpf
      * @param string|null $name
      * @param string|null $email
-     * @param string|null $birthday
+     * @param string|null $birthdate
      * @param string|null $phone
      * @param string|null $zipCode
      * @param bool $hasCreditCard
@@ -57,7 +57,7 @@ class Client implements LogData
         ?string $cpf,
         ?string $name,
         ?string $email,
-        ?string $birthday,
+        ?string $birthdate,
         ?string $phone,
         ?string $zipCode,
         ?bool $hasCreditCard,
@@ -78,7 +78,7 @@ class Client implements LogData
         $this->cpf = $cpf;
         $this->name = $name;
         $this->email = $email;
-        $this->birthday = $birthday;
+        $this->birthdate = $birthdate;
         $this->phone = $phone;
         $this->zipCode = $zipCode;
         $this->hasCreditCard = $hasCreditCard;
@@ -95,6 +95,367 @@ class Client implements LogData
         $this->dateCreated = $dateCreated ?? date("c");
         $this->lastUpdated = $lastUpdated ?? date("c");
     }
+
+    /**
+     * @return string|null
+     */
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string|null $id
+     * @return Client
+     */
+    public function setId(?string $id): Client
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return PipelineStatus|null
+     */
+    public function getStatus(): ?PipelineStatus
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param PipelineStatus|null $status
+     * @return Client
+     */
+    public function setStatus(?PipelineStatus $status): Client
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateCreated(): string
+    {
+        return $this->dateCreated;
+    }
+
+    /**
+     * @param string $dateCreated
+     * @return Client
+     */
+    public function setDateCreated(string $dateCreated): Client
+    {
+        $this->dateCreated = $dateCreated;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastUpdated(): string
+    {
+        return $this->lastUpdated;
+    }
+
+    /**
+     * @param string $lastUpdated
+     * @return Client
+     */
+    public function setLastUpdated(string $lastUpdated): Client
+    {
+        $this->lastUpdated = $lastUpdated;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCpf(): ?string
+    {
+        return $this->cpf;
+    }
+
+    /**
+     * @param string|null $cpf
+     * @return Client
+     */
+    public function setCpf(?string $cpf): Client
+    {
+        $this->cpf = $cpf;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return Client
+     */
+    public function setName(string $name): Client
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     * @return Client
+     */
+    public function setEmail(string $email): Client
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBirthdate(): string
+    {
+        return $this->birthdate;
+    }
+
+    /**
+     * @param string $birthdate
+     * @return Client
+     */
+    public function setBirthdate(string $birthdate): Client
+    {
+        $this->birthdate = $birthdate;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     * @return Client
+     */
+    public function setPhone(string $phone): Client
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getZipCode(): ?string
+    {
+        return $this->zipCode;
+    }
+
+    /**
+     * @param string|null $zipCode
+     * @return Client
+     */
+    public function setZipCode(?string $zipCode): Client
+    {
+        $this->zipCode = $zipCode;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasCreditCard(): bool
+    {
+        return $this->hasCreditCard;
+    }
+
+    /**
+     * @param bool $hasCreditCard
+     * @return Client
+     */
+    public function setHasCreditCard(bool $hasCreditCard): Client
+    {
+        $this->hasCreditCard = $hasCreditCard;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasRestriction(): bool
+    {
+        return $this->hasRestriction;
+    }
+
+    /**
+     * @param bool $hasRestriction
+     * @return Client
+     */
+    public function setHasRestriction(bool $hasRestriction): Client
+    {
+        $this->hasRestriction = $hasRestriction;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasOwnHouse(): bool
+    {
+        return $this->hasOwnHouse;
+    }
+
+    /**
+     * @param bool $hasOwnHouse
+     * @return Client
+     */
+    public function setHasOwnHouse(bool $hasOwnHouse): Client
+    {
+        $this->hasOwnHouse = $hasOwnHouse;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasVehicle(): bool
+    {
+        return $this->hasVehicle;
+    }
+
+    /**
+     * @param bool $hasVehicle
+     * @return Client
+     */
+    public function setHasVehicle(bool $hasVehicle): Client
+    {
+        $this->hasVehicle = $hasVehicle;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasAndroid(): bool
+    {
+        return $this->hasAndroid;
+    }
+
+    /**
+     * @param bool $hasAndroid
+     * @return Client
+     */
+    public function setHasAndroid(bool $hasAndroid): Client
+    {
+        $this->hasAndroid = $hasAndroid;
+        return $this;
+    }
+
+    /**
+     * @return Education|null
+     */
+    public function getEducation(): ?Education
+    {
+        return $this->education;
+    }
+
+    /**
+     * @param Education|null $education
+     * @return Client
+     */
+    public function setEducation(?Education $education): Client
+    {
+        $this->education = $education;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getBanks(): ?int
+    {
+        return $this->banks;
+    }
+
+    /**
+     * @param int|null $banks
+     * @return Client
+     */
+    public function setBanks(?int $banks): Client
+    {
+        $this->banks = $banks;
+        return $this;
+    }
+
+    /**
+     * @return Occupation|null
+     */
+    public function getOccupation(): ?Occupation
+    {
+        return $this->occupation;
+    }
+
+    /**
+     * @param Occupation|null $occupation
+     * @return Client
+     */
+    public function setOccupation(?Occupation $occupation): Client
+    {
+        $this->occupation = $occupation;
+        return $this;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getIncome(): ?float
+    {
+        return $this->income;
+    }
+
+    /**
+     * @param float|null $income
+     * @return Client
+     */
+    public function setIncome(?float $income): Client
+    {
+        $this->income = $income;
+        return $this;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getProducts(): ?array
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param array|null $products
+     * @return Client
+     */
+    public function setProducts(?array $products): Client
+    {
+        $this->products = $products;
+        return $this;
+    }
+
     public function getLogData() : array
     {
         return [
@@ -121,7 +482,7 @@ class Client implements LogData
             'lastUpdated' => $this->lastUpdated,
             'cpf' => $this->cpf,
             'name' => $this->name,
-            'birthday' => $this->birthday,
+            'birthday' => $this->birthdate,
             'email' => $this->email,
             'phone' => $this->phone,
             'zipCode' => $this->zipCode,

@@ -50,7 +50,7 @@ class Process extends CallApi
      * @throws EasyCreditoException
      * @throws GuzzleException
      */
-    public function document(?File $file, ?int $client_id): object
+    public function document(?File $file, ?string $client_id): object
     {
         return $this->call('PUT', '/v2/process/document/'.$client_id, $file->toArray());
     }

@@ -113,7 +113,7 @@ class File
     public function toArray(): array
     {
         return array_filter([
-            'documentType' => $this->documentType,
+            'type' => $this->documentType,
             'mimeType' => $this->mimeType,
             'name' => $this->name,
             'base64' => $this->base64

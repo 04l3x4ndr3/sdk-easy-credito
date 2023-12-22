@@ -90,7 +90,6 @@ class CallApi {
 	public function call(string $method, string $endpoint, ?array $body = NULL): array | object
 	{
 		$token = $this->accessToken();
-        echo json_encode($body);
 
 		$client = new Client();
 		$options = array_filter([
