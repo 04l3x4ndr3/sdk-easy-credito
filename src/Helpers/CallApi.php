@@ -115,8 +115,8 @@ class CallApi {
 		return $this->config;
 	}
 }
-
+/*
 const USER_AGENT = "SdkEasyCredito";
 const CONTENT_TYPE_JSON = 'application/json';
 const CONTENT_TYPE_URL_URLENCODED = 'application/x-www-form-urlencoded';
-const TOKEN_TYPE = 'Bearer';
+const TOKEN_TYPE = 'Bearer';*/
