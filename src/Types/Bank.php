@@ -9,17 +9,17 @@ use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\AccountType;
 class Bank
 {
     protected ?string $bank;
-    protected AccountType $type;
-    protected int $agency;
-    protected string $account;
+    protected ?string $type;
+    protected ?string $agency;
+    protected ?string $account;
 
     /**
      * @param ?string $bank
-     * @param AccountType $type
-     * @param int $agency
-     * @param string $account
+     * @param ?string $type
+     * @param ?string $agency
+     * @param ?string $account
      */
-    public function __construct(?string $bank, AccountType $type, int $agency, string $account)
+    public function __construct(?string $bank, ?string $type, ?string $agency, ?string $account)
     {
         $this->bank = $bank;
         $this->type = $type;
@@ -28,9 +28,9 @@ class Bank
     }
 
     /**
-     * @return ?string
+     * @return string
      */
-    public function getBank(): int
+    public function getBank(): string
     {
         return $this->bank;
     }
@@ -46,36 +46,36 @@ class Bank
     }
 
     /**
-     * @return AccountType
+     * @return string
      */
-    public function getType(): AccountType
+    public function getType(): string
     {
         return $this->type;
     }
 
     /**
-     * @param AccountType $type
+     * @param string $type
      * @return Bank
      */
-    public function setType(AccountType $type): Bank
+    public function setType(string $type): Bank
     {
         $this->type = $type;
         return $this;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getAgency(): int
+    public function getAgency(): string
     {
         return $this->agency;
     }
 
     /**
-     * @param int $agency
+     * @param string $agency
      * @return Bank
      */
-    public function setAgency(int $agency): Bank
+    public function setAgency(string $agency): Bank
     {
         $this->agency = $agency;
         return $this;

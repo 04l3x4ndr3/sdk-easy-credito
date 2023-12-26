@@ -9,28 +9,28 @@ use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Profession;
  */
 class Business
 {
-    protected Occupation $occupation;
-    protected Profession $profession;
+    protected string $occupation;
+    protected string $profession;
     protected string $companyName;
     protected string $phone;
     protected float $income;
     protected int $payday;
-    protected EmploymentSince $employmentSince;
+    protected string $employmentSince;
     protected ?int $benefitNumber;
     protected ?Address $address;
 
     /**
-     * @param Occupation $occupation
-     * @param Profession $profession
+     * @param string $occupation
+     * @param string $profession
      * @param string $companyName
      * @param string $phone
      * @param float $income
      * @param int $payday
-     * @param EmploymentSince $employmentSince
+     * @param string $employmentSince
      * @param int|null $benefitNumber
      * @param Address|null $address
      */
-    public function __construct(Occupation $occupation, Profession $profession, string $companyName, string $phone, float $income, int $payday, EmploymentSince $employmentSince, ?int $benefitNumber, ?Address $address)
+    public function __construct(string $occupation, string $profession, string $companyName, string $phone, float $income, int $payday, string $employmentSince, ?int $benefitNumber, ?Address $address)
     {
         $this->occupation = $occupation;
         $this->profession = $profession;
@@ -44,38 +44,38 @@ class Business
     }
 
     /**
-     * @return Occupation
+     * @return string
      */
-    public function getOccupation(): Occupation
+    public function getOccupation(): string
     {
         return $this->occupation;
     }
 
     /**
-     * @param Occupation $occupation
+     * @param string $occupation
      * @return Business
      */
-    public function setOccupation(Occupation $occupation): Business
+    public function setOccupation(string $occupation): Business
     {
-        $this->occupation = $occupation;
+        $this->occupation = Occupation::from($occupation)->value;
         return $this;
     }
 
     /**
-     * @return Profession
+     * @return string
      */
-    public function getProfession(): Profession
+    public function getProfession(): string
     {
         return $this->profession;
     }
 
     /**
-     * @param Profession $profession
+     * @param string $profession
      * @return Business
      */
-    public function setProfession(Profession $profession): Business
+    public function setProfession(string $profession): Business
     {
-        $this->profession = $profession;
+        $this->profession = Profession::from($profession)->value;
         return $this;
     }
 
@@ -152,7 +152,7 @@ class Business
     }
 
     /**
-     * @return EmploymentSince
+     * @return string
      */
     public function getEmploymentSince(): EmploymentSince
     {
@@ -165,7 +165,7 @@ class Business
      */
     public function setEmploymentSince(EmploymentSince $employmentSince): Business
     {
-        $this->employmentSince = $employmentSince;
+        $this->employmentSince = EmploymentSince::from($employmentSince)->value;
         return $this;
     }
 

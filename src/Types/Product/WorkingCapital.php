@@ -3,23 +3,18 @@
 namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
 use O4l3x4ndr3\SdkEasyCredito\Types\Product;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\BusinessProfession;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\WorkingCapitalLoanObjectives;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\AccountType;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\EmployeesCount;
 
 class WorkingCapital extends Product
 {
     protected float $value;
     protected int $installments;
     protected string $cpnj;
-    protected BusinessProfession $businessProfession;
-    protected EmployeesCount $employeesCount;
+    protected string $businessProfession;
+    protected string $employeesCount;
     protected float $businessIncomeCpnj;
-    protected WorkingCapitalLoanObjectives $loanObjectives;
+    protected string $loanObjectives;
     protected ?string $bank;
-    protected AccountType $accountType;
+    protected string $accountType;
     protected ?string $agency;
     protected string $account;
 
@@ -27,12 +22,12 @@ class WorkingCapital extends Product
      * @param float $value
      * @param int $installments
      * @param string $cpnj
-     * @param BusinessProfession $businessProfession
-     * @param EmployeesCount $employeesCount
+     * @param string $businessProfession
+     * @param string $employeesCount
      * @param float $businessIncomeCpnj
-     * @param WorkingCapitalLoanObjectives $loanObjectives
+     * @param string $loanObjectives
      * @param string $bank
-     * @param AccountType $accountType
+     * @param string $accountType
      * @param ?string $agency
      * @param string $account
      */
@@ -40,16 +35,16 @@ class WorkingCapital extends Product
         float              $value,
         int                $installments,
         string             $cpnj,
-        BusinessProfession $businessProfession,
-        EmployeesCount     $employeesCount,
+        string $businessProfession,
+        string     $employeesCount,
         float              $businessIncomeCpnj,
-        WorkingCapitalLoanObjectives     $loanObjectives,
+        string     $loanObjectives,
         ?string               $bank,
-        AccountType        $accountType,
+        string        $accountType,
         ?string                $agency,
         string             $account
     ) {
-        parent::__construct(null, ProductTypestring::WORKING_CAPITAL);
+        parent::__construct(null, "WORKING_CAPITAL");
         $this->value = $value;
         $this->installments = $installments;
         $this->cpnj = $cpnj;
@@ -118,36 +113,36 @@ class WorkingCapital extends Product
     }
 
     /**
-     * @return BusinessProfession
+     * @return string
      */
-    public function getBusinessProfession(): BusinessProfession
+    public function getBusinessProfession(): string
     {
         return $this->businessProfession;
     }
 
     /**
-     * @param BusinessProfession $businessProfession
+     * @param string $businessProfession
      * @return WorkingCapital
      */
-    public function setBusinessProfession(BusinessProfession $businessProfession): WorkingCapital
+    public function setBusinessProfession(string $businessProfession): WorkingCapital
     {
         $this->businessProfession = $businessProfession;
         return $this;
     }
 
     /**
-     * @return EmployeesCount
+     * @return string
      */
-    public function getEmployeesCount(): EmployeesCount
+    public function getEmployeesCount(): string
     {
         return $this->employeesCount;
     }
 
     /**
-     * @param EmployeesCount $employeesCount
+     * @param string $employeesCount
      * @return WorkingCapital
      */
-    public function setEmployeesCount(EmployeesCount $employeesCount): WorkingCapital
+    public function setEmployeesCount(string $employeesCount): WorkingCapital
     {
         $this->employeesCount = $employeesCount;
         return $this;
@@ -172,18 +167,18 @@ class WorkingCapital extends Product
     }
 
     /**
-     * @return WorkingCapitalLoanObjectives
+     * @return string
      */
-    public function getLoanObjectives(): WorkingCapitalLoanObjectives
+    public function getLoanObjectives(): string
     {
         return $this->loanObjectives;
     }
 
     /**
-     * @param WorkingCapitalLoanObjectives $loanObjectives
+     * @param string $loanObjectives
      * @return WorkingCapital
      */
-    public function setLoanObjectives(WorkingCapitalLoanObjectives $loanObjectives): WorkingCapital
+    public function setLoanObjectives(string $loanObjectives): WorkingCapital
     {
         $this->loanObjectives = $loanObjectives;
         return $this;
@@ -208,18 +203,18 @@ class WorkingCapital extends Product
     }
 
     /**
-     * @return AccountType
+     * @return string
      */
-    public function getAccountType(): AccountType
+    public function getAccountType(): string
     {
         return $this->accountType;
     }
 
     /**
-     * @param AccountType $accountType
+     * @param string $accountType
      * @return WorkingCapital
      */
-    public function setAccountType(AccountType $accountType): WorkingCapital
+    public function setAccountType(string $accountType): WorkingCapital
     {
         $this->accountType = $accountType;
         return $this;

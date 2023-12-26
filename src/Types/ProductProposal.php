@@ -3,7 +3,6 @@
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
 use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\CreditStatus;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
 
 /**
  * Modelos das produtos que compõe propostas RECEBIDAS pela Tok e ENVIADAS pela EasyCrédito
@@ -11,7 +10,7 @@ use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
 abstract class ProductProposal
 {
     protected int $customerServiceNumber;
-    protected ?ProductTypestring $typeString;
+    protected ?string $typeString;
     protected string $product;
     protected int $productId;
     protected bool $hasDocuments;
@@ -23,7 +22,7 @@ abstract class ProductProposal
     protected array $pendentDocuments = ["SELF", "IDENTITY_FRONT", "IDENTITY_BACK","ADDRESS_PROF","INCOME_PROF"];
 
     public function __construct(
-        ?ProductTypestring $typeString,
+        ?string $typeString,
         ?int $customerServiceNumber,
         ?string $product,
         ?int $productId,
@@ -61,7 +60,7 @@ abstract class ProductProposal
     }
 
     /**
-     * @return ?ProductTypestring
+     * @return ?string
      */
     public function getTypeString(): string
     {
@@ -69,10 +68,10 @@ abstract class ProductProposal
     }
 
     /**
-     * @param ?ProductTypestring $typeString
+     * @param ?string $typeString
      * @return ProductProposal
      */
-    public function setTypeString(?ProductTypestring $typeString): ProductProposal
+    public function setTypeString(?string $typeString): ProductProposal
     {
         $this->typeString = $typeString;
         return $this;

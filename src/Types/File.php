@@ -2,29 +2,25 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\DocumentType;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\MIMEType;
-
-
 /**
  * Modelo de Arquivo
  */
 class File
 {
-    protected DocumentType $documentType;
-    protected MIMEType $mimeType;
+    protected string $documentType;
+    protected string $mimeType;
     protected string $name;
     protected string $base64;
 
     /**
-     * @param DocumentType|null $documentType
-     * @param MIMEType|null $mimeType
+     * @param string|null $documentType
+     * @param string|null $mimeType
      * @param string|null $name
      * @param string|null $base64
      */
     public function __construct(
-        ?DocumentType $documentType,
-        ?MIMEType $mimeType,
+        ?string $documentType,
+        ?string $mimeType,
         ?string $name,
         ?string $base64
     ) {
@@ -35,36 +31,36 @@ class File
     }
 
     /**
-     * @return DocumentType
+     * @return string
      */
-    public function getDocumentType(): DocumentType
+    public function getDocumentType(): string
     {
         return $this->documentType;
     }
 
     /**
-     * @param DocumentType $documentType
+     * @param string $documentType
      * @return File
      */
-    public function setDocumentType(DocumentType $documentType): File
+    public function setDocumentType(string $documentType): File
     {
         $this->documentType = $documentType;
         return $this;
     }
 
     /**
-     * @return MIMEType
+     * @return string
      */
-    public function getMimeType(): MIMEType
+    public function getMimeType(): string
     {
         return $this->mimeType;
     }
 
     /**
-     * @param MIMEType $mimeType
+     * @param string $mimeType
      * @return File
      */
-    public function setMimeType(MIMEType $mimeType): File
+    public function setMimeType(string $mimeType): File
     {
         $this->mimeType = $mimeType;
         return $this;

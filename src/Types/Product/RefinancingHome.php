@@ -3,32 +3,30 @@
 namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
 use O4l3x4ndr3\SdkEasyCredito\Types\Product;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\RealEstateType;
 
 class RefinancingHome extends Product
 {
     protected float $value;
     protected int $installments;
-    protected RealEstateType $realEstateType;
+    protected string $realEstateType;
     protected float $realEstateValue;
     protected float $outstandingBalance;
 
     /**
      * @param float|null $value
      * @param int|null $installments
-     * @param RealEstateType|null $realEstateType
+     * @param string|null $realEstateType
      * @param float|null $realEstateValue
      * @param float|null $outstandingBalance
      */
     public function __construct(
         ?float  $value,
         ?int    $installments,
-        ?RealEstateType $realEstateType,
+        ?string $realEstateType,
         ?float  $realEstateValue,
         ?float  $outstandingBalance
     ) {
-        parent::__construct(null, ProductTypestring::REFINANCING_HOME);
+        parent::__construct(null, "REFINANCING_HOME");
         $this->value = $value;
         $this->installments = $installments;
         $this->realEstateType = $realEstateType;
@@ -73,18 +71,18 @@ class RefinancingHome extends Product
     }
 
     /**
-     * @return RealEstateType
+     * @return string
      */
-    public function getRealEstateType(): RealEstateType
+    public function getRealEstateType(): string
     {
         return $this->realEstateType;
     }
 
     /**
-     * @param RealEstateType $realEstateType
+     * @param string $realEstateType
      * @return RefinancingHome
      */
-    public function setRealEstateType(RealEstateType $realEstateType): RefinancingHome
+    public function setRealEstateType(string $realEstateType): RefinancingHome
     {
         $this->realEstateType = $realEstateType;
         return $this;

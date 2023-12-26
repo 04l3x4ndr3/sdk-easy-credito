@@ -14,10 +14,10 @@ class Address
     protected int $number;
     protected string $complement;
     protected string $district;
-    protected States $state;
+    protected string $state;
     protected string $city;
-    protected ?HomeType $homeType;
-    protected ?HomeSince $homeSince;
+    protected ?string $homeType;
+    protected ?string $homeSince;
 
     /**
      * @param ?string $zipCode
@@ -25,12 +25,12 @@ class Address
      * @param int $number
      * @param string $complement
      * @param string $district
-     * @param States $state
+     * @param string $state
      * @param string $city
-     * @param HomeType $homeType
-     * @param HomeSince $homeSince
+     * @param string|null $homeType
+     * @param string|null $homeSince
      */
-    public function __construct(?string $zipCode, string $address, int $number, string $complement, string $district, States $state, string $city, ?HomeType $homeType, ?HomeSince $homeSince)
+    public function __construct(?string $zipCode, string $address, int $number, string $complement, string $district, string $state, string $city, ?string $homeType, ?string $homeSince)
     {
         $this->zipCode = $zipCode;
         $this->address = $address;
@@ -44,7 +44,7 @@ class Address
     }
 
     /**
-     * @return int
+     * @return string|null
      */
     public function getZipCode(): ?string
     {
@@ -134,18 +134,18 @@ class Address
     }
 
     /**
-     * @return States
+     * @return string
      */
-    public function getState(): States
+    public function getState(): string
     {
         return $this->state;
     }
 
     /**
-     * @param States $state
+     * @param string $state
      * @return Address
      */
-    public function setState(States $state): Address
+    public function setState(string $state): Address
     {
         $this->state = $state;
         return $this;
@@ -170,36 +170,36 @@ class Address
     }
 
     /**
-     * @return HomeType
+     * @return string
      */
-    public function getHomeType(): HomeType
+    public function getHomeType(): string
     {
         return $this->homeType;
     }
 
     /**
-     * @param HomeType $homeType
+     * @param string $homeType
      * @return Address
      */
-    public function setHomeType(HomeType $homeType): Address
+    public function setHomeType(string $homeType): Address
     {
         $this->homeType = $homeType;
         return $this;
     }
 
     /**
-     * @return HomeSince
+     * @return string
      */
-    public function getHomeSince(): HomeSince
+    public function getHomeSince(): string
     {
         return $this->homeSince;
     }
 
     /**
-     * @param HomeSince $homeSince
+     * @param string $homeSince
      * @return Address
      */
-    public function setHomeSince(HomeSince $homeSince): Address
+    public function setHomeSince(string $homeSince): Address
     {
         $this->homeSince = $homeSince;
         return $this;

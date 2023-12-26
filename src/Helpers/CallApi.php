@@ -115,3 +115,10 @@ class CallApi {
 		return $this->config;
 	}
 }
+
+const EASYCREDITO_AUTH = "https://auth.easycredito.com.br/client/auth";
+const EASYCREDITO_DOMAIN = "https://demo-api.easycredito.com.br/api/external";
+const USER_AGENT = "SdkEasyCredito";
+const CONTENT_TYPE_JSON = 'application/json';
+const CONTENT_TYPE_URL_URLENCODED = 'application/x-www-form-urlencoded';
+const TOKEN_TYPE = 'Bearer';

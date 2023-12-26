@@ -3,40 +3,38 @@
 namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
 use O4l3x4ndr3\SdkEasyCredito\Types\Product;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Network;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
 
 class Card extends Product
 {
-    protected Network $network;
+    protected string $network;
     protected int $payday;
 
     /**
-     * @param Network|null $network
+     * @param string|null $network
      * @param int|null $payday
      */
     public function __construct(
-        ?Network           $network,
+        ?string           $network,
         ?int               $payday
     ) {
-        parent::__construct(null, ProductTypestring::CARD);
+        parent::__construct(null, "CARD");
         $this->network = $network;
         $this->payday = $payday;
     }
 
     /**
-     * @return Network
+     * @return string
      */
-    public function getNetwork(): Network
+    public function getNetwork(): string
     {
         return $this->network;
     }
 
     /**
-     * @param Network $network
+     * @param string $network
      * @return Card
      */
-    public function setNetwork(Network $network): Card
+    public function setNetwork(string $network): Card
     {
         $this->network = $network;
         return $this;

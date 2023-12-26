@@ -22,7 +22,7 @@ class RefinancingAuto extends Product
         int $installments,
         Vehicle $vehicle
     ) {
-        parent::__construct(null, ProductTypestring::REFINANCING_AUTO);
+        parent::__construct(null, "REFINANCING_AUTO");
         $this->value = $value;
         $this->installments = $installments;
         $this->vehicle = $vehicle;

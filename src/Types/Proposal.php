@@ -14,29 +14,29 @@ use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\States;
 class Proposal
 {
     protected string $mother;
-    protected Gender $gender;
-    protected Nationality $nationality;
-    protected States $hometownState;
+    protected string $gender;
+    protected string $nationality;
+    protected string $hometownState;
     protected string $hometown;
-    protected Education $education;
-    protected RelationshipStatus $relationshipStatus;
+    protected string $education;
+    protected string $relationshipStatus;
     protected string $phoneLandline;
     protected ?Document $identity;
     protected ?ProposalVehicle $vehicle;
     protected ConsumerUnit $consumerUnit;
     protected Address $address;
     protected ?Business $business;
-    protected Bank $bank;
+    protected ?Bank $bank;
     protected array $reference;
     protected array $products;
     /**
      * @param string $mother
-     * @param Gender $gender
-     * @param Nationality $nationality
+     * @param string $gender
+     * @param string $nationality
      * @param States $hometownState
      * @param string $hometown
-     * @param Education $education
-     * @param RelationshipStatus $relationshipStatus
+     * @param string $education
+     * @param string $relationshipStatus
      * @param string $phoneLandline
      * @param ProposalVehicle $vehicle
      * @param ConsumerUnit $consumerUnit
@@ -48,12 +48,12 @@ class Proposal
      */
     public function __construct(
         ?string $mother,
-        ?Gender $gender,
-        ?Nationality $nationality,
-        ?States $hometownState,
+        ?string $gender,
+        ?string $nationality,
+        ?string $hometownState,
         ?string $hometown,
-        ?Education $education,
-        ?RelationshipStatus $relationshipStatus,
+        ?string $education,
+        ?string $relationshipStatus,
         ?string $phoneLandline,
         ?Document $identity,
         ?ProposalVehicle $vehicle,
@@ -101,9 +101,9 @@ class Proposal
     }
 
     /**
-     * @return Gender
+     * @return string
      */
-    public function getGender(): Gender
+    public function getGender(): string
     {
         return $this->gender;
     }
@@ -114,12 +114,12 @@ class Proposal
      */
     public function setGender(Gender $gender): Proposal
     {
-        $this->gender = $gender;
+        $this->gender = Gender::from($gender)->value;
         return $this;
     }
 
     /**
-     * @return Nationality
+     * @return string
      */
     public function getNationality(): Nationality
     {
@@ -132,14 +132,14 @@ class Proposal
      */
     public function setNationality(Nationality $nationality): Proposal
     {
-        $this->nationality = $nationality;
+        $this->nationality = Nationality::from($nationality)->value;
         return $this;
     }
 
     /**
-     * @return States
+     * @return string
      */
-    public function getHometownState(): States
+    public function getHometownState(): string
     {
         return $this->hometownState;
     }
@@ -150,7 +150,7 @@ class Proposal
      */
     public function setHometownState(States $hometownState): Proposal
     {
-        $this->hometownState = $hometownState;
+        $this->hometownState = States::from($hometownState)->value;
         return $this;
     }
 
@@ -173,7 +173,7 @@ class Proposal
     }
 
     /**
-     * @return Education
+     * @return string
      */
     public function getEducation(): Education
     {
@@ -186,12 +186,12 @@ class Proposal
      */
     public function setEducation(Education $education): Proposal
     {
-        $this->education = $education;
+        $this->education = Education::from($education)->value;
         return $this;
     }
 
     /**
-     * @return RelationshipStatus
+     * @return string
      */
     public function getRelationshipStatus(): RelationshipStatus
     {
@@ -204,7 +204,7 @@ class Proposal
      */
     public function setRelationshipStatus(RelationshipStatus $relationshipStatus): Proposal
     {
-        $this->relationshipStatus = $relationshipStatus;
+        $this->relationshipStatus = RelationshipStatus::from($relationshipStatus)->value;
         return $this;
     }
 

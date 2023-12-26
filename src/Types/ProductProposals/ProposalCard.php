@@ -1,8 +1,6 @@
 <?php
 namespace O4l3x4ndr3\SdkEasyCredito\Types\ProductProposals;
 
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\CreditStatus;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
 use O4l3x4ndr3\SdkEasyCredito\Types\ProductProposal;
 class ProposalCard extends ProductProposal
 {
@@ -18,7 +16,7 @@ class ProposalCard extends ProductProposal
         ?int $productId,
         ?bool $hasDocuments,
         ?bool $hasContract,
-        ?CreditStatus $lastStatus,
+        ?string $lastStatus,
         ?string $logo,
         ?string $dateCreated,
         ?string $lastUpdated,
@@ -29,7 +27,7 @@ class ProposalCard extends ProductProposal
         ?bool $digitalAccount
     ) {
         parent::__construct(
-            ProductTypestring::CARD,
+            "CARD",
             $customerServiceNumber,
             $product,
             $productId,
@@ -57,9 +55,9 @@ class ProposalCard extends ProductProposal
 
     /**
      * @param bool $international
-     * @return Card
+     * @return ProposalCard
      */
-    public function setInternational(bool $international): Card
+    public function setInternational(bool $international): ProposalCard
     {
         $this->international = $international;
         return $this;
@@ -75,9 +73,9 @@ class ProposalCard extends ProductProposal
 
     /**
      * @param float $annuity
-     * @return Card
+     * @return ProposalCard
      */
-    public function setAnnuity(float $annuity): Card
+    public function setAnnuity(float $annuity): ProposalCard
     {
         $this->annuity = $annuity;
         return $this;
@@ -93,9 +91,9 @@ class ProposalCard extends ProductProposal
 
     /**
      * @param string $network
-     * @return Card
+     * @return ProposalCard
      */
-    public function setNetwork(string $network): Card
+    public function setNetwork(string $network): ProposalCard
     {
         $this->network = $network;
         return $this;
@@ -111,9 +109,9 @@ class ProposalCard extends ProductProposal
 
     /**
      * @param bool $prepaid
-     * @return Card
+     * @return ProposalCard
      */
-    public function setPrepaid(bool $prepaid): Card
+    public function setPrepaid(bool $prepaid): ProposalCard
     {
         $this->prepaid = $prepaid;
         return $this;
@@ -129,9 +127,9 @@ class ProposalCard extends ProductProposal
 
     /**
      * @param bool $digitalAccount
-     * @return Card
+     * @return ProposalCard
      */
-    public function setDigitalAccount(bool $digitalAccount): Card
+    public function setDigitalAccount(bool $digitalAccount): ProposalCard
     {
         $this->digitalAccount = $digitalAccount;
         return $this;

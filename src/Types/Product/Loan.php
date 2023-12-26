@@ -3,7 +3,6 @@
 namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
 use O4l3x4ndr3\SdkEasyCredito\Types\Product;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
 
 class Loan extends Product
 {
@@ -19,8 +18,8 @@ class Loan extends Product
         ?int               $installments
     )
     {
-        parent::__construct(null, ProductTypestring::LOAN);
         $this->value = $value;
+        parent::__construct(null, "LOAN");
         $this->installments = $installments;
     }
 

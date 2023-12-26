@@ -2,7 +2,6 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\LogData;
 
 /**
@@ -13,33 +12,33 @@ use O4l3x4ndr3\SdkEasyCredito\Helpers\LogData;
 class Product implements LogData
 {
     protected ?int $customerServiceNumber;
-    protected ?ProductTypestring $typestring;
+    protected ?string $typestring;
 
     /**
      * @param int|null $customerServiceNumber
-     * @param ProductTypestring|null $typestring
+     * @param string|null $typestring
      */
     public function __construct(
         ?int $customerServiceNumber,
-        ?ProductTypestring $typestring
+        ?string $typestring
     ) {
         $this->customerServiceNumber = $customerServiceNumber;
         $this->typestring = $typestring;
     }
 
     /**
-     * @return ProductTypestring
+     * @return string
      */
-    public function getTypestring(): ProductTypestring
+    public function getTypestring(): string
     {
         return $this->typestring;
     }
 
     /**
-     * @param ProductTypestring $typestring
+     * @param string $typestring
      * @return Product
      */
-    public function setTypestring(ProductTypestring $typestring): Product
+    public function setTypestring(string $typestring): Product
     {
         $this->typestring = $typestring;
         return $this;

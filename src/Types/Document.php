@@ -11,20 +11,20 @@ use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\States;
  */
 class Document
 {
-    protected IdentityType $identityType;
+    protected string $identityType;
     protected ?string $number;
-    protected IdentityIssuer $issuer;
-    protected States $state;
+    protected string $issuer;
+    protected string $state;
     protected string $issuingDate;
 
     /**
-     * @param IdentityType $identityType
+     * @param string $identityType
      * @param ?string $number
-     * @param IdentityIssuer $issuer
-     * @param States $state
+     * @param string $issuer
+     * @param string $state
      * @param string $issuingDate
      */
-    public function __construct(IdentityType $identityType, ?string $number, IdentityIssuer $issuer, States $state, string $issuingDate)
+    public function __construct(string $identityType, ?string $number, string $issuer, string $state, string $issuingDate)
     {
         $this->identityType = $identityType;
         $this->number = $number;
@@ -34,7 +34,7 @@ class Document
     }
 
     /**
-     * @return IdentityType
+     * @return string
      */
     public function getIdentityType(): IdentityType
     {
@@ -47,7 +47,7 @@ class Document
      */
     public function setIdentityType(IdentityType $identityType): Document
     {
-        $this->identityType = $identityType;
+        $this->identityType = IdentityType::from($identityType)->value;
         return $this;
     }
 
@@ -70,7 +70,7 @@ class Document
     }
 
     /**
-     * @return IdentityIssuer
+     * @return string
      */
     public function getIssuer(): IdentityIssuer
     {
@@ -83,12 +83,12 @@ class Document
      */
     public function setIssuer(IdentityIssuer $issuer): Document
     {
-        $this->issuer = $issuer;
+        $this->issuer = IdentityIssuer::from($issuer)->value;
         return $this;
     }
 
     /**
-     * @return States
+     * @return string
      */
     public function getState(): States
     {
@@ -101,7 +101,7 @@ class Document
      */
     public function setState(States $state): Document
     {
-        $this->state = $state;
+        $this->state = States::from($state)->value;
         return $this;
     }
 

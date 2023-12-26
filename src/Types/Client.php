@@ -10,7 +10,7 @@ use O4l3x4ndr3\SdkEasyCredito\Helpers\LogData;
 class Client implements LogData
 {
     protected ?string $id;
-    protected ?PipelineStatus $status;
+    protected ?string $status;
     protected string $dateCreated;
     protected string $lastUpdated;
     protected ?string $cpf;
@@ -24,7 +24,7 @@ class Client implements LogData
     protected bool $hasOwnHouse;
     protected bool $hasVehicle;
     protected bool $hasAndroid;
-    protected ?Education $education;
+    protected ?string $education;
     protected ?int $banks;
     protected ?Occupation $occupation;
     protected ?float $income;
@@ -43,12 +43,12 @@ class Client implements LogData
      * @param bool $hasOwnHouse
      * @param bool $hasVehicle
      * @param bool $hasAndroid
-     * @param Education|null $education
+     * @param string|null $education
      * @param int|null $banks
-     * @param Occupation|null $occupation
+     * @param string|null $occupation
      * @param float|null $income
      * @param array|null $products
-     * @param PipelineStatus|null $status
+     * @param string|null $status
      * @param string|null $dateCreated
      * @param string|null $lastUpdated
      */
@@ -65,12 +65,12 @@ class Client implements LogData
         ?bool $hasOwnHouse,
         ?bool $hasVehicle,
         ?bool $hasAndroid,
-        ?Education $education = null,
+        ?string $education = null,
         ?int $banks = null,
-        ?Occupation $occupation = null,
+        ?string $occupation = null,
         ?float $income = null,
         ?array $products = null,
-        ?PipelineStatus $status = null,
+        ?string $status = null,
         ?string $dateCreated = null,
         ?string $lastUpdated = null
     ) {
@@ -115,18 +115,18 @@ class Client implements LogData
     }
 
     /**
-     * @return PipelineStatus|null
+     * @return string|null
      */
-    public function getStatus(): ?PipelineStatus
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     /**
-     * @param PipelineStatus|null $status
+     * @param string|null $status
      * @return Client
      */
-    public function setStatus(?PipelineStatus $status): Client
+    public function setStatus(?string $status): Client
     {
         $this->status = $status;
         return $this;
@@ -367,18 +367,18 @@ class Client implements LogData
     }
 
     /**
-     * @return Education|null
+     * @return string|null
      */
-    public function getEducation(): ?Education
+    public function getEducation(): ?string
     {
         return $this->education;
     }
 
     /**
-     * @param Education|null $education
+     * @param string|null $education
      * @return Client
      */
-    public function setEducation(?Education $education): Client
+    public function setEducation(?string $education): Client
     {
         $this->education = $education;
         return $this;
@@ -403,18 +403,18 @@ class Client implements LogData
     }
 
     /**
-     * @return Occupation|null
+     * @return string|null
      */
-    public function getOccupation(): ?Occupation
+    public function getOccupation(): ?string
     {
         return $this->occupation;
     }
 
     /**
-     * @param Occupation|null $occupation
+     * @param string|null $occupation
      * @return Client
      */
-    public function setOccupation(?Occupation $occupation): Client
+    public function setOccupation(?string $occupation): Client
     {
         $this->occupation = $occupation;
         return $this;
