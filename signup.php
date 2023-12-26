@@ -563,6 +563,7 @@
                     $("#id").text(`ID: ${data.id}`)
                     sessionStorage.setItem("id", data.id)
                     localStorage.setItem("id", data.id);
+                    localStorage.setItem("proposals", JSON.stringify(data));
                     window.location.href = "http://localhost:8080/profile.php";
                 }
             })
