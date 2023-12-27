@@ -31,7 +31,7 @@ class LogData
             $expectedIp = $_SERVER["REMOTE_ADDR"];
         }
         exec("arp -a $expectedIp", $output);
-        $expectedMac = $output[0];
+        $expectedMac = $output[0] ?? null;
 
         $this->lat = $lat;
         $this->long = $long;
