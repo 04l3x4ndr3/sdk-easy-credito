@@ -63,15 +63,15 @@ class Client
         ?bool $hasOwnHouse,
         ?bool $hasVehicle,
         ?bool $hasAndroid,
-        ?string $education,
-        ?int $banks,
-        ?string $occupation,
-        ?float $income,
-        ?array $products,
-        ?string $status,
-        ?string $dateCreated,
-        ?string $lastUpdated,
-        ?LogData $logData
+        ?string $education = null,
+        ?int $banks = null,
+        ?string $occupation = null,
+        ?float $income = null,
+        ?array $products = null,
+        ?string $status = null,
+        ?string $dateCreated = null,
+        ?string $lastUpdated = null,
+        ?LogData $logData = null
     ) {
         $this->id = $id;
         $this->cpf = $cpf;
