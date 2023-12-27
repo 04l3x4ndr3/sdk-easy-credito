@@ -1,34 +1,31 @@
 <?php
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Education;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Occupation;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\PipelineStatus;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\LogData;
 /**
  * Modelo de Cliente
  */
-class Client implements LogData
+class Client
 {
     protected ?string $id;
     protected ?string $status;
-    protected string $dateCreated;
-    protected string $lastUpdated;
+    protected ?string $dateCreated;
+    protected ?string $lastUpdated;
     protected ?string $cpf;
-    protected string $name;
-    protected string $email;
-    protected string $birthdate;
-    protected string $phone;
+    protected ?string $name;
+    protected ?string $email;
+    protected ?string $birthdate;
+    protected ?string $phone;
     protected ?string $zipCode;
-    protected bool $hasCreditCard;
-    protected bool $hasRestriction;
-    protected bool $hasOwnHouse;
-    protected bool $hasVehicle;
-    protected bool $hasAndroid;
+    protected ?bool $hasCreditCard;
+    protected ?bool $hasRestriction;
+    protected ?bool $hasOwnHouse;
+    protected ?bool $hasVehicle;
+    protected ?bool $hasAndroid;
     protected ?string $education;
     protected ?int $banks;
-    protected ?Occupation $occupation;
+    protected ?string $occupation;
     protected ?float $income;
     protected ?array $products;
+    protected ?LogData $logData;
 
     /**
      * @param string|null $id
@@ -51,6 +48,7 @@ class Client implements LogData
      * @param string|null $status
      * @param string|null $dateCreated
      * @param string|null $lastUpdated
+     * @param LogData|null $logData
      */
     public function __construct(
         ?string $id,
@@ -65,14 +63,15 @@ class Client implements LogData
         ?bool $hasOwnHouse,
         ?bool $hasVehicle,
         ?bool $hasAndroid,
-        ?string $education = null,
-        ?int $banks = null,
-        ?string $occupation = null,
-        ?float $income = null,
-        ?array $products = null,
-        ?string $status = null,
-        ?string $dateCreated = null,
-        ?string $lastUpdated = null
+        ?string $education,
+        ?int $banks,
+        ?string $occupation,
+        ?float $income,
+        ?array $products,
+        ?string $status,
+        ?string $dateCreated,
+        ?string $lastUpdated,
+        ?LogData $logData
     ) {
         $this->id = $id;
         $this->cpf = $cpf;
@@ -94,6 +93,7 @@ class Client implements LogData
         $this->status = $status;
         $this->dateCreated = $dateCreated ?? date("c");
         $this->lastUpdated = $lastUpdated ?? date("c");
+        $this->logData = $logData;
     }
 
     /**
@@ -133,36 +133,36 @@ class Client implements LogData
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDateCreated(): string
+    public function getDateCreated(): ?string
     {
         return $this->dateCreated;
     }
 
     /**
-     * @param string $dateCreated
+     * @param string|null $dateCreated
      * @return Client
      */
-    public function setDateCreated(string $dateCreated): Client
+    public function setDateCreated(?string $dateCreated): Client
     {
         $this->dateCreated = $dateCreated;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastUpdated(): string
+    public function getLastUpdated(): ?string
     {
         return $this->lastUpdated;
     }
 
     /**
-     * @param string $lastUpdated
+     * @param string|null $lastUpdated
      * @return Client
      */
-    public function setLastUpdated(string $lastUpdated): Client
+    public function setLastUpdated(?string $lastUpdated): Client
     {
         $this->lastUpdated = $lastUpdated;
         return $this;
@@ -187,72 +187,72 @@ class Client implements LogData
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      * @return Client
      */
-    public function setName(string $name): Client
+    public function setName(?string $name): Client
     {
         $this->name = $name;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      * @return Client
      */
-    public function setEmail(string $email): Client
+    public function setEmail(?string $email): Client
     {
         $this->email = $email;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getBirthdate(): string
+    public function getBirthdate(): ?string
     {
         return $this->birthdate;
     }
 
     /**
-     * @param string $birthdate
+     * @param string|null $birthdate
      * @return Client
      */
-    public function setBirthdate(string $birthdate): Client
+    public function setBirthdate(?string $birthdate): Client
     {
         $this->birthdate = $birthdate;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPhone(): string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     /**
-     * @param string $phone
+     * @param string|null $phone
      * @return Client
      */
-    public function setPhone(string $phone): Client
+    public function setPhone(?string $phone): Client
     {
         $this->phone = $phone;
         return $this;
@@ -277,9 +277,9 @@ class Client implements LogData
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isHasCreditCard(): bool
+    public function isHasCreditCard(): ?bool
     {
         return $this->hasCreditCard;
     }
@@ -288,16 +288,16 @@ class Client implements LogData
      * @param bool $hasCreditCard
      * @return Client
      */
-    public function setHasCreditCard(bool $hasCreditCard): Client
+    public function setHasCreditCard(?bool $hasCreditCard): Client
     {
         $this->hasCreditCard = $hasCreditCard;
         return $this;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isHasRestriction(): bool
+    public function isHasRestriction(): ?bool
     {
         return $this->hasRestriction;
     }
@@ -306,16 +306,16 @@ class Client implements LogData
      * @param bool $hasRestriction
      * @return Client
      */
-    public function setHasRestriction(bool $hasRestriction): Client
+    public function setHasRestriction(?bool $hasRestriction): Client
     {
         $this->hasRestriction = $hasRestriction;
         return $this;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isHasOwnHouse(): bool
+    public function isHasOwnHouse(): ?bool
     {
         return $this->hasOwnHouse;
     }
@@ -324,16 +324,16 @@ class Client implements LogData
      * @param bool $hasOwnHouse
      * @return Client
      */
-    public function setHasOwnHouse(bool $hasOwnHouse): Client
+    public function setHasOwnHouse(?bool $hasOwnHouse): Client
     {
         $this->hasOwnHouse = $hasOwnHouse;
         return $this;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isHasVehicle(): bool
+    public function isHasVehicle(): ?bool
     {
         return $this->hasVehicle;
     }
@@ -342,16 +342,16 @@ class Client implements LogData
      * @param bool $hasVehicle
      * @return Client
      */
-    public function setHasVehicle(bool $hasVehicle): Client
+    public function setHasVehicle(?bool $hasVehicle): Client
     {
         $this->hasVehicle = $hasVehicle;
         return $this;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isHasAndroid(): bool
+    public function isHasAndroid(): ?bool
     {
         return $this->hasAndroid;
     }
@@ -360,7 +360,7 @@ class Client implements LogData
      * @param bool $hasAndroid
      * @return Client
      */
-    public function setHasAndroid(bool $hasAndroid): Client
+    public function setHasAndroid(?bool $hasAndroid): Client
     {
         $this->hasAndroid = $hasAndroid;
         return $this;
@@ -456,18 +456,23 @@ class Client implements LogData
         return $this;
     }
 
-    public function getLogData() : array
+    /**
+     * @return LogData|null
+     */
+    public function getLogData(): ?LogData
     {
-        return [
-            "latitude" => -16.6982283,
-            "longitude" => -49.2581201,
-            "occurrenceDate" => date("c"),
-            "userAgent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36",
-            "ip" => "0.0.0.0",
-            "mac" => "00:00:00:00:00:00"
-        ];
+        return $this->logData;
     }
 
+    /**
+     * @param LogData|null $logData
+     * @return Client
+     */
+    public function setLogData(?LogData $logData): Client
+    {
+        $this->logData = $logData;
+        return $this;
+    }
     /**
      * Parse props to array
      *
@@ -496,7 +501,7 @@ class Client implements LogData
             'occupation' => $this->occupation,
             'income' => $this->income,
             'products' => $this->products,
-            'logData' => $this->getLogData(),
+            'logData' => $this->logData->toArray(),
         ], function ($v) {
             return !empty($v);
         });

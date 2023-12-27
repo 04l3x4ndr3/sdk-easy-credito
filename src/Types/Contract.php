@@ -1,26 +1,27 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\LogData;
 
 /**
  * Modelo de Contrato
  */
-class Contract implements LogData
+class Contract
 {
     protected string $checksum;
     protected string $contract;
-
+    protected ?LogData $logData;
     /**
      * @param string|null $checksum
      * @param string|null $contract
      */
     public function __construct(
         ?string $checksum,
-        ?string $contract
+        ?string $contract,
+        ?LogData $logData
     ) {
         $this->checksum = $checksum;
         $this->contract = $contract;
+        $this->logData = $logData;
     }
 
     /**
@@ -58,16 +59,23 @@ class Contract implements LogData
         $this->contract = $contract;
         return $this;
     }
-    public function getLogData() : array
+
+    /**
+     * @return LogData|null
+     */
+    public function getLogData(): ?LogData
     {
-        return [
-            "latitude" => -16.6982283,
-            "longitude" => -49.2581201,
-            "occurrenceDate" => date("c"),
-            "userAgent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36",
-            "ip" => "0.0.0.0",
-            "mac" => "00:00:00:00:00:00"
-        ];
+        return $this->logData;
+    }
+
+    /**
+     * @param LogData|null $logData
+     * @return Contract
+     */
+    public function setLogData(?LogData $logData): Contract
+    {
+        $this->logData = $logData;
+        return $this;
     }
     /**
      * Parse props to array
@@ -78,7 +86,8 @@ class Contract implements LogData
     {
         return array_filter([
             'checksum' => $this->checksum,
-            'contract' => $this->contract
+            'contract' => $this->contract,
+            'logData' => $this->logData->toArray()
         ], function ($v) {
             return ! is_null($v);
         });

@@ -2,17 +2,15 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-use O4l3x4ndr3\SdkEasyCredito\Helpers\LogData;
-
 /**
- * @implements LogData
  * Classe Modelo de um produto que compõe propostas ENVIADAS, recebendo este nome porque na documentação é enviado um array com nome products
  * O Produto do tipo DEBT não possue especialização já que possui somente o atributo ProductTypestring
  */
-class Product implements LogData
+class Product
 {
     protected ?int $customerServiceNumber;
     protected ?string $typestring;
+    protected ?LogData $logData;
 
     /**
      * @param int|null $customerServiceNumber
@@ -20,10 +18,12 @@ class Product implements LogData
      */
     public function __construct(
         ?int $customerServiceNumber,
-        ?string $typestring
+        ?string $typestring,
+        ?LogData $logData
     ) {
         $this->customerServiceNumber = $customerServiceNumber;
         $this->typestring = $typestring;
+        $this->logData = $logData;
     }
 
     /**
@@ -61,18 +61,24 @@ class Product implements LogData
         $this->customerServiceNumber = $customerServiceNumber;
         return $this;
     }
-    public function getLogData() : array
+
+    /**
+     * @return LogData|null
+     */
+    public function getLogData(): ?LogData
     {
-        return [
-            "latitude" => "",
-            "longitude" => "",
-            "occurrenceDate" => "",
-            "userAgent" => "",
-            "ip" => "",
-            "mac" => ""
-        ];
+        return $this->logData;
     }
 
+    /**
+     * @param LogData|null $logData
+     * @return Product
+     */
+    public function setLogData(?LogData $logData): Product
+    {
+        $this->logData = $logData;
+        return $this;
+    }
     public function toArray(): array
     {
         if(isset($this->customerServiceNumber)) {
