@@ -2,12 +2,14 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
+use O4l3x4ndr3\SdkEasyCredito\Types\LogData;
 use O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
 class Card extends Product
 {
     protected string $network;
     protected int $payday;
+    protected ?LogData $logData;
 
     /**
      * @param string|null $network
@@ -15,9 +17,10 @@ class Card extends Product
      */
     public function __construct(
         ?string           $network,
-        ?int               $payday
+        ?int               $payday,
+        ?LogData    $logData
     ) {
-        parent::__construct(null, "CARD");
+        parent::__construct(null, "CARD", $logData);
         $this->network = $network;
         $this->payday = $payday;
     }

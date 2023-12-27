@@ -2,8 +2,6 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\CreditStatus;
-
 /**
  * Modelos das produtos que compõe propostas RECEBIDAS pela Tok e ENVIADAS pela EasyCrédito
  */
@@ -16,7 +14,7 @@ abstract class ProductProposal
     protected bool $hasDocuments;
     protected bool $hasContract;
     protected string $logo;
-    protected ?CreditStatus $lastStatus;
+    protected ?string $lastStatus;
     protected string $dateCreated;
     protected string $lastUpdated;
     protected array $pendentDocuments = ["SELF", "IDENTITY_FRONT", "IDENTITY_BACK","ADDRESS_PROF","INCOME_PROF"];
@@ -28,7 +26,7 @@ abstract class ProductProposal
         ?int $productId,
         ?bool $hasDocuments,
         ?bool $hasContract,
-        ?CreditStatus $lastStatus,
+        ?string $lastStatus,
         ?string $logo,
         ?string $dateCreated,
         ?string $lastUpdated
@@ -60,7 +58,7 @@ abstract class ProductProposal
     }
 
     /**
-     * @return ?string
+     * @return string
      */
     public function getTypeString(): string
     {
@@ -68,7 +66,7 @@ abstract class ProductProposal
     }
 
     /**
-     * @param ?string $typeString
+     * @param string $typeString
      * @return ProductProposal
      */
     public function setTypeString(?string $typeString): ProductProposal
@@ -168,18 +166,18 @@ abstract class ProductProposal
     }
 
     /**
-     * @return ?CreditStatus
+     * @return string
      */
-    public function getLastStatus(): CreditStatus
+    public function getLastStatus(): string
     {
         return $this->lastStatus;
     }
 
     /**
-     * @param ?CreditStatus $lastStatus
+     * @param string $lastStatus
      * @return ProductProposal
      */
-    public function setLastStatus(?CreditStatus $lastStatus): ProductProposal
+    public function setLastStatus(string $lastStatus): ProductProposal
     {
         $this->lastStatus = $lastStatus;
         return $this;

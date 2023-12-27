@@ -2,24 +2,27 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
+use O4l3x4ndr3\SdkEasyCredito\Types\LogData;
 use O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
 class Loan extends Product
 {
     protected float $value;
     protected int $installments;
+    protected ?LogData $logData;
 
     /**
      * @param float|null $value
      * @param int|null $installments
+     * @param LogData|null $logData
      */
     public function __construct(
         ?float             $value,
-        ?int               $installments
-    )
-    {
+        ?int               $installments,
+        ?LogData    $logData
+    ) {
         $this->value = $value;
-        parent::__construct(null, "LOAN");
+        parent::__construct(null, "LOAN", $logData);
         $this->installments = $installments;
     }
 

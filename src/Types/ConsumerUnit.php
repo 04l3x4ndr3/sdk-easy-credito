@@ -17,7 +17,7 @@ class ConsumerUnit
     }
 
     /**
-     * @return int
+     * @return string|null
      */
     public function getNumber(): ?string
     {

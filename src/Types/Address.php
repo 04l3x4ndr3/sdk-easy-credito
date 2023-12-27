@@ -1,8 +1,5 @@
 <?php
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\HomeSince;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\HomeType;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\States;
 
 /**
  * Modelo de Endereço

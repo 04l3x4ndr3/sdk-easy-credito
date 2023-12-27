@@ -15,6 +15,7 @@ class Product
     /**
      * @param int|null $customerServiceNumber
      * @param string|null $typestring
+     * @param LogData|null $logData
      */
     public function __construct(
         ?int $customerServiceNumber,

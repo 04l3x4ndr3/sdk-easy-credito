@@ -1,8 +1,5 @@
 <?php
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\EmploymentSince;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Occupation;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Profession;
 
 /**
  * Modelo de Perfil Profissional
@@ -16,7 +13,7 @@ class Business
     protected float $income;
     protected int $payday;
     protected string $employmentSince;
-    protected ?int $benefitNumber;
+    protected ?string $benefitNumber;
     protected ?Address $address;
 
     /**
@@ -27,10 +24,10 @@ class Business
      * @param float $income
      * @param int $payday
      * @param string $employmentSince
-     * @param int|null $benefitNumber
+     * @param string|null $benefitNumber
      * @param Address|null $address
      */
-    public function __construct(string $occupation, string $profession, string $companyName, string $phone, float $income, int $payday, string $employmentSince, ?int $benefitNumber, ?Address $address)
+    public function __construct(string $occupation, string $profession, string $companyName, string $phone, float $income, int $payday, string $employmentSince, ?string $benefitNumber, ?Address $address)
     {
         $this->occupation = $occupation;
         $this->profession = $profession;
@@ -57,7 +54,7 @@ class Business
      */
     public function setOccupation(string $occupation): Business
     {
-        $this->occupation = Occupation::from($occupation)->value;
+        $this->occupation = $occupation;
         return $this;
     }
 
@@ -75,7 +72,7 @@ class Business
      */
     public function setProfession(string $profession): Business
     {
-        $this->profession = Profession::from($profession)->value;
+        $this->profession = $profession;
         return $this;
     }
 
@@ -154,34 +151,34 @@ class Business
     /**
      * @return string
      */
-    public function getEmploymentSince(): EmploymentSince
+    public function getEmploymentSince(): string
     {
         return $this->employmentSince;
     }
 
     /**
-     * @param EmploymentSince $employmentSince
+     * @param string $employmentSince
      * @return Business
      */
-    public function setEmploymentSince(EmploymentSince $employmentSince): Business
+    public function setEmploymentSince(string $employmentSince): Business
     {
-        $this->employmentSince = EmploymentSince::from($employmentSince)->value;
+        $this->employmentSince = $employmentSince;
         return $this;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getBenefitNumber(): int
+    public function getBenefitNumber(): string
     {
         return $this->benefitNumber;
     }
 
     /**
-     * @param int $benefitNumber
+     * @param string $benefitNumber
      * @return Business
      */
-    public function setBenefitNumber(int $benefitNumber): Business
+    public function setBenefitNumber(string $benefitNumber): Business
     {
         $this->benefitNumber = $benefitNumber;
         return $this;

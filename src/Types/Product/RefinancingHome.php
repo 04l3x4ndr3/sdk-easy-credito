@@ -2,6 +2,7 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
+use O4l3x4ndr3\SdkEasyCredito\Types\LogData;
 use O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
 class RefinancingHome extends Product
@@ -11,6 +12,7 @@ class RefinancingHome extends Product
     protected string $realEstateType;
     protected float $realEstateValue;
     protected float $outstandingBalance;
+    protected ?LogData $logData;
 
     /**
      * @param float|null $value
@@ -18,15 +20,17 @@ class RefinancingHome extends Product
      * @param string|null $realEstateType
      * @param float|null $realEstateValue
      * @param float|null $outstandingBalance
+     * @param LogData|null $logData
      */
     public function __construct(
         ?float  $value,
         ?int    $installments,
         ?string $realEstateType,
         ?float  $realEstateValue,
-        ?float  $outstandingBalance
+        ?float  $outstandingBalance,
+        ?LogData    $logData
     ) {
-        parent::__construct(null, "REFINANCING_HOME");
+        parent::__construct(null, "REFINANCING_HOME", $logData);
         $this->value = $value;
         $this->installments = $installments;
         $this->realEstateType = $realEstateType;

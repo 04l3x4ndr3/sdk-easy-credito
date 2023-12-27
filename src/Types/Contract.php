@@ -10,9 +10,11 @@ class Contract
     protected string $checksum;
     protected string $contract;
     protected ?LogData $logData;
+
     /**
      * @param string|null $checksum
      * @param string|null $contract
+     * @param LogData|null $logData
      */
     public function __construct(
         ?string $checksum,

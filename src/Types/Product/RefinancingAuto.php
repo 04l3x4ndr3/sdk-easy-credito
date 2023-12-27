@@ -2,6 +2,7 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
+use O4l3x4ndr3\SdkEasyCredito\Types\LogData;
 use O4l3x4ndr3\SdkEasyCredito\Types\Product;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\ProductTypestring;
 use O4l3x4ndr3\SdkEasyCredito\Types\Vehicle;
@@ -11,18 +12,21 @@ class RefinancingAuto extends Product
     protected float $value;
     protected int $installments;
     protected Vehicle $vehicle;
+    protected ?LogData $logData;
 
     /**
      * @param float $value
      * @param int $installments
      * @param Vehicle $vehicle
+     * @param LogData|null $logData
      */
     public function __construct(
         float $value,
         int $installments,
-        Vehicle $vehicle
+        Vehicle $vehicle,
+        ?LogData    $logData
     ) {
-        parent::__construct(null, "REFINANCING_AUTO");
+        parent::__construct(null, "REFINANCING_AUTO", $logData);
         $this->value = $value;
         $this->installments = $installments;
         $this->vehicle = $vehicle;

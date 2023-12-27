@@ -2,12 +2,6 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Education;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Gender;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Nationality;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\RelationshipStatus;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\States;
-
 /**
  * Modelos das propostas ENVIADAS pela Tok e RECEBIDAS pela EasyCrédito
  */
@@ -23,28 +17,30 @@ class Proposal
     protected string $phoneLandline;
     protected ?Document $identity;
     protected ?ProposalVehicle $vehicle;
-    protected ConsumerUnit $consumerUnit;
-    protected Address $address;
+    protected ?ConsumerUnit $consumerUnit;
+    protected ?Address $address;
     protected ?Business $business;
     protected ?Bank $bank;
     protected array $reference;
     protected array $products;
+
     /**
-     * @param string $mother
-     * @param string $gender
-     * @param string $nationality
-     * @param States $hometownState
-     * @param string $hometown
-     * @param string $education
-     * @param string $relationshipStatus
-     * @param string $phoneLandline
-     * @param ProposalVehicle $vehicle
-     * @param ConsumerUnit $consumerUnit
-     * @param Address $address
-     * @param Business $business
-     * @param Bank $bank
-     * @param array $reference
-     * @param array $products
+     * @param string|null $mother
+     * @param string|null $gender
+     * @param string|null $nationality
+     * @param string|null $hometownState
+     * @param string|null $hometown
+     * @param string|null $education
+     * @param string|null $relationshipStatus
+     * @param string|null $phoneLandline
+     * @param Document|null $identity
+     * @param ProposalVehicle|null $vehicle
+     * @param ConsumerUnit|null $consumerUnit
+     * @param Address|null $address
+     * @param Business|null $business
+     * @param Bank|null $bank
+     * @param array|null $reference
+     * @param array|null $products
      */
     public function __construct(
         ?string $mother,
@@ -109,30 +105,30 @@ class Proposal
     }
 
     /**
-     * @param Gender $gender
+     * @param string $gender
      * @return Proposal
      */
-    public function setGender(Gender $gender): Proposal
+    public function setGender(string $gender): Proposal
     {
-        $this->gender = Gender::from($gender)->value;
+        $this->gender = $gender;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getNationality(): Nationality
+    public function getNationality(): string
     {
         return $this->nationality;
     }
 
     /**
-     * @param Nationality $nationality
+     * @param string $nationality
      * @return Proposal
      */
-    public function setNationality(Nationality $nationality): Proposal
+    public function setNationality(string $nationality): Proposal
     {
-        $this->nationality = Nationality::from($nationality)->value;
+        $this->nationality = $nationality;
         return $this;
     }
 
@@ -145,12 +141,12 @@ class Proposal
     }
 
     /**
-     * @param States $hometownState
+     * @param string $hometownState
      * @return Proposal
      */
-    public function setHometownState(States $hometownState): Proposal
+    public function setHometownState(string $hometownState): Proposal
     {
-        $this->hometownState = States::from($hometownState)->value;
+        $this->hometownState = $hometownState;
         return $this;
     }
 
@@ -175,36 +171,36 @@ class Proposal
     /**
      * @return string
      */
-    public function getEducation(): Education
+    public function getEducation(): string
     {
         return $this->education;
     }
 
     /**
-     * @param Education $education
+     * @param string $education
      * @return Proposal
      */
-    public function setEducation(Education $education): Proposal
+    public function setEducation(string $education): Proposal
     {
-        $this->education = Education::from($education)->value;
+        $this->education = $education;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getRelationshipStatus(): RelationshipStatus
+    public function getRelationshipStatus(): string
     {
         return $this->relationshipStatus;
     }
 
     /**
-     * @param RelationshipStatus $relationshipStatus
+     * @param string $relationshipStatus
      * @return Proposal
      */
-    public function setRelationshipStatus(RelationshipStatus $relationshipStatus): Proposal
+    public function setRelationshipStatus(string $relationshipStatus): Proposal
     {
-        $this->relationshipStatus = RelationshipStatus::from($relationshipStatus)->value;
+        $this->relationshipStatus = $relationshipStatus;
         return $this;
     }
 

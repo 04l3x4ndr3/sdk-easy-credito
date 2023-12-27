@@ -2,6 +2,7 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
+use O4l3x4ndr3\SdkEasyCredito\Types\LogData;
 use O4l3x4ndr3\SdkEasyCredito\Types\Product;
 
 class WorkingCapital extends Product
@@ -17,6 +18,7 @@ class WorkingCapital extends Product
     protected string $accountType;
     protected ?string $agency;
     protected string $account;
+    protected ?LogData $logData;
 
     /**
      * @param float $value
@@ -26,10 +28,11 @@ class WorkingCapital extends Product
      * @param string $employeesCount
      * @param float $businessIncomeCpnj
      * @param string $loanObjectives
-     * @param string $bank
+     * @param string|null $bank
      * @param string $accountType
      * @param ?string $agency
      * @param string $account
+     * @param LogData|null $logData
      */
     public function __construct(
         float              $value,
@@ -42,9 +45,10 @@ class WorkingCapital extends Product
         ?string               $bank,
         string        $accountType,
         ?string                $agency,
-        string             $account
+        string             $account,
+        ?LogData    $logData
     ) {
-        parent::__construct(null, "WORKING_CAPITAL");
+        parent::__construct(null, "WORKING_CAPITAL", $logData);
         $this->value = $value;
         $this->installments = $installments;
         $this->cpnj = $cpnj;

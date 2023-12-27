@@ -2,29 +2,25 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\IdentityType;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\IdentityIssuer;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\States;
-
 /**
  * Modelo de Documento
  */
 class Document
 {
-    protected string $identityType;
+    protected ?string $identityType;
     protected ?string $number;
-    protected string $issuer;
-    protected string $state;
-    protected string $issuingDate;
+    protected ?string $issuer;
+    protected ?string $state;
+    protected ?string $issuingDate;
 
     /**
-     * @param string $identityType
-     * @param ?string $number
-     * @param string $issuer
-     * @param string $state
-     * @param string $issuingDate
+     * @param string|null $identityType
+     * @param string|null $number
+     * @param string|null $issuer
+     * @param string|null $state
+     * @param string|null $issuingDate
      */
-    public function __construct(string $identityType, ?string $number, string $issuer, string $state, string $issuingDate)
+    public function __construct(?string $identityType, ?string $number, ?string $issuer, ?string $state, ?string $issuingDate)
     {
         $this->identityType = $identityType;
         $this->number = $number;
@@ -36,18 +32,18 @@ class Document
     /**
      * @return string
      */
-    public function getIdentityType(): IdentityType
+    public function getIdentityType(): string
     {
         return $this->identityType;
     }
 
     /**
-     * @param IdentityType $identityType
+     * @param string $identityType
      * @return Document
      */
-    public function setIdentityType(IdentityType $identityType): Document
+    public function setIdentityType(string $identityType): Document
     {
-        $this->identityType = IdentityType::from($identityType)->value;
+        $this->identityType = $identityType;
         return $this;
     }
 
@@ -72,36 +68,36 @@ class Document
     /**
      * @return string
      */
-    public function getIssuer(): IdentityIssuer
+    public function getIssuer(): string
     {
         return $this->issuer;
     }
 
     /**
-     * @param IdentityIssuer $issuer
+     * @param string $issuer
      * @return Document
      */
-    public function setIssuer(IdentityIssuer $issuer): Document
+    public function setIssuer(string $issuer): Document
     {
-        $this->issuer = IdentityIssuer::from($issuer)->value;
+        $this->issuer = $issuer;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getState(): States
+    public function getState(): string
     {
         return $this->state;
     }
 
     /**
-     * @param States $state
+     * @param string $state
      * @return Document
      */
-    public function setState(States $state): Document
+    public function setState(string $state): Document
     {
-        $this->state = States::from($state)->value;
+        $this->state = $state;
         return $this;
     }
 

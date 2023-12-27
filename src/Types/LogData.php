@@ -4,12 +4,12 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
 class LogData
 {
-    protected float $lat;
-    protected float$long;
-    protected string $occuranceDate;
-    protected string $userAgent;
-    protected string $ip;
-    protected string $mac;
+    protected ?float $lat;
+    protected ?float $long;
+    protected ?string $occuranceDate;
+    protected ?string $userAgent;
+    protected ?string $ip;
+    protected ?string $mac;
 
     /**
      * @param float|null $lat
@@ -19,9 +19,8 @@ class LogData
      * @param string|null $ip
      * @param string|null $mac
      */
-    public function __construct(float $lat = null, float $long = null, string $occuranceDate = null, string $userAgent = null, string $ip = null, string $mac = null)
+    public function __construct(float $lat = 0, float $long = 0, string $occuranceDate = null, string $userAgent = null, string $ip = "0.0.0.0", string $mac = "00:00:00:00:00:00")
     {
-        $expectedIp = "";
         if (!empty($_SERVER["HTTP_CLIENT_IP"])) {
             $expectedIp = $_SERVER["HTTP_CLIENT_IP"];
         }
@@ -32,7 +31,7 @@ class LogData
             $expectedIp = $_SERVER["REMOTE_ADDR"];
         }
         exec("arp -a $expectedIp", $output);
-        $expectedMac = $output[0] ?? "00:00:00:00:00:00";
+        $expectedMac = $output[0];
 
         $this->lat = $lat;
         $this->long = $long;
