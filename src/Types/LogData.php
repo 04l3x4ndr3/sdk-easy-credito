@@ -19,14 +19,27 @@ class LogData
      * @param string $ip
      * @param string $mac
      */
-    public function __construct(float $lat, float $long, string $occuranceDate, string $userAgent, string $ip, string $mac)
+    public function __construct(?float $lat, ?float $long, ?string $occuranceDate, ?string $userAgent, ?string $ip, ?string $mac)
     {
+        $expectedIp = "";
+        if (!empty($_SERVER["HTTP_CLIENT_IP"])) {
+            $expectedIp = $_SERVER["HTTP_CLIENT_IP"];
+        }
+        elseif (!empty($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+            $expectedIp = $_SERVER["HTTP_X_FORWARDED_FOR"];
+        }
+        else {
+            $expectedIp = $_SERVER["REMOTE_ADDR"];
+        }
+        exec("arp -a $expectedIp", $output);
+        $expectedMac = $output[0] ?? "00:00:00:00:00:00";
+
         $this->lat = $lat;
         $this->long = $long;
-        $this->occuranceDate = $occuranceDate;
-        $this->userAgent = $userAgent;
-        $this->ip = $ip;
-        $this->mac = $mac;
+        $this->occuranceDate = $occuranceDate ?? date("c");
+        $this->userAgent = $userAgent ?? $_SERVER["HTTP_USER_AGENT"];
+        $this->ip = $ip ?? $expectedIp;
+        $this->mac = $mac ?? $expectedMac;
     }
 
     /**
