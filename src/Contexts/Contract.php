@@ -1,8 +1,9 @@
 <?php
+
 namespace O4l3x4ndr3\SdkEasyCredito\Contexts;
+use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use O4l3x4ndr3\SdkEasyCredito\Configuration;
-use O4l3x4ndr3\SdkEasyCredito\Exceptions\EasyCreditoException;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\CallApi;
 class Contract extends CallApi
 {
@@ -25,13 +26,12 @@ class Contract extends CallApi
     {
         try {
             return $this->call('GET', '/v2.1/contract/' . $customerServiceNumber);
-        } catch (GuzzleException|EasyCreditoException $e) {
+        } catch (Exception|GuzzleException $e) {
             return $e;
         }
     }
 
     /**
-     * @throws EasyCreditoException
      * @throws GuzzleException
      */
     public function post(?\O4l3x4ndr3\SdkEasyCredito\Types\Contract $contract, ?string $customerServiceNumber): object
@@ -41,12 +41,5 @@ class Contract extends CallApi
             'logData' => $contract->getLogData()
         ];
         return $this->call('POST', '/v2/process/document/'.$customerServiceNumber, $acceptedContract);
-    }
-
-    public function toArray(): array
-    {
-        return [
-
-        ];
     }
 }

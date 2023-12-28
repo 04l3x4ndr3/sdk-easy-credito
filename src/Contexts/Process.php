@@ -1,7 +1,6 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Contexts;
-
 use GuzzleHttp\Exception\GuzzleException;
 use O4l3x4ndr3\SdkEasyCredito\Exceptions\EasyCreditoException;
 use O4l3x4ndr3\SdkEasyCredito\Types\Client;
@@ -9,7 +8,6 @@ use O4l3x4ndr3\SdkEasyCredito\Types\File;
 use O4l3x4ndr3\SdkEasyCredito\Types\Proposal;
 use O4l3x4ndr3\SdkEasyCredito\Configuration;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\CallApi;
-
 class Process extends CallApi
 {
     /**
@@ -27,7 +25,6 @@ class Process extends CallApi
     /**
      * Public Methods
      * @throws GuzzleException
-     * @throws EasyCreditoException
      */
     public function signup(?Client $client, bool $simpleSignup = false): object
     {
@@ -38,7 +35,6 @@ class Process extends CallApi
     }
 
     /**
-     * @throws EasyCreditoException
      * @throws GuzzleException
      */
     public function proposal(?Proposal $proposal, ?string $client_id): object
@@ -47,7 +43,6 @@ class Process extends CallApi
     }
 
     /**
-     * @throws EasyCreditoException
      * @throws GuzzleException
      */
     public function document(?File $file, ?string $client_id): object
@@ -56,7 +51,6 @@ class Process extends CallApi
     }
 
     /**
-     * @throws EasyCreditoException
      * @throws GuzzleException
      */
     public function status(?string $client_id): object
@@ -65,18 +59,10 @@ class Process extends CallApi
     }
 
     /**
-     * @throws EasyCreditoException
      * @throws GuzzleException
      */
     public function expire_proposals(?string $client_id): object
     {
         return $this->call('POST', '/v2.1/process/expire_proposals/'.$client_id);
-    }
-
-    public function toArray(): array
-    {
-        return [
-
-        ];
     }
 }

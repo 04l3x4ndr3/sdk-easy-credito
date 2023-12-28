@@ -1,10 +1,8 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Contexts;
-
 use GuzzleHttp\Exception\GuzzleException;
 use O4l3x4ndr3\SdkEasyCredito\Configuration;
-use O4l3x4ndr3\SdkEasyCredito\Exceptions\EasyCreditoException;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\CallApi;
 class FIPE extends CallApi
 {
@@ -22,7 +20,7 @@ class FIPE extends CallApi
 
     /**
      * Public Methods
-     * @throws GuzzleException|EasyCreditoException
+     * @throws GuzzleException
      */
     public function get(bool $dateOnly = false): object
     {

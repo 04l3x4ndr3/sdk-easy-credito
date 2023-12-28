@@ -12,14 +12,14 @@ class LogData
     protected ?string $mac;
 
     /**
-     * @param float|null $lat
-     * @param float|null $long
+     * @param float $lat
+     * @param float $long
      * @param string|null $occuranceDate
      * @param string|null $userAgent
-     * @param string|null $ip
-     * @param string|null $mac
+     * @param string $ip
+     * @param string $mac
      */
-    public function __construct(float $lat = 0, float $long = 0, string $occuranceDate = null, string $userAgent = null, string $ip = "0.0.0.0", string $mac = "00:00:00:00:00:00")
+    public function __construct(float $lat = 20, float $long = 40, string $occuranceDate = null, string $userAgent = null, string $ip = "0.0.0.0", string $mac = "00:00:00:00:00:00")
     {
         if (!empty($_SERVER["HTTP_CLIENT_IP"])) {
             $expectedIp = $_SERVER["HTTP_CLIENT_IP"];

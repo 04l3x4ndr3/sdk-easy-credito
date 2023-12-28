@@ -1,11 +1,10 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Helpers;
-
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use O4l3x4ndr3\SdkEasyCredito\Configuration;
-use O4l3x4ndr3\SdkEasyCredito\Exceptions\EasyCreditoException;
 class CallApi {
 	private Configuration $config;
 	private ?array $header;
@@ -84,8 +83,8 @@ class CallApi {
      * @param string $endpoint
      * @param array|null $body
      * @return array|object
+     * @throws Exception
      * @throws GuzzleException
-     * @throws EasyCreditoException
      */
 	public function call(string $method, string $endpoint, ?array $body = NULL): array | object
 	{
@@ -102,7 +101,7 @@ class CallApi {
         try {
             $res = $client->request($method, "{$this->config->getUrl()}{$endpoint}", $options);
         } catch (GuzzleException $g) {
-            throw new EasyCreditoException($g->getMessage(), $g->getCode(), $g->getPrevious());
+            throw new Exception($g->getMessage(), $g->getCode(), $g);
         }
 		return json_decode($res->getBody());
 	}

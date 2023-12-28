@@ -7,7 +7,6 @@
  *
  * @package O4l3x4ndr3\SdkEasyCredito
  */
-
 namespace O4l3x4ndr3\SdkEasyCredito;
 
 use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Scopes;

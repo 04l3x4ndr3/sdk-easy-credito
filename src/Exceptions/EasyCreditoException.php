@@ -1,7 +1,6 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Exceptions;
-
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 class EasyCreditoException extends Exception
