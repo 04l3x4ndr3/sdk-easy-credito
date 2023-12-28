@@ -21,7 +21,7 @@ class Client
     protected ?bool $hasVehicle;
     protected ?bool $hasAndroid;
     protected ?string $education;
-    protected ?int $banks;
+    protected ?string $banks;
     protected ?string $occupation;
     protected ?float $income;
     protected ?array $products;
@@ -41,7 +41,7 @@ class Client
      * @param bool $hasVehicle
      * @param bool $hasAndroid
      * @param string|null $education
-     * @param int|null $banks
+     * @param string|null $banks
      * @param string|null $occupation
      * @param float|null $income
      * @param array|null $products
@@ -64,7 +64,7 @@ class Client
         ?bool $hasVehicle,
         ?bool $hasAndroid,
         ?string $education = null,
-        ?int $banks = null,
+        ?string $banks = null,
         ?string $occupation = null,
         ?float $income = null,
         ?array $products = null,
@@ -385,18 +385,18 @@ class Client
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getBanks(): ?int
+    public function getBanks(): ?string
     {
         return $this->banks;
     }
 
     /**
-     * @param int|null $banks
+     * @param string|null $banks
      * @return Client
      */
-    public function setBanks(?int $banks): Client
+    public function setBanks(?string $banks): Client
     {
         $this->banks = $banks;
         return $this;
