@@ -33,7 +33,7 @@
     </div>
     <div>
         <label>CEP</label>
-        <input type="number" name="zipCode" id="zipCode"/>
+        <input type="text" name="zipCode" id="zipCode" maxlength="8"/>
     </div>
     <div>
         <label>Possui algum cartão de crédito no seu nome?</label>
@@ -65,20 +65,17 @@
     <div style="display: none" id="signupMatch">
         <div>
             <label>Escolaridade</label>
-            <select>
-                <option value="POS_GRADUACAO" id="education">Pós Graduação</option>
+            <select id="education">
             </select>
         </div>
         <div>
-            <label>Banco mais usado</label>
-            <select>
-                <option value="0001" id="bank">BANCO DO BRASIL S.A.</option>
+            <label>Banco Pessoal</label>
+            <select id="bank">
             </select>
         </div>
         <div>
             <label>Ocupação</label>
-            <select>
-                <option value="ASSALARIADO" id="occupation">Assalariado</option>
+            <select id="occupation">
             </select>
         </div>
         <div>
@@ -89,25 +86,25 @@
             <div>
                 <h4>Selecione os produtos procurados</h4>
                 <label>Débito</label>
-                <input type="checkbox" id="DEBT" name="products">
+                <input type="checkbox" id="DEBT" name="products"><br />
 
                 <label>Cartão de Crédito</label>
-                <input type="checkbox" id="CARD" name="products">
+                <input type="checkbox" id="CARD" name="products"><br />
 
                 <label>Empréstimos</label>
-                <input type="checkbox" id="LOAN" name="products">
+                <input type="checkbox" id="LOAN" name="products"><br />
 
                 <label>Financiamento de Veículos</label>
-                <input type="checkbox" id="FINANCING_AUTO" name="products">
+                <input type="checkbox" id="FINANCING_AUTO" name="products"><br />
 
                 <label>Refinanciamento de Veículos</label>
-                <input type="checkbox" id="REFINANCING_AUTO" name="products">
+                <input type="checkbox" id="REFINANCING_AUTO" name="products"><br />
 
                 <label>Refinanciamento de Imóveis</label>
-                <input type="checkbox" id="REFINANCING_HOME" name="products">
+                <input type="checkbox" id="REFINANCING_HOME" name="products"><br />
 
                 <label>Capital de Giro</label>
-                <input type="checkbox" id="WORKING_CAPITAL" name="products">
+                <input type="checkbox" id="WORKING_CAPITAL" name="products"><br />
             </div>
             <div id="DIV_CARD" style="display:none;">
                 <h5>Cartão de Crédito</h5>
@@ -147,12 +144,10 @@
                     <h6>Veículo</h6>
                     <div>
                         <label>Marca</label>
-                        <select>
-                            <option value="Fiat" id="BRAND_FINANCING_AUTO">Fiat</option>
+                        <select id="BRAND_FINANCING_AUTO">
                         </select>
                         <label>Modelo</label>
-                        <select>
-                            <option value="Mobi" id="MODEL_FINANCING_AUTO">Mobi</option>
+                        <select id="MODEL_FINANCING_AUTO">
                         </select>
                         <label>Código FIPE</label>
                         <input type="text" id="FIPE_CODE_FINANCING_AUTO">
@@ -161,7 +156,8 @@
                         <input type="number" id="FIPE_VALUE_FINANCING_AUTO">
 
                         <label>Ano</label>
-                        <input type="number" id="YEAR_FINANCING_AUTO">
+                        <select id="YEAR_FINANCING_AUTO">
+                        </select>
                     </div>
 
                     <label>Entrada</label>
@@ -185,12 +181,10 @@
                     <h6>Veículo</h6>
                     <div>
                         <label>Marca</label>
-                        <select>
-                            <option value="Fiat" id="BRAND_REFINANCING_AUTO">Fiat</option>
+                        <select id="BRAND_REFINANCING_AUTO">
                         </select>
                         <label>Modelo</label>
-                        <select>
-                            <option value="Mobi" id="MODEL_REFINANCING_AUTO">Mobi</option>
+                        <select id="MODEL_REFINANCING_AUTO">
                         </select>
                         <label>Código FIPE</label>
                         <input type="text" id="FIPE_CODE_REFINANCING_AUTO">
@@ -199,7 +193,8 @@
                         <input type="number" id="FIPE_VALUE_REFINANCING_AUTO">
 
                         <label>Ano</label>
-                        <input type="number" id="YEAR_REFINANCING_AUTO">
+                        <select id="YEAR_REFINANCING_AUTO">
+                        </select>
                     </div>
                 </div>
             </div>
@@ -217,8 +212,7 @@
                     <h6>Imóvel</h6>
                     <div>
                         <label>Tipo</label>
-                        <select>
-                            <option value="HOUSE" id="REAL_ESTATE_TYPE_REFINANCING_HOME">Casa</option>
+                        <select id="REAL_ESTATE_TYPE_REFINANCING_HOME">
                         </select>
 
                         <label>Valor Avaliado</label>
@@ -243,18 +237,18 @@
                     <h6>Empresa</h6>
                     <div>
                         <label>CNPJ</label>
-                        <input type="number" id="TAXNUMBER_WORKING_CAPITAL">
+                        <input type="text" id="TAXNUMBER_WORKING_CAPITAL" maxlength="14" pattern="[0-9]{2}[0-9]{3}[0-9]{3}[0-9]{4}[0-9]{2}">
                     </div>
                     <div>
                         <label>Cargo na Empresa</label>
-                        <select>
-                            <option value="PROCURADOR" id="BUSINESS_OCCUPATION_WORKING_CAPITAL">Procurador</option>
+                        <select id="BUSINESS_OCCUPATION_WORKING_CAPITAL">
+
                         </select>
                     </div>
                     <div>
                         <label>Número de Colaboradores</label>
-                        <select>
-                            <option value="DE_1_A_5" id="EMPLOYEES_COUNT_WORKING_CAPITAL">De 1 à 5</option>
+                        <select id="EMPLOYEES_COUNT_WORKING_CAPITAL">
+
                         </select>
                     </div>
                     <div>
@@ -263,24 +257,21 @@
                     </div>
                     <div>
                         <label>Objetivo do Empréstimo</label>
-                        <select>
-                            <option value="EXPANSAO" id="LOAN_OBJECTIVES_WORKING_CAPITAL">Expansão</option>
+                        <select id="LOAN_OBJECTIVES_WORKING_CAPITAL">
                         </select>
                     </div>
                     <div>
                         <h6>Dados Bancários</h6>
                         <div>
                             <label>Banco</label>
-                            <select>
-                                <option value="0001" id="BANK_WORKING_CAPITAL">BANCO DO BRASIL S.A.</option>
+                            <select id="BANK_WORKING_CAPITAL">
+
                             </select>
                         </div>
                         <div>
-                            <label>Banco</label>
-                            <select>
-                                <option value="CONTA_CORRENTE_INDIVIDUAL" id="ACCOUNTY_TYPE_WORKING_CAPITAL">Conta
-                                    Corrente Individual
-                                </option>
+                            <label>Tipo de Conta</label>
+                            <select id="ACCOUNTY_TYPE_WORKING_CAPITAL">
+
                             </select>
                         </div>
                         <div>
@@ -302,14 +293,156 @@
 <script>
     const checkboxSimpleSignup = $("#simpleSingup");
     const divSignupMatch = $("#signupMatch");
+    let FIPE = [];
+
+    $(document).ready(function (e) {
+        fetchEducation();
+        fetchBanks();
+        fetchOccupation();
+        fetchFIPE();
+        fetchRealEstate();
+        fetchWorking();
+    })
+
+    async function fetchWorking() {
+        let data = [];
+        await fetch("./api/Enum/GetAccountType.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#ACCOUNTY_TYPE_WORKING_CAPITAL").append(element);
+        })
+
+        await fetch("./api/Enum/GetWorkingLoanObjectives.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#LOAN_OBJECTIVES_WORKING_CAPITAL").append(element);
+        })
+
+        await fetch("./api/Enum/GetEmployeesCount.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#EMPLOYEES_COUNT_WORKING_CAPITAL").append(element);
+        })
+
+        await fetch("./api/Enum/GetBusinessProfession.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#BUSINESS_OCCUPATION_WORKING_CAPITAL").append(element);
+        })
+    }
+
+    async function fetchRealEstate() {
+        let data = [];
+        await fetch("./api/Enum/GetRealEstateType.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#REAL_ESTATE_TYPE_REFINANCING_HOME").append(element);
+        })
+    }
+
+    async function fetchEducation() {
+        let data = [];
+        await fetch("./api/Enum/GetEducation.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#education").append(element);
+        })
+    }
+
+    async function fetchBanks() {
+        let data = [];
+        await fetch("./api/Enum/GetBank.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"].replace("_", "")}">${value["value"]}</option>
+            `;
+            $("#bank").append(element);
+            $("#BANK_WORKING_CAPITAL").append(element);
+        })
+    }
+
+    async function fetchOccupation() {
+        let data = [];
+        await fetch("./api/Enum/GetOccupation.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"].replace("_", "")}">${value["value"]}</option>
+            `;
+            $("#occupation").append(element);
+        })
+    }
+
+    async function fetchFIPE() {
+        let data = [];
+        let vehicleBrand = [], vehicleModel = [], vehicleYear = [];
+        await fetch("./api/Enum/GetFIPE.php").then(data => data.json()).then(response => {
+            data = response.vehicles;
+            FIPE = data;
+        });
+        data.forEach(value => {
+            if(!vehicleYear.includes(value.vehicleYear)) {
+                vehicleYear.push(value.vehicleYear)
+            }
+            if(!vehicleBrand.includes(value.vehicleBrand)) {
+                let element = `
+                    <option value="${value.vehicleBrand}">${value.vehicleBrand}</option>
+                `;
+                $("#BRAND_FINANCING_AUTO").append(element)
+                $("#BRAND_REFINANCING_AUTO").append(element)
+                vehicleBrand.push(value.vehicleBrand)
+            }
+            if(!vehicleModel.includes(value.vehicleModel)) {
+                let element = `
+                    <option value="${value.vehicleModel}">${value.vehicleModel}</option>
+                `;
+                $("#MODEL_FINANCING_AUTO").append(element)
+                $("#MODEL_REFINANCING_AUTO").append(element)
+                vehicleModel.push(value.vehicleModel)
+            }
+        })
+        vehicleYear.sort();
+        vehicleYear.forEach(value => {
+            let element = `
+                    <option value="${value}">${value}</option>
+                `;
+            $("#YEAR_FINANCING_AUTO").append(element)
+            $("#YEAR_REFINANCING_AUTO").append(element)
+        })
+    }
 
     checkboxSimpleSignup.on("change", function (e) {
         divSignupMatch.css("display") === "none" ? divSignupMatch.show() : divSignupMatch.hide();
     })
     $("[name='products']").on("click", function (e) {
-        console.log(e.target.id)
         const target = $(`#DIV_${e.target.id}`);
-        console.log(target)
         if (target && target.css("display") === "none") {
             target.show();
         } else {

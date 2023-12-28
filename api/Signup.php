@@ -6,9 +6,11 @@ use O4l3x4ndr3\SdkEasyCredito\Contexts\Process;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Education;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Occupation;
 use O4l3x4ndr3\SdkEasyCredito\Types\Client;
+use O4l3x4ndr3\SdkEasyCredito\Types\LogData;
 
 try {
     $contextProcess = new Process();
+    $logData = new LogData();
     $simpleSignup = new Client(
         null,
         preg_replace("/\D/", "", htmlspecialchars($_REQUEST["taxNumber"])),
@@ -21,25 +23,16 @@ try {
         htmlspecialchars((bool)$_REQUEST["hasRestriction"]),
         htmlspecialchars((bool)$_REQUEST["hasOwnHouse"]),
         htmlspecialchars((bool)$_REQUEST["hasVehicle"]),
-        htmlspecialchars((bool)$_REQUEST["hasAndroid"])
+        htmlspecialchars((bool)$_REQUEST["hasAndroid"]),
+        htmlspecialchars($_REQUEST["education"] ?? null),
+        htmlspecialchars($_REQUEST["bank"] ?? null),
+        htmlspecialchars($_REQUEST["occupation"] ?? null),
+        (float) htmlspecialchars($_REQUEST["income"] ?? null),
+        $_REQUEST["products"] ?? [],
+        logData: $logData
     );
-    if(isset($_REQUEST["education"])) {
-        $simpleSignup->setEducation(Education::from(htmlspecialchars($_REQUEST["education"])));
-    }
-    if(isset($_REQUEST["bank"])) {
-        $simpleSignup->setBanks(htmlspecialchars($_REQUEST["bank"]));
-    }
-    if(isset($_REQUEST["occupation"])) {
-        $simpleSignup->setOccupation(Occupation::from(htmlspecialchars($_REQUEST["occupation"])));
-    }
-    if(isset($_REQUEST["income"])) {
-        $simpleSignup->setIncome((float) htmlspecialchars($_REQUEST["income"]));
-    }
-    if(isset($_REQUEST["products"])) {
-        $simpleSignup->setProducts(createProducts($_REQUEST["products"]));
-    }
 
-    if(htmlspecialchars((bool)$_REQUEST["simpleSingup"])) {
+    if(htmlspecialchars((bool)$_REQUEST["simpleSingup"] ?? false)) {
         $response = $contextProcess->signup($simpleSignup, true);
     } else {
         $response = $contextProcess->signup($simpleSignup);
@@ -47,14 +40,4 @@ try {
     echo json_encode($response);
 } catch (GuzzleException|Exception $exception) {
     echo $exception;
-}
-function createProducts($payload) : array {
-    $productsArray = [];
-
-    foreach ($payload as $singleProduct) {
-        $product = null;
-        $productsArray[] = $product;
-    }
-
-    return $productsArray;
 }

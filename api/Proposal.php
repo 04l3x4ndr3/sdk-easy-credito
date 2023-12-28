@@ -28,19 +28,19 @@ try {
     $contextProcess = new Process();
     $proposal = new Proposal(
         htmlspecialchars($_REQUEST["mother"]),
-        Gender::from(htmlspecialchars($_REQUEST["gender"])),
-        Nationality::from(htmlspecialchars($_REQUEST["nationality"])),
-        States::from(htmlspecialchars($_REQUEST["hometownState"])),
+        htmlspecialchars($_REQUEST["gender"]),
+        htmlspecialchars($_REQUEST["nationality"]),
+        htmlspecialchars($_REQUEST["hometownState"]),
         htmlspecialchars($_REQUEST["hometown"]),
-        Education::from($_REQUEST["education"]),
-        RelationshipStatus::from($_REQUEST["relationshipStatus"]),
+        htmlspecialchars($_REQUEST["education"]),
+        htmlspecialchars($_REQUEST["relationshipStatus"]),
         htmlspecialchars($_REQUEST["phoneLandline"]),
         new Document(
-            IdentityType::RG,
+            "RG",
             htmlspecialchars($_REQUEST["identity"]["number"]),
-            IdentityIssuer::from(htmlspecialchars($_REQUEST["identity"]["issuer"])),
-            States::from(htmlspecialchars($_REQUEST["identity"]["state"])),
-            htmlspecialchars($_REQUEST["identity"]["issuingDate"])
+            htmlspecialchars($_REQUEST["identity"]["issuer"]),
+            htmlspecialchars($_REQUEST["identity"]["state"]),
+            htmlspecialchars($_REQUEST["identity"]["issuingDate"]) ?? ""
         ),
         new ProposalVehicle(
             htmlspecialchars($_REQUEST["vehicle"]["licensePlate"])
@@ -54,19 +54,19 @@ try {
             htmlspecialchars($_REQUEST["address"]["number"]),
             htmlspecialchars($_REQUEST["address"]["complement"]),
             htmlspecialchars($_REQUEST["address"]["district"]),
-            States::from(htmlspecialchars($_REQUEST["address"]["state"])),
+            htmlspecialchars($_REQUEST["address"]["state"]),
             htmlspecialchars($_REQUEST["address"]["city"]),
-            HomeType::from(htmlspecialchars($_REQUEST["address"]["homeType"])),
-            HomeSince::from($_REQUEST["address"]["homeSince"])
+            htmlspecialchars($_REQUEST["address"]["homeType"]),
+            htmlspecialchars($_REQUEST["address"]["homeSince"])
         ),
         new Business(
-            Occupation::from(htmlspecialchars($_REQUEST["business"]["occupation"])),
-            Profession::from(htmlspecialchars($_REQUEST["business"]["profession"])),
+            htmlspecialchars($_REQUEST["business"]["occupation"]),
+            htmlspecialchars($_REQUEST["business"]["profession"]),
             htmlspecialchars($_REQUEST["business"]["companyName"]),
             htmlspecialchars($_REQUEST["business"]["phone"]),
             htmlspecialchars($_REQUEST["business"]["income"]),
             htmlspecialchars($_REQUEST["business"]["payday"]),
-            EmploymentSince::from($_REQUEST["business"]["employmentSince"]),
+            htmlspecialchars($_REQUEST["business"]["employmentSince"]),
             htmlspecialchars(intval($_REQUEST["business"]["benefitNumber"]) ?? ""),
             new Address(
                 htmlspecialchars($_REQUEST["business"]["zipCode"]),
@@ -74,7 +74,7 @@ try {
                 htmlspecialchars($_REQUEST["business"]["number"]),
                 htmlspecialchars($_REQUEST["business"]["complement"]),
                 htmlspecialchars($_REQUEST["business"]["district"]),
-                States::from(htmlspecialchars($_REQUEST["business"]["state"])),
+                htmlspecialchars($_REQUEST["business"]["state"]),
                 htmlspecialchars($_REQUEST["business"]["city"]),
                 null,
                 null
@@ -82,16 +82,16 @@ try {
         ),
         new Bank(
             htmlspecialchars($_REQUEST["bank"]["bank"]),
-            AccountType::from($_REQUEST["bank"]["type"]),
+            htmlspecialchars($_REQUEST["bank"]["type"]),
             htmlspecialchars($_REQUEST["bank"]["agency"]),
             htmlspecialchars($_REQUEST["bank"]["account"])
         ),
         $_REQUEST["reference"],
         $_REQUEST["products"]
     );
-    $response = json_encode($contextProcess->proposal($proposal, htmlspecialchars($_REQUEST["id"])));
+    $response = $contextProcess->proposal($proposal, htmlspecialchars($_REQUEST["id"]));
 } catch (GuzzleException|Exception $exception) {
-    $response = $exception;
+    $response = $exception->getMessage();
 } finally {
     echo json_encode($response);
 }

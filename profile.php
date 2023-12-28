@@ -3,7 +3,7 @@
 <html lang="pt">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <title>Signup</title>
+    <title>Profile</title>
 </head>
 <body>
 <h1>Conta</h1>
@@ -13,30 +13,36 @@
 <p>Status <span id="status"></span></p>
 <p>Lembrando que só pode haver no máximo 50 requisições por hora do mesmo id!</p>
 <div>
-    Documentos Pessoais
-    <label for="documentType">Tipo de Documento</label>
-    <select id="documentType">
-        <option value="SELF">Foto Frontal</option>
-    </select>
-    <input type="file" id="documentFile" class="contract" />
-    <button onclick="sendDocument()">Enviar documentos para essa Proposta</button>
+    Enviar Documentos Pessoais
+    <div>
+        <label for="documentType">Tipo de Documento</label>
+        <select id="documentType">
+            <option value="SELF">Foto Selfie</option>
+            <option value="IDENTITY_FRONT">RG Frente</option>
+            <option value="IDENTITY_BACK">RG Verso</option>
+            <option value="ADDRESS_PROOF">Comprovante de Residência</option>
+            <option value="INCOME_PROOF">Comprovante de Renda</option>
+        </select>
+        <input type="file" id="documentFile" class="contract" />
+        <button onclick="sendDocument()">Enviar documentos para essa Proposta</button>
+    </div>
 </div>
-<p>
-    IDs das propostas (customerServiceNumber)
-    <div id="customerServiceNumber">
-        <div>
-            <span>Proposta com ID tal</span>
+<div>
+    <button onclick="showProposals()">Minhas Propostas</button>
+    <div id="proposals" style="display: none">
+        <div id="20231227231301289000760">
+            <span>Proposta com ID (fake) 20231227231301289000760 </span>
             <div>
                 Contratação
                 <button onclick="getContract()">Receber contrato dessa proposta</button>
-                <input type="file" class="contract" />
-                <button onclick="signContract()">Assinar Contrato</button>
+                <input type="file" class="contract" id="contract" />
+                <button onclick="signContract()">Enviar Contrato Assinado</button>
             </div>
         </div>
     </div>
-</p>
+</div>
 <button onclick="refreshStatus()">Atualizar Status</button>
-<button onclick="createPoposals()" id="BUTTON_PROPOSALS">Ver Propostas e Serviços</button>
+<button onclick="createPoposals()" id="BUTTON_PROPOSALS">Fazer uma Proposta</button>
 <div id="DIV_PROPOSALS" style="display: none">
     <div>
         <h2>Propostas Personalizadas</h2>
@@ -65,7 +71,6 @@
             <div>
                 <label for="hometownState">Estado de Nascimento</label>
                 <select id="hometownState">
-                    <option value="ES">ES</option>
                 </select>
             </div>
             <div>
@@ -75,13 +80,13 @@
             <div>
                 <label for="education">Escolaridade</label>
                 <select id="education">
-                    <option value="POS_GRADUACAO">Pós Graduação</option>
+
                 </select>
             </div>
             <div>
                 <label for="relationshipStatus">Estado Civil</label>
                 <select id="relationshipStatus">
-                    <option value="CASADO">Casado</option>
+
                 </select>
             </div>
             <div>
@@ -98,13 +103,13 @@
                 <div>
                     <label for="issuer_IDENTITY">Emissor</label>
                     <select id="issuer_IDENTITY">
-                        <option value="SSP">SSP</option>
+
                     </select>
                 </div>
                 <div>
                     <label for="state_IDENTITY">Estado</label>
                     <select id="state_IDENTITY">
-                        <option value="ES">ES</option>
+
                     </select>
                 </div>
                 <div>
@@ -138,7 +143,7 @@
                 <div>
                     <label for="state">Estado</label>
                     <select id="state">
-                        <option value="ES">ES</option>
+
                     </select>
                 </div>
                 <div>
@@ -146,15 +151,15 @@
                     <input type="text" id="city" />
                 </div>
                 <div>
-                    <label for="homeType">Tipo de Casa</label>
+                    <label for="homeType">Tipo de Moradia</label>
                     <select id="homeType">
-                        <option value="ALUGADA">Alugada</option>
+
                     </select>
                 </div>
                 <div>
                     <label for="homeSince">Tempo de Moradia</label>
                     <select id="homeSince">
-                        <option value="MAIOR_2_ANOS">Maior que dois anos</option>
+
                     </select>
                 </div>
             </div>
@@ -176,7 +181,7 @@
                 <div>
                     <label for="occupation">Ocupação</label>
                     <select id="occupation">
-                        <option value="ASSALARIADO">Assalariado</option>
+
                     </select>
                 </div>
                 <div>
@@ -203,7 +208,7 @@
                 <div>
                     <label for="employmentSince">Tempo de Empresa</label>
                     <select id="employmentSince">
-                        <option value="BETWEEN_ONE_AND_TWO_YEARS">Entre 1 e 2 anos</option>
+
                     </select>
                 </div>
 
@@ -239,7 +244,7 @@
                 <div>
                     <label for="stateBusiness">Estado</label>
                     <select id="stateBusiness">
-                        <option value="ES">ES</option>
+
                     </select>
                 </div>
                 <div>
@@ -253,13 +258,13 @@
                 <div>
                     <label for="bank">Banco</label>
                     <select id="bank">
-                        <option value="001">BANCO DO BRASIL S.A.</option>
+
                     </select>
                 </div>
                 <div>
                     <label for="typeBank">Tipo de Conta</label>
                     <select id="typeBank">
-                        <option value="CONTA_CORRENTE_INDIVIDUAL">Conta Corrente Individual</option>
+
                     </select>
                 </div>
                 <div>
@@ -340,11 +345,11 @@
                 <div>
                     <label>Marca</label>
                     <select>
-                        <option value="Fiat" id="BRAND_FINANCING_AUTO">Fiat</option>
+
                     </select>
                     <label>Modelo</label>
                     <select>
-                        <option value="Mobi" id="MODEL_FINANCING_AUTO">Mobi</option>
+
                     </select>
                     <label>Código FIPE</label>
                     <input type="text" id="FIPE_CODE_FINANCING_AUTO">
@@ -353,7 +358,8 @@
                     <input type="number" id="FIPE_VALUE_FINANCING_AUTO">
 
                     <label>Ano</label>
-                    <input type="number" id="YEAR_FINANCING_AUTO">
+                    <select id="YEAR_FINANCING_AUTO">
+                    </select>
                 </div>
 
                 <label>Entrada</label>
@@ -378,11 +384,11 @@
                 <div>
                     <label>Marca</label>
                     <select>
-                        <option value="Fiat" id="BRAND_REFINANCING_AUTO">Fiat</option>
+
                     </select>
                     <label>Modelo</label>
                     <select>
-                        <option value="Mobi" id="MODEL_REFINANCING_AUTO">Mobi</option>
+
                     </select>
                     <label>Código FIPE</label>
                     <input type="text" id="FIPE_CODE_REFINANCING_AUTO">
@@ -391,7 +397,8 @@
                     <input type="number" id="FIPE_VALUE_REFINANCING_AUTO">
 
                     <label>Ano</label>
-                    <input type="number" id="YEAR_REFINANCING_AUTO">
+                    <select id="YEAR_REFINANCING_AUTO">
+                    </select>
                 </div>
             </div>
         </div>
@@ -409,8 +416,8 @@
                 <h6>Imóvel</h6>
                 <div>
                     <label>Tipo</label>
-                    <select>
-                        <option value="HOUSE" id="REAL_ESTATE_TYPE_REFINANCING_HOME">Casa</option>
+                    <select id="REAL_ESTATE_TYPE_REFINANCING_HOME">
+
                     </select>
 
                     <label>Valor Avaliado</label>
@@ -440,13 +447,13 @@
                 <div>
                     <label>Cargo na Empresa</label>
                     <select id="BUSINESS_OCCUPATION_WORKING_CAPITAL">
-                        <option value="PROCURADOR">Procurador</option>
+
                     </select>
                 </div>
                 <div>
                     <label>Número de Colaboradores</label>
                     <select id="EMPLOYEES_COUNT_WORKING_CAPITAL">
-                        <option value="DE_1_A_5">De 1 à 5</option>
+
                     </select>
                 </div>
                 <div>
@@ -456,23 +463,21 @@
                 <div>
                     <label>Objetivo do Empréstimo</label>
                     <select id="LOAN_OBJECTIVES_WORKING_CAPITAL">
-                        <option value="EXPANSAO">Expansão</option>
+
                     </select>
                 </div>
                 <div>
                     <h6>Dados Bancários</h6>
                     <div>
                         <label>Banco</label>
-                        <select>
-                            <option value="0001" id="BANK_WORKING_CAPITAL">BANCO DO BRASIL S.A.</option>
+                        <select id="BANK_WORKING_CAPITAL">
+
                         </select>
                     </div>
                     <div>
-                        <label>Banco</label>
-                        <select>
-                            <option value="CONTA_CORRENTE_INDIVIDUAL" id="ACCOUNTY_TYPE_WORKING_CAPITAL">Conta
-                                Corrente Individual
-                            </option>
+                        <label>Tipo de Conta</label>
+                        <select id="ACCOUNTY_TYPE_WORKING_CAPITAL">
+
                         </select>
                     </div>
                     <div>
@@ -493,6 +498,7 @@
 <script>
     const ID = localStorage.getItem("id");
     let pipelineStatus = undefined;
+    let FIPE = [];
     $("#id").text(ID);
     function refreshStatus() {
         $.ajax("./api/PipelineStatus.php", {
@@ -504,9 +510,6 @@
                 data = JSON.parse(data)
                 pipelineStatus = data.status;
                 $("#status").text(data.status)
-                if(pipelineStatus === "Cadastro Realizado com Sucesso") {
-                    clearInterval(status);
-                }
             }
         })
     }
@@ -556,16 +559,217 @@
         }
     });
 
-    function getProfessions() {
-        fetch("./api/GetProfessions.php").then(response => response.json()).then(data => {
+    $(document).ready(function (e) {
+        //fetchFIPE();
+        fetchAll();
+    })
 
-            console.log(data)
-            for (const prof of data) {
-                $("#profession").append(`<option value="${prof.key.replaceAll("\"","")}">${prof.value.replaceAll("\"","")}</option>`);
-            }
+    async function fetchAll() {
+        let data = [];
+        setTimeout(async () => {
+            await fetch("./api/Enum/GetProfessions.php").then(data => data.json()).then(response => {
+                data = response;
+            });
+            data.forEach(value => {
+                let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+                $("#profession").append(element);
+            })
+        }, 100);
+
+        await fetch("./api/Enum/GetStates.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#state").append(element);
+            $("#stateBusiness").append(element);
+            $("#hometownState").append(element);
+            $("#state_IDENTITY").append(element);
+        })
+
+        await fetch("./api/Enum/GetEducation.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#education").append(element);
+        })
+
+        await fetch("./api/Enum/GetRelationship.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#relationshipStatus").append(element);
+        })
+
+        await fetch("./api/Enum/GetIssuer.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#issuer_IDENTITY").append(element);
+        })
+
+        await fetch("./api/Enum/GetHomeType.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#homeType").append(element);
+        })
+
+        await fetch("./api/Enum/GetHomeSince.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#homeSince").append(element);
+        })
+
+        await fetch("./api/Enum/GetOccupation.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#occupation").append(element);
+        })
+
+        await fetch("./api/Enum/GetEmploymentSince.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#employmentSince").append(element);
+        })
+
+        await fetch("./api/Enum/GetAccountType.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#typeBank").append(element);
+        })
+
+        await fetch("./api/Enum/GetBank.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"].replace("_", "")}">${value["value"]}</option>
+            `;
+            $("#bank").append(element);
+            $("#BANK_WORKING_CAPITAL").append(element);
+        })
+
+        await fetch("./api/Enum/GetRealEstateType.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#REAL_ESTATE_TYPE_REFINANCING_HOME").append(element);
+        })
+
+        await fetch("./api/Enum/GetAccountType.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#ACCOUNTY_TYPE_WORKING_CAPITAL").append(element);
+        })
+
+        await fetch("./api/Enum/GetWorkingLoanObjectives.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#LOAN_OBJECTIVES_WORKING_CAPITAL").append(element);
+        })
+
+        await fetch("./api/Enum/GetEmployeesCount.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#EMPLOYEES_COUNT_WORKING_CAPITAL").append(element);
+        })
+
+        await fetch("./api/Enum/GetBusinessProfession.php").then(data => data.json()).then(response => {
+            data = response;
+        });
+        data.forEach(value => {
+            let element = `
+                <option value="${value["key"]}">${value["value"]}</option>
+            `;
+            $("#BUSINESS_OCCUPATION_WORKING_CAPITAL").append(element);
         })
     }
-    getProfessions();
+
+    async function fetchFIPE() {
+        let data = [];
+        let vehicleBrand = [], vehicleModel = [], vehicleYear = [];
+        await fetch("./api/Enum/GetFIPE.php").then(data => data.json()).then(response => {
+            data = response.vehicles;
+            FIPE = data;
+        });
+        data.forEach(value => {
+            if(!vehicleYear.includes(value.vehicleYear)) {
+                vehicleYear.push(value.vehicleYear)
+            }
+            if(!vehicleBrand.includes(value.vehicleBrand)) {
+                let element = `
+                    <option value="${value.vehicleBrand}">${value.vehicleBrand}</option>
+                `;
+                $("#BRAND_FINANCING_AUTO").append(element)
+                $("#BRAND_REFINANCING_AUTO").append(element)
+                vehicleBrand.push(value.vehicleBrand)
+            }
+            if(!vehicleModel.includes(value.vehicleModel)) {
+                let element = `
+                    <option value="${value.vehicleModel}">${value.vehicleModel}</option>
+                `;
+                $("#MODEL_FINANCING_AUTO").append(element)
+                $("#MODEL_REFINANCING_AUTO").append(element)
+                vehicleModel.push(value.vehicleModel)
+            }
+        })
+        vehicleYear.sort();
+        vehicleYear.forEach(value => {
+            let element = `
+                    <option value="${value}">${value}</option>
+                `;
+            $("#YEAR_FINANCING_AUTO").append(element)
+            $("#YEAR_REFINANCING_AUTO").append(element)
+        })
+    }
 
     class signedClient {
         id;
@@ -867,12 +1071,33 @@
         })
     }
 
-    function getContract() {
-
+    async function getContract() {
+        await fetch("./api/GetContract.php?proposalId=20231227231301289000760")
+            .then(data => data.json())
+            .then(response => {
+                const file = new File([response["contracts"]["contract"]], "file.pdf", { type:"application/pdf" });
+                const url = window.URL.createObjectURL(file);
+                //window.open(url, "_blank");
+            });
     }
 
-    function signContract() {
+    async function signContract() {
+        let file = await $("#contract").prop('files')[0];
+        const formData = new FormData();
+        formData.append('proposalId', "20231227231301289000760");
+        formData.append('checksum', "8de41a016d5270686c6cf3b5bf25ac5cc523db39f9573c5f2232b9ee0ec7fc11");
+        formData.append('file', file);
+        fetch("./api/SendContract.php", {
+            method: "POST",
+            body: formData,
+        }).then(response => response.json()).then(data => {
+            console.log(data)
+        })
+    }
 
+    let proposals = $("#proposals");
+    function showProposals() {
+        proposals.css("display") === "none" ? proposals.show() : proposals.hide();
     }
 </script>
 </html>
