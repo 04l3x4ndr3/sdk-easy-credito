@@ -9,7 +9,6 @@
 <h1>Conta</h1>
 <p>Por favor, insira seus dados</p>
 <p style="background-color: red; color:white">Atenção, os dados enviados não podem ser alterados. Favor, preencher com atenção e verificar antes de enviar!</p>
-<p style="font-size: large" id="id">ID: </p>
 <p>Status <span id="status"></span></p>
 <p>Lembrando que só pode haver no máximo 50 requisições por hora do mesmo id!</p>
 <div>
@@ -31,17 +30,16 @@
     <button onclick="showProposals()">Minhas Propostas</button>
     <div id="proposals" style="display: none">
         <div id="20231227231301289000760">
-            <span>Proposta com ID (fake) 20231227231301289000760 </span>
+            <span>Proposta da pipeline <span style="font-size: large" id="id"></span> com ID (fake) 20231227231301289000760 </span>
             <div>
                 Contratação
                 <button onclick="getContract()">Receber contrato dessa proposta</button>
-                <input type="file" class="contract" id="contract" />
-                <button onclick="signContract()">Enviar Contrato Assinado</button>
+                <button onclick="signContract()">Assinar Contrato</button>
             </div>
         </div>
     </div>
 </div>
-<button onclick="refreshStatus()">Atualizar Status</button>
+<button onclick="refreshStatus()" style="display:none;">Atualizar Status</button>
 <button onclick="createPoposals()" id="BUTTON_PROPOSALS">Fazer uma Proposta</button>
 <div id="DIV_PROPOSALS" style="display: none">
     <div>
@@ -50,30 +48,30 @@
     </div>
     <div>
         <div id="DIV_PERSONAL">
-            <div>
+            <div style="display: none;">
                 <label for="mother">Nome da Mãe</label>
                 <input type="text" id="mother" />
             </div>
-            <div>
+            <div style="display: none;">
                 <label for="gender">Sexo</label>
                 <select id="gender">
                     <option value="MASCULINO">Masculino</option>
                     <option value="FEMININO">Feminino</option>
                 </select>
             </div>
-            <div>
+            <div style="display: none;">
                 <label for="nationality">Nacionaldade</label>
                 <select id="nationality">
                     <option value="BRASILEIRO">Brasileiro</option>
                     <option value="ESTRANGEIRO">Estrangeiro</option>
                 </select>
             </div>
-            <div>
+            <div style="display: none;">
                 <label for="hometownState">Estado de Nascimento</label>
                 <select id="hometownState">
                 </select>
             </div>
-            <div>
+            <div style="display: none;">
                 <label for="hometown">Cidade de Nascimento</label>
                 <input type="text" id="hometown" />
             </div>
@@ -83,7 +81,7 @@
 
                 </select>
             </div>
-            <div>
+            <div style="display: none;">
                 <label for="relationshipStatus">Estado Civil</label>
                 <select id="relationshipStatus">
 
@@ -118,7 +116,7 @@
                 </div>
             </div>
 
-            <div>
+            <div style="display: none;">
                 <h3>Endereço Pessoal</h3>
                 <div>
                     <label for="zipCode">CEP</label>
@@ -219,7 +217,7 @@
                     <input type="number" id="benefitNumber" />
                 </div>
                 <div>
-                    <h4>Endereço</h4>
+                    <h4>Endereço da Empresa</h4>
                     <div>
                         <label for="zipCodeBusiness">CEP</label>
                         <input type="number" id="zipCodeBusiness" />
@@ -288,8 +286,8 @@
             <label>Débito</label>
             <input type="checkbox" id="DEBT" name="products">
 
-            <label>Cartão de Crédito</label>
-            <input type="checkbox" id="CARD" name="products">
+            <label style="display: none;">Cartão de Crédito</label>
+            <input type="checkbox" id="CARD" name="products" style="display: none;">
 
             <label>Empréstimos</label>
             <input type="checkbox" id="LOAN" name="products">
@@ -303,8 +301,8 @@
             <label>Refinanciamento de Imóveis</label>
             <input type="checkbox" id="REFINANCING_HOME" name="products">
 
-            <label>Capital de Giro</label>
-            <input type="checkbox" id="WORKING_CAPITAL" name="products">
+            <label style="display: none;">Capital de Giro</label>
+            <input type="checkbox" id="WORKING_CAPITAL" name="products" style="display: none;">
         </div>
         <div id="DIV_CARD" style="display:none;">
             <h5>Cartão de Crédito</h5>
@@ -466,7 +464,7 @@
 
                     </select>
                 </div>
-                <div>
+                <div style="display: none;">
                     <h6>Dados Bancários</h6>
                     <div>
                         <label>Banco</label>
@@ -674,6 +672,7 @@
         await fetch("./api/Enum/GetBank.php").then(data => data.json()).then(response => {
             data = response;
         });
+        data.sort()
         data.forEach(value => {
             let element = `
                 <option value="${value["key"].replace("_", "")}">${value["value"]}</option>

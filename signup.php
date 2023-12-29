@@ -9,31 +9,32 @@
 <h1>Cadastro</h1>
 <p>Por favor, insira seus dados</p>
 <p style="background-color: red; color:white">Atenção, os dados enviados não podem ser alterados. Favor, preencher com atenção e verificar antes de enviar!</p>
-<p style="font-size: large" id="id">ID: </p>
+<p style="font-size: large; display: none" id="id">ID: </p>
 <form>
-    <div>
-        <label>Nome</label>
-        <input type="text" name="name" id="name"/>
-    </div>
-    <div>
-        <label>CPF</label>
-        <input type="text" name="taxNumber" id="taxNumber" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}"/>
-    </div>
-    <div>
-        <label>E-mail</label>
-        <input type="email" name="email" id="email"/>
-    </div>
-    <div>
-        <label>Data de Nascimento</label>
-        <input type="date" name="birthdate" id="birthdate"/>
-    </div>
-    <div>
-        <label>Número de Telefone</label>
-        <input type="tel" name="phone" id="phone" minlength="11" maxlength="11"/>
-    </div>
-    <div>
-        <label>CEP</label>
-        <input type="text" name="zipCode" id="zipCode" maxlength="8"/>
+    <div style="display: none;"><div>
+            <label>Nome</label>
+            <input type="text" name="name" id="name"/>
+        </div>
+        <div>
+            <label>CPF</label>
+            <input type="text" name="taxNumber" id="taxNumber" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}"/>
+        </div>
+        <div>
+            <label>E-mail</label>
+            <input type="email" name="email" id="email"/>
+        </div>
+        <div>
+            <label>Data de Nascimento</label>
+            <input type="date" name="birthdate" id="birthdate"/>
+        </div>
+        <div>
+            <label>Número de Telefone</label>
+            <input type="tel" name="phone" id="phone" minlength="11" maxlength="11"/>
+        </div>
+        <div>
+            <label>CEP</label>
+            <input type="text" name="zipCode" id="zipCode" maxlength="8"/>
+        </div>
     </div>
     <div>
         <label>Possui algum cartão de crédito no seu nome?</label>
@@ -55,238 +56,241 @@
         <label>Possui algum celular com sistema Android?</label>
         <input type="checkbox" id="hasAndroid"/>
     </div>
-    <div>
-        <h2>Deseja fazer o Cadastro Match?</h2>
-        <h3>Cadastro Match é cadastro personalizado que propõe produtos e serviços customizados analizados por uma
-            inteligência artificial conforme os dados cedidos.</h3>
-        <label>Optar Pelo Cadastro Match</label>
-        <input type="checkbox" id="simpleSingup">
-    </div>
-    <div style="display: none" id="signupMatch">
+    <div style="display: none">
         <div>
-            <label>Escolaridade</label>
-            <select id="education">
-            </select>
+            <h2>Deseja fazer o Cadastro Match?</h2>
+            <h3>Cadastro Match é cadastro personalizado que propõe produtos e serviços customizados analizados por uma
+                inteligência artificial conforme os dados cedidos.</h3>
+            <label>Optar Pelo Cadastro Match</label>
+            <input type="checkbox" id="simpleSingup">
         </div>
-        <div>
-            <label>Banco Pessoal</label>
-            <select id="bank">
-            </select>
-        </div>
-        <div>
-            <label>Ocupação</label>
-            <select id="occupation">
-            </select>
-        </div>
-        <div>
-            <label>Renda Mensal</label>
-            <input type="number" id="income">
-        </div>
-        <div>
+        <div style="display: none" id="signupMatch">
             <div>
-                <h4>Selecione os produtos procurados</h4>
-                <label>Débito</label>
-                <input type="checkbox" id="DEBT" name="products"><br />
-
-                <label>Cartão de Crédito</label>
-                <input type="checkbox" id="CARD" name="products"><br />
-
-                <label>Empréstimos</label>
-                <input type="checkbox" id="LOAN" name="products"><br />
-
-                <label>Financiamento de Veículos</label>
-                <input type="checkbox" id="FINANCING_AUTO" name="products"><br />
-
-                <label>Refinanciamento de Veículos</label>
-                <input type="checkbox" id="REFINANCING_AUTO" name="products"><br />
-
-                <label>Refinanciamento de Imóveis</label>
-                <input type="checkbox" id="REFINANCING_HOME" name="products"><br />
-
-                <label>Capital de Giro</label>
-                <input type="checkbox" id="WORKING_CAPITAL" name="products"><br />
+                <label>Escolaridade</label>
+                <select id="education">
+                </select>
             </div>
-            <div id="DIV_CARD" style="display:none;">
-                <h5>Cartão de Crédito</h5>
-                <div>
-                    <label>Bandeira</label>
-                    <select id="NETWORK_CARD">
-                        <option value="ELO">ELO</option>
-                        <option value="MASTERCARD">MasterCard</option>
-                        <option value="VISA">Visa</option>
-                    </select>
-                    <label>Dia de Pagamento</label>
-                    <input type="number" id="PAYDAY_CARD">
-                </div>
+            <div>
+                <label>Banco Pessoal</label>
+                <select id="bank">
+                </select>
             </div>
-            <div id="DIV_LOAN" style="display:none;">
-                <h5>Empréstimos</h5>
-                <div>
-                    <label>Valor</label>
-                    <input type="number" id="VALUE_LOAN">
-                </div>
-                <div>
-                    <label>Número de Parcelas</label>
-                    <input type="number" id="INSTALLMENTS_LOAN">
-                </div>
+            <div>
+                <label>Ocupação</label>
+                <select id="occupation">
+                </select>
             </div>
-            <div id="DIV_FINANCING_AUTO" style="display:none;">
-                <h5>Financiamento de Veículos</h5>
+            <div>
+                <label>Renda Mensal</label>
+                <input type="number" id="income">
+            </div>
+            <div>
                 <div>
-                    <label>Valor</label>
-                    <input type="number" id="VALUE_FINANCING_AUTO">
+                    <h4>Selecione os produtos procurados</h4>
+                    <label>Débito</label>
+                    <input type="checkbox" id="DEBT" name="products"><br />
+
+                    <label>Cartão de Crédito</label>
+                    <input type="checkbox" id="CARD" name="products"><br />
+
+                    <label>Empréstimos</label>
+                    <input type="checkbox" id="LOAN" name="products"><br />
+
+                    <label>Financiamento de Veículos</label>
+                    <input type="checkbox" id="FINANCING_AUTO" name="products"><br />
+
+                    <label>Refinanciamento de Veículos</label>
+                    <input type="checkbox" id="REFINANCING_AUTO" name="products"><br />
+
+                    <label>Refinanciamento de Imóveis</label>
+                    <input type="checkbox" id="REFINANCING_HOME" name="products"><br />
+
+                    <label>Capital de Giro</label>
+                    <input type="checkbox" id="WORKING_CAPITAL" name="products"><br />
                 </div>
-                <div>
-                    <label>Número de Parcelas</label>
-                    <input type="number" id="INSTALLMENTS_FINANCING_AUTO">
-                </div>
-                <div>
-                    <h6>Veículo</h6>
+                <div id="DIV_CARD" style="display:none;">
+                    <h5>Cartão de Crédito</h5>
                     <div>
-                        <label>Marca</label>
-                        <select id="BRAND_FINANCING_AUTO">
+                        <label>Bandeira</label>
+                        <select id="NETWORK_CARD">
+                            <option value="ELO">ELO</option>
+                            <option value="MASTERCARD">MasterCard</option>
+                            <option value="VISA">Visa</option>
                         </select>
-                        <label>Modelo</label>
-                        <select id="MODEL_FINANCING_AUTO">
-                        </select>
-                        <label>Código FIPE</label>
-                        <input type="text" id="FIPE_CODE_FINANCING_AUTO">
-
+                        <label>Dia de Pagamento</label>
+                        <input type="number" id="PAYDAY_CARD">
+                    </div>
+                </div>
+                <div id="DIV_LOAN" style="display:none;">
+                    <h5>Empréstimos</h5>
+                    <div>
                         <label>Valor</label>
-                        <input type="number" id="FIPE_VALUE_FINANCING_AUTO">
-
-                        <label>Ano</label>
-                        <select id="YEAR_FINANCING_AUTO">
-                        </select>
+                        <input type="number" id="VALUE_LOAN">
                     </div>
-
-                    <label>Entrada</label>
-                    <input type="number" id="DOWNPAYMENT_FINANCING_AUTO">
-
-                    <label>Carro Usado?</label>
-                    <input type="checkbox" id="USED_FINANCING_AUTO">
-                </div>
-            </div>
-            <div id="DIV_REFINANCING_AUTO" style="display:none;">
-                <h5>Refinanciamento de Veículos</h5>
-                <div>
-                    <label>Valor</label>
-                    <input type="number" id="VALUE_REFINANCING_AUTO">
-                </div>
-                <div>
-                    <label>Número de Parcelas</label>
-                    <input type="number" id="INSTALLMENTS_REFINANCING_AUTO">
-                </div>
-                <div>
-                    <h6>Veículo</h6>
                     <div>
-                        <label>Marca</label>
-                        <select id="BRAND_REFINANCING_AUTO">
-                        </select>
-                        <label>Modelo</label>
-                        <select id="MODEL_REFINANCING_AUTO">
-                        </select>
-                        <label>Código FIPE</label>
-                        <input type="text" id="FIPE_CODE_REFINANCING_AUTO">
-
+                        <label>Número de Parcelas</label>
+                        <input type="number" id="INSTALLMENTS_LOAN">
+                    </div>
+                </div>
+                <div id="DIV_FINANCING_AUTO" style="display:none;">
+                    <h5>Financiamento de Veículos</h5>
+                    <div>
                         <label>Valor</label>
-                        <input type="number" id="FIPE_VALUE_REFINANCING_AUTO">
-
-                        <label>Ano</label>
-                        <select id="YEAR_REFINANCING_AUTO">
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div id="DIV_REFINANCING_HOME" style="display:none;">
-                <h5>Refinanciamento de Imóveis</h5>
-                <div>
-                    <label>Valor</label>
-                    <input type="number" id="VALUE_REFINANCING_HOME">
-                </div>
-                <div>
-                    <label>Número de Parcelas</label>
-                    <input type="number" id="INSTALLMENTS_REFINANCING_HOME">
-                </div>
-                <div>
-                    <h6>Imóvel</h6>
-                    <div>
-                        <label>Tipo</label>
-                        <select id="REAL_ESTATE_TYPE_REFINANCING_HOME">
-                        </select>
-
-                        <label>Valor Avaliado</label>
-                        <input type="number" id="REAL_ESTATE_VALUE_REFINANCING_HOME">
-
-                        <label>Saldo Devedor</label>
-                        <input type="number" id="OUTSTANDING_VALUE_REFINANCING_HOME">
-                    </div>
-                </div>
-            </div>
-            <div id="DIV_WORKING_CAPITAL" style="display:none;">
-                <h5>Capital de Giro</h5>
-                <div>
-                    <label>Valor</label>
-                    <input type="number" id="VALUE_WORKING_CAPITAL">
-                </div>
-                <div>
-                    <label>Número de Parcelas</label>
-                    <input type="number" id="INSTALLMENTS_WORKING_CAPITAL">
-                </div>
-                <div>
-                    <h6>Empresa</h6>
-                    <div>
-                        <label>CNPJ</label>
-                        <input type="text" id="TAXNUMBER_WORKING_CAPITAL" maxlength="14" pattern="[0-9]{2}[0-9]{3}[0-9]{3}[0-9]{4}[0-9]{2}">
+                        <input type="number" id="VALUE_FINANCING_AUTO">
                     </div>
                     <div>
-                        <label>Cargo na Empresa</label>
-                        <select id="BUSINESS_OCCUPATION_WORKING_CAPITAL">
-
-                        </select>
+                        <label>Número de Parcelas</label>
+                        <input type="number" id="INSTALLMENTS_FINANCING_AUTO">
                     </div>
                     <div>
-                        <label>Número de Colaboradores</label>
-                        <select id="EMPLOYEES_COUNT_WORKING_CAPITAL">
-
-                        </select>
-                    </div>
-                    <div>
-                        <label>Receita Mensal</label>
-                        <input type="number" id="INCOME_WORKING_CAPITAL">
-                    </div>
-                    <div>
-                        <label>Objetivo do Empréstimo</label>
-                        <select id="LOAN_OBJECTIVES_WORKING_CAPITAL">
-                        </select>
-                    </div>
-                    <div>
-                        <h6>Dados Bancários</h6>
+                        <h6>Veículo</h6>
                         <div>
-                            <label>Banco</label>
-                            <select id="BANK_WORKING_CAPITAL">
+                            <label>Marca</label>
+                            <select id="BRAND_FINANCING_AUTO">
+                            </select>
+                            <label>Modelo</label>
+                            <select id="MODEL_FINANCING_AUTO">
+                            </select>
+                            <label>Código FIPE</label>
+                            <input type="text" id="FIPE_CODE_FINANCING_AUTO">
+
+                            <label>Valor</label>
+                            <input type="number" id="FIPE_VALUE_FINANCING_AUTO">
+
+                            <label>Ano</label>
+                            <select id="YEAR_FINANCING_AUTO">
+                            </select>
+                        </div>
+
+                        <label>Entrada</label>
+                        <input type="number" id="DOWNPAYMENT_FINANCING_AUTO">
+
+                        <label>Carro Usado?</label>
+                        <input type="checkbox" id="USED_FINANCING_AUTO">
+                    </div>
+                </div>
+                <div id="DIV_REFINANCING_AUTO" style="display:none;">
+                    <h5>Refinanciamento de Veículos</h5>
+                    <div>
+                        <label>Valor</label>
+                        <input type="number" id="VALUE_REFINANCING_AUTO">
+                    </div>
+                    <div>
+                        <label>Número de Parcelas</label>
+                        <input type="number" id="INSTALLMENTS_REFINANCING_AUTO">
+                    </div>
+                    <div>
+                        <h6>Veículo</h6>
+                        <div>
+                            <label>Marca</label>
+                            <select id="BRAND_REFINANCING_AUTO">
+                            </select>
+                            <label>Modelo</label>
+                            <select id="MODEL_REFINANCING_AUTO">
+                            </select>
+                            <label>Código FIPE</label>
+                            <input type="text" id="FIPE_CODE_REFINANCING_AUTO">
+
+                            <label>Valor</label>
+                            <input type="number" id="FIPE_VALUE_REFINANCING_AUTO">
+
+                            <label>Ano</label>
+                            <select id="YEAR_REFINANCING_AUTO">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="DIV_REFINANCING_HOME" style="display:none;">
+                    <h5>Refinanciamento de Imóveis</h5>
+                    <div>
+                        <label>Valor</label>
+                        <input type="number" id="VALUE_REFINANCING_HOME">
+                    </div>
+                    <div>
+                        <label>Número de Parcelas</label>
+                        <input type="number" id="INSTALLMENTS_REFINANCING_HOME">
+                    </div>
+                    <div>
+                        <h6>Imóvel</h6>
+                        <div>
+                            <label>Tipo</label>
+                            <select id="REAL_ESTATE_TYPE_REFINANCING_HOME">
+                            </select>
+
+                            <label>Valor Avaliado</label>
+                            <input type="number" id="REAL_ESTATE_VALUE_REFINANCING_HOME">
+
+                            <label>Saldo Devedor</label>
+                            <input type="number" id="OUTSTANDING_VALUE_REFINANCING_HOME">
+                        </div>
+                    </div>
+                </div>
+                <div id="DIV_WORKING_CAPITAL" style="display:none;">
+                    <h5>Capital de Giro</h5>
+                    <div>
+                        <label>Valor</label>
+                        <input type="number" id="VALUE_WORKING_CAPITAL">
+                    </div>
+                    <div>
+                        <label>Número de Parcelas</label>
+                        <input type="number" id="INSTALLMENTS_WORKING_CAPITAL">
+                    </div>
+                    <div>
+                        <h6>Empresa</h6>
+                        <div>
+                            <label>CNPJ</label>
+                            <input type="text" id="TAXNUMBER_WORKING_CAPITAL" maxlength="14" pattern="[0-9]{2}[0-9]{3}[0-9]{3}[0-9]{4}[0-9]{2}">
+                        </div>
+                        <div>
+                            <label>Cargo na Empresa</label>
+                            <select id="BUSINESS_OCCUPATION_WORKING_CAPITAL">
 
                             </select>
                         </div>
                         <div>
-                            <label>Tipo de Conta</label>
-                            <select id="ACCOUNTY_TYPE_WORKING_CAPITAL">
+                            <label>Número de Colaboradores</label>
+                            <select id="EMPLOYEES_COUNT_WORKING_CAPITAL">
 
                             </select>
                         </div>
                         <div>
-                            <label>Agência</label>
-                            <input type="number" id="AGENCY_WORKING_CAPITAL">
+                            <label>Receita Mensal</label>
+                            <input type="number" id="INCOME_WORKING_CAPITAL">
                         </div>
                         <div>
-                            <label>Número da Conta</label>
-                            <input type="text" id="ACCOUNT_NUMBER_WORKING_CAPITAL">
+                            <label>Objetivo do Empréstimo</label>
+                            <select id="LOAN_OBJECTIVES_WORKING_CAPITAL">
+                            </select>
+                        </div>
+                        <div>
+                            <h6>Dados Bancários</h6>
+                            <div>
+                                <label>Banco</label>
+                                <select id="BANK_WORKING_CAPITAL">
+
+                                </select>
+                            </div>
+                            <div>
+                                <label>Tipo de Conta</label>
+                                <select id="ACCOUNTY_TYPE_WORKING_CAPITAL">
+
+                                </select>
+                            </div>
+                            <div>
+                                <label>Agência</label>
+                                <input type="number" id="AGENCY_WORKING_CAPITAL">
+                            </div>
+                            <div>
+                                <label>Número da Conta</label>
+                                <input type="text" id="ACCOUNT_NUMBER_WORKING_CAPITAL">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <input value="Cadastrar" type="button" onclick="signup()">
 </form>
 </body>

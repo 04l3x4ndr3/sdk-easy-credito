@@ -1,10 +1,14 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
+use Exception;
+use O4l3x4ndr3\SdkEasyCredito\Helpers\EasyCreditoValidate;
+use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Education;
+
 /**
  * Modelo de Cliente
  */
-class Client
+class Client implements EasyCreditoValidate
 {
     protected ?string $id;
     protected ?string $status;
@@ -473,6 +477,34 @@ class Client
     {
         $this->logData = $logData;
         return $this;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function validate() : bool
+    {
+        if(strlen(preg_replace("/\D/", "", $this->cpf)) !== 11) {
+            throw new Exception("O CPF deve possuir 11 caracteres numéricos", 400);
+        }
+        if(count(explode(" ", $this->name)) < 2) {
+            throw new Exception("O Nome Completo deve possuir ao menos nome e sobrenome, separados por espaço", 400);
+        }
+        $dateTime = \DateTime::createFromFormat("Y-m-d", $this->birthdate);
+        if(!($dateTime && $dateTime->format("Y-m-d") === $this->birthdate)) {
+            throw new Exception("A Data de Nascimento deve seguir o formato Y-m-d", 400);
+        }
+        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception("E-mail inválido", 400);
+        }
+        if(strlen($this->phone) !== 11) {
+            throw new Exception("Celular inválido", 400);
+        }
+        if(strlen($this->zipCode) !== 8) {
+            throw new Exception("CEP inválido", 400);
+        }
+
+        return true;
     }
     /**
      * Parse props to array
