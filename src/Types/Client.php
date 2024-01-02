@@ -1,14 +1,11 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
-use Exception;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\EasyCreditoValidate;
-use O4l3x4ndr3\SdkEasyCredito\Helpers\Enum\Education;
 
 /**
  * Modelo de Cliente
  */
-class Client implements EasyCreditoValidate
+class Client
 {
     protected ?string $id;
     protected ?string $status;
@@ -30,7 +27,6 @@ class Client implements EasyCreditoValidate
     protected ?string $occupation;
     protected ?float $income;
     protected ?array $products;
-    protected ?LogData $logData;
 
     /**
      * @param string|null $id
@@ -40,20 +36,6 @@ class Client implements EasyCreditoValidate
      * @param string|null $birthdate
      * @param string|null $phone
      * @param string|null $zipCode
-     * @param bool $hasCreditCard
-     * @param bool $hasRestriction
-     * @param bool $hasOwnHouse
-     * @param bool $hasVehicle
-     * @param bool $hasAndroid
-     * @param string|null $education
-     * @param string|null $banks
-     * @param string|null $occupation
-     * @param float|null $income
-     * @param array|null $products
-     * @param string|null $status
-     * @param string|null $dateCreated
-     * @param string|null $lastUpdated
-     * @param LogData|null $logData
      */
     public function __construct(
         ?string $id,
@@ -62,21 +44,7 @@ class Client implements EasyCreditoValidate
         ?string $email,
         ?string $birthdate,
         ?string $phone,
-        ?string $zipCode,
-        ?bool $hasCreditCard,
-        ?bool $hasRestriction,
-        ?bool $hasOwnHouse,
-        ?bool $hasVehicle,
-        ?bool $hasAndroid,
-        ?string $education = null,
-        ?string $banks = null,
-        ?string $occupation = null,
-        ?float $income = null,
-        ?array $products = null,
-        ?string $status = null,
-        ?string $dateCreated = null,
-        ?string $lastUpdated = null,
-        ?LogData $logData = null
+        ?string $zipCode
     ) {
         $this->id = $id;
         $this->cpf = $cpf;
@@ -85,20 +53,8 @@ class Client implements EasyCreditoValidate
         $this->birthdate = $birthdate;
         $this->phone = $phone;
         $this->zipCode = $zipCode;
-        $this->hasCreditCard = $hasCreditCard;
-        $this->hasRestriction = $hasRestriction;
-        $this->hasOwnHouse = $hasOwnHouse;
-        $this->hasVehicle = $hasVehicle;
-        $this->hasAndroid = $hasAndroid;
-        $this->education = $education;
-        $this->banks = $banks;
-        $this->occupation = $occupation;
-        $this->income = $income;
-        $this->products = $products;
-        $this->status = $status;
         $this->dateCreated = $dateCreated ?? date("c");
         $this->lastUpdated = $lastUpdated ?? date("c");
-        $this->logData = $logData;
     }
 
     /**
@@ -460,52 +416,6 @@ class Client implements EasyCreditoValidate
         $this->products = $products;
         return $this;
     }
-
-    /**
-     * @return LogData|null
-     */
-    public function getLogData(): ?LogData
-    {
-        return $this->logData;
-    }
-
-    /**
-     * @param LogData|null $logData
-     * @return Client
-     */
-    public function setLogData(?LogData $logData): Client
-    {
-        $this->logData = $logData;
-        return $this;
-    }
-
-    /**
-     * @throws Exception
-     */
-    public function validate() : bool
-    {
-        if(strlen(preg_replace("/\D/", "", $this->cpf)) !== 11) {
-            throw new Exception("O CPF deve possuir 11 caracteres numéricos", 400);
-        }
-        if(count(explode(" ", $this->name)) < 2) {
-            throw new Exception("O Nome Completo deve possuir ao menos nome e sobrenome, separados por espaço", 400);
-        }
-        $dateTime = \DateTime::createFromFormat("Y-m-d", $this->birthdate);
-        if(!($dateTime && $dateTime->format("Y-m-d") === $this->birthdate)) {
-            throw new Exception("A Data de Nascimento deve seguir o formato Y-m-d", 400);
-        }
-        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            throw new Exception("E-mail inválido", 400);
-        }
-        if(strlen($this->phone) !== 11) {
-            throw new Exception("Celular inválido", 400);
-        }
-        if(strlen($this->zipCode) !== 8) {
-            throw new Exception("CEP inválido", 400);
-        }
-
-        return true;
-    }
     /**
      * Parse props to array
      *
@@ -515,26 +425,12 @@ class Client implements EasyCreditoValidate
     {
         return array_filter([
             'id' => $this->id,
-            'status' => $this->status,
-            'dateCreated' => $this->dateCreated,
-            'lastUpdated' => $this->lastUpdated,
             'cpf' => $this->cpf,
             'name' => $this->name,
             'birthday' => $this->birthdate,
             'email' => $this->email,
             'phone' => $this->phone,
-            'zipCode' => $this->zipCode,
-            'hasCreditCard' => $this->hasCreditCard,
-            'hasRestriction' => $this->hasRestriction,
-            'hasOwnHouse' => $this->hasOwnHouse,
-            'hasVehicle' => $this->hasVehicle,
-            'hasAndroid' => $this->hasAndroid,
-            'education' => $this->education,
-            'banks' => $this->banks,
-            'occupation' => $this->occupation,
-            'income' => $this->income,
-            'products' => $this->products,
-            'logData' => $this->logData->toArray(),
+            'zipCode' => $this->zipCode
         ], function ($v) {
             return !empty($v);
         });
