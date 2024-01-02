@@ -347,6 +347,24 @@ class Proposal
         $this->products = $products;
         return $this;
     }
+
+    /**
+     * @return Document|null
+     */
+    public function getIdentity(): ?Document
+    {
+        return $this->identity;
+    }
+
+    /**
+     * @param Document|null $identity
+     * @return Proposal
+     */
+    public function setIdentity(?Document $identity): Proposal
+    {
+        $this->identity = $identity;
+        return $this;
+    }
     /**
      * Parse props to array
      *
