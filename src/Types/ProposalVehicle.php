@@ -17,9 +17,9 @@ class ProposalVehicle
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLicensePlate(): string
+    public function getLicensePlate(): ?string
     {
         return $this->licensePlate;
     }
