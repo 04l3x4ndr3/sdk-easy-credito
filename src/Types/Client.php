@@ -38,13 +38,13 @@ class Client
      * @param string|null $zipCode
      */
     public function __construct(
-        ?string $id,
-        ?string $cpf,
-        ?string $name,
-        ?string $email,
-        ?string $birthdate,
-        ?string $phone,
-        ?string $zipCode
+        ?string $id = null,
+        ?string $cpf = null,
+        ?string $name = null,
+        ?string $email = null,
+        ?string $birthdate = null,
+        ?string $phone = null,
+        ?string $zipCode = null
     ) {
         $this->id = $id;
         $this->cpf = $cpf;

@@ -7,22 +7,22 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
  */
 class Proposal
 {
-    protected string $mother;
-    protected string $gender;
-    protected string $nationality;
-    protected string $hometownState;
-    protected string $hometown;
-    protected string $education;
-    protected string $relationshipStatus;
-    protected string $phoneLandline;
+    protected ?string $mother;
+    protected ?string $gender;
+    protected ?string $nationality;
+    protected ?string $hometownState;
+    protected ?string $hometown;
+    protected ?string $education;
+    protected ?string $relationshipStatus;
+    protected ?string $phoneLandline;
     protected ?Document $identity;
     protected ?ProposalVehicle $vehicle;
     protected ?ConsumerUnit $consumerUnit;
     protected ?Address $address;
     protected ?Business $business;
     protected ?Bank $bank;
-    protected array $reference;
-    protected array $products;
+    protected ?array $reference;
+    protected ?array $products;
 
     /**
      * @param string|null $mother
@@ -43,22 +43,22 @@ class Proposal
      * @param array|null $products
      */
     public function __construct(
-        ?string $mother,
-        ?string $gender,
-        ?string $nationality,
-        ?string $hometownState,
-        ?string $hometown,
-        ?string $education,
-        ?string $relationshipStatus,
-        ?string $phoneLandline,
-        ?Document $identity,
-        ?ProposalVehicle $vehicle,
-        ?ConsumerUnit $consumerUnit,
-        ?Address $address,
-        ?Business $business,
-        ?Bank $bank,
-        ?array $reference,
-        ?array $products
+        ?string $mother = null,
+        ?string $gender = null,
+        ?string $nationality = null,
+        ?string $hometownState = null,
+        ?string $hometown = null,
+        ?string $education = null,
+        ?string $relationshipStatus = null,
+        ?string $phoneLandline = null,
+        ?Document $identity = null,
+        ?ProposalVehicle $vehicle = null,
+        ?ConsumerUnit $consumerUnit = null,
+        ?Address $address = null,
+        ?Business $business = null,
+        ?Bank $bank = null,
+        ?array $reference = null,
+        ?array $products = null
     ) {
         $this->mother = $mother;
         $this->gender = $gender;

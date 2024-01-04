@@ -20,8 +20,13 @@ class Document
      * @param string|null $state
      * @param string|null $issuingDate
      */
-    public function __construct(?string $identityType, ?string $number, ?string $issuer, ?string $state, ?string $issuingDate)
-    {
+    public function __construct(
+        ?string $identityType = null,
+        ?string $number = null,
+        ?string $issuer = null,
+        ?string $state = null,
+        ?string $issuingDate = null
+    ) {
         $this->identityType = $identityType;
         $this->number = $number;
         $this->issuer = $issuer;
