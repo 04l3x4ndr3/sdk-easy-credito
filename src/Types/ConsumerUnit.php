@@ -11,7 +11,7 @@ class ConsumerUnit
     /**
      * @param string|null $number
      */
-    public function __construct(?string $number)
+    public function __construct(?string $number = null)
     {
         $this->number = $number;
     }
