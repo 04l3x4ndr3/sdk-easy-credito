@@ -17,8 +17,12 @@ class Bank
      * @param ?string $agency
      * @param ?string $account
      */
-    public function __construct(?string $bank, ?string $type, ?string $agency, ?string $account)
-    {
+    public function __construct(
+        ?string $bank = null,
+        ?string $type = null,
+        ?string $agency = null,
+        ?string $account = null
+    ) {
         $this->bank = $bank;
         $this->type = $type;
         $this->agency = $agency;

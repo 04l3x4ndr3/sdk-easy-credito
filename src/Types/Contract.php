@@ -7,8 +7,8 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
  */
 class Contract
 {
-    protected string $checksum;
-    protected string $contract;
+    protected ?string $checksum;
+    protected ?string $contract;
     protected ?LogData $logData;
 
     /**
@@ -17,9 +17,9 @@ class Contract
      * @param LogData|null $logData
      */
     public function __construct(
-        ?string $checksum,
-        ?string $contract,
-        ?LogData $logData
+        ?string $checksum = null,
+        ?string $contract = null,
+        ?LogData $logData = null
     ) {
         $this->checksum = $checksum;
         $this->contract = $contract;

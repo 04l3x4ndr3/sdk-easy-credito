@@ -6,29 +6,38 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
  */
 class Business
 {
-    protected string $occupation;
-    protected string $profession;
-    protected string $companyName;
-    protected string $phone;
-    protected float $income;
-    protected int $payday;
-    protected string $employmentSince;
+    protected ?string $occupation;
+    protected ?string $profession;
+    protected ?string $companyName;
+    protected ?string $phone;
+    protected ?float $income;
+    protected ?int $payday;
+    protected ?string $employmentSince;
     protected ?string $benefitNumber;
     protected ?Address $address;
 
     /**
-     * @param string $occupation
-     * @param string $profession
-     * @param string $companyName
-     * @param string $phone
-     * @param float $income
-     * @param int $payday
-     * @param string $employmentSince
+     * @param string|null $occupation
+     * @param string|null $profession
+     * @param string|null $companyName
+     * @param string|null $phone
+     * @param float|null $income
+     * @param int|null $payday
+     * @param string|null $employmentSince
      * @param string|null $benefitNumber
      * @param Address|null $address
      */
-    public function __construct(string $occupation, string $profession, string $companyName, string $phone, float $income, int $payday, string $employmentSince, ?string $benefitNumber, ?Address $address)
-    {
+    public function __construct(
+        ?string $occupation = null,
+        ?string $profession = null,
+        ?string $companyName = null,
+        ?string $phone = null,
+        ?float $income = null,
+        ?int $payday = null,
+        ?string $employmentSince = null,
+        ?string $benefitNumber = null,
+        ?Address $address = null
+    ) {
         $this->occupation = $occupation;
         $this->profession = $profession;
         $this->companyName = $companyName;

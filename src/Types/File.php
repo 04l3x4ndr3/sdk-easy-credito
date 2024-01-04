@@ -7,10 +7,10 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
  */
 class File
 {
-    protected string $documentType;
-    protected string $mimeType;
-    protected string $name;
-    protected string $base64;
+    protected ?string $documentType;
+    protected ?string $mimeType;
+    protected ?string $name;
+    protected ?string $base64;
 
     /**
      * @param string|null $documentType
@@ -19,10 +19,10 @@ class File
      * @param string|null $base64
      */
     public function __construct(
-        ?string $documentType,
-        ?string $mimeType,
-        ?string $name,
-        ?string $base64
+        ?string $documentType = null,
+        ?string $mimeType = null,
+        ?string $name = null,
+        ?string $base64 = null
     ) {
         $this->documentType = $documentType;
         $this->mimeType = $mimeType;

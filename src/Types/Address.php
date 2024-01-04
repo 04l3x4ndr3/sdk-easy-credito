@@ -7,28 +7,37 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
 class Address
 {
     protected ?string $zipCode;
-    protected string $address;
-    protected int $number;
-    protected string $complement;
-    protected string $district;
-    protected string $state;
-    protected string $city;
+    protected ?string $address;
+    protected ?int $number;
+    protected ?string $complement;
+    protected ?string $district;
+    protected ?string $state;
+    protected ?string $city;
     protected ?string $homeType;
     protected ?string $homeSince;
 
     /**
      * @param ?string $zipCode
-     * @param string $address
-     * @param int $number
-     * @param string $complement
-     * @param string $district
-     * @param string $state
-     * @param string $city
+     * @param string|null $address
+     * @param int|null $number
+     * @param string|null $complement
+     * @param string|null $district
+     * @param string|null $state
+     * @param string|null $city
      * @param string|null $homeType
      * @param string|null $homeSince
      */
-    public function __construct(?string $zipCode, string $address, int $number, string $complement, string $district, string $state, string $city, ?string $homeType, ?string $homeSince)
-    {
+    public function __construct(
+        ?string $zipCode = null,
+        ?string $address = null,
+        ?int $number = null,
+        ?string $complement = null,
+        ?string $district = null,
+        ?string $state = null,
+        ?string $city = null,
+        ?string $homeType = null,
+        ?string $homeSince = null
+    ) {
         $this->zipCode = $zipCode;
         $this->address = $address;
         $this->number = $number;

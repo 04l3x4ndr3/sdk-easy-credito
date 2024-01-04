@@ -6,12 +6,12 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
  */
 class ProposalVehicle
 {
-    protected string $licensePlate;
+    protected ?string $licensePlate;
 
     /**
-     * @param string $licensePlate
+     * @param string|null $licensePlate
      */
-    public function __construct(string $licensePlate)
+    public function __construct(?string $licensePlate = null)
     {
         $this->licensePlate = $licensePlate;
     }
