@@ -59,7 +59,8 @@ class Proposal
         ?Bank $bank = null,
         ?array $reference = null,
         ?array $products = null
-    ) {
+    )
+    {
         $this->mother = $mother;
         $this->gender = $gender;
         $this->nationality = $nationality;
@@ -79,272 +80,146 @@ class Proposal
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMother(): string
+    public function getMother(): ?string
     {
         return $this->mother;
     }
 
     /**
-     * @param string $mother
+     * @param string|null $mother
      * @return Proposal
      */
-    public function setMother(string $mother): Proposal
+    public function setMother(?string $mother): Proposal
     {
         $this->mother = $mother;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getGender(): string
+    public function getGender(): ?string
     {
         return $this->gender;
     }
 
     /**
-     * @param string $gender
+     * @param string|null $gender
      * @return Proposal
      */
-    public function setGender(string $gender): Proposal
+    public function setGender(?string $gender): Proposal
     {
         $this->gender = $gender;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getNationality(): string
+    public function getNationality(): ?string
     {
         return $this->nationality;
     }
 
     /**
-     * @param string $nationality
+     * @param string|null $nationality
      * @return Proposal
      */
-    public function setNationality(string $nationality): Proposal
+    public function setNationality(?string $nationality): Proposal
     {
         $this->nationality = $nationality;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getHometownState(): string
+    public function getHometownState(): ?string
     {
         return $this->hometownState;
     }
 
     /**
-     * @param string $hometownState
+     * @param string|null $hometownState
      * @return Proposal
      */
-    public function setHometownState(string $hometownState): Proposal
+    public function setHometownState(?string $hometownState): Proposal
     {
         $this->hometownState = $hometownState;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getHometown(): string
+    public function getHometown(): ?string
     {
         return $this->hometown;
     }
 
     /**
-     * @param string $hometown
+     * @param string|null $hometown
      * @return Proposal
      */
-    public function setHometown(string $hometown): Proposal
+    public function setHometown(?string $hometown): Proposal
     {
         $this->hometown = $hometown;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEducation(): string
+    public function getEducation(): ?string
     {
         return $this->education;
     }
 
     /**
-     * @param string $education
+     * @param string|null $education
      * @return Proposal
      */
-    public function setEducation(string $education): Proposal
+    public function setEducation(?string $education): Proposal
     {
         $this->education = $education;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRelationshipStatus(): string
+    public function getRelationshipStatus(): ?string
     {
         return $this->relationshipStatus;
     }
 
     /**
-     * @param string $relationshipStatus
+     * @param string|null $relationshipStatus
      * @return Proposal
      */
-    public function setRelationshipStatus(string $relationshipStatus): Proposal
+    public function setRelationshipStatus(?string $relationshipStatus): Proposal
     {
         $this->relationshipStatus = $relationshipStatus;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPhoneLandline(): string
+    public function getPhoneLandline(): ?string
     {
         return $this->phoneLandline;
     }
 
     /**
-     * @param string $phoneLandline
+     * @param string|null $phoneLandline
      * @return Proposal
      */
-    public function setPhoneLandline(string $phoneLandline): Proposal
+    public function setPhoneLandline(?string $phoneLandline): Proposal
     {
         $this->phoneLandline = $phoneLandline;
-        return $this;
-    }
-
-    /**
-     * @return ProposalVehicle
-     */
-    public function getVehicle(): ProposalVehicle
-    {
-        return $this->vehicle;
-    }
-
-    /**
-     * @param ProposalVehicle $vehicle
-     * @return Proposal
-     */
-    public function setVehicle(ProposalVehicle $vehicle): Proposal
-    {
-        $this->vehicle = $vehicle;
-        return $this;
-    }
-
-    /**
-     * @return ConsumerUnit
-     */
-    public function getConsumerUnit(): object
-    {
-        return $this->consumerUnit;
-    }
-
-    /**
-     * @param ConsumerUnit $consumerUnit
-     * @return Proposal
-     */
-    public function setConsumerUnit(ConsumerUnit $consumerUnit): Proposal
-    {
-        $this->consumerUnit = $consumerUnit;
-        return $this;
-    }
-
-    /**
-     * @return Address
-     */
-    public function getAddress(): Address
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param Address $address
-     * @return Proposal
-     */
-    public function setAddress(Address $address): Proposal
-    {
-        $this->address = $address;
-        return $this;
-    }
-
-    /**
-     * @return Business
-     */
-    public function getBusiness(): object
-    {
-        return $this->business;
-    }
-
-    /**
-     * @param Business $business
-     * @return Proposal
-     */
-    public function setBusiness(Business $business): Proposal
-    {
-        $this->business = $business;
-        return $this;
-    }
-
-    /**
-     * @return Bank
-     */
-    public function getBank(): Bank
-    {
-        return $this->bank;
-    }
-
-    /**
-     * @param Bank $bank
-     * @return Proposal
-     */
-    public function setBank(Bank $bank): Proposal
-    {
-        $this->bank = $bank;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getReference(): array
-    {
-        return $this->reference;
-    }
-
-    /**
-     * @param array $reference
-     * @return Proposal
-     */
-    public function setReference(array $reference): Proposal
-    {
-        $this->reference = $reference;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getProducts(): array
-    {
-        return $this->products;
-    }
-
-    /**
-     * @param array $products
-     * @return Proposal
-     */
-    public function setProducts(array $products): Proposal
-    {
-        $this->products = $products;
         return $this;
     }
 
@@ -363,6 +238,132 @@ class Proposal
     public function setIdentity(?Document $identity): Proposal
     {
         $this->identity = $identity;
+        return $this;
+    }
+
+    /**
+     * @return ProposalVehicle|null
+     */
+    public function getVehicle(): ?ProposalVehicle
+    {
+        return $this->vehicle;
+    }
+
+    /**
+     * @param ProposalVehicle|null $vehicle
+     * @return Proposal
+     */
+    public function setVehicle(?ProposalVehicle $vehicle): Proposal
+    {
+        $this->vehicle = $vehicle;
+        return $this;
+    }
+
+    /**
+     * @return ConsumerUnit|null
+     */
+    public function getConsumerUnit(): ?ConsumerUnit
+    {
+        return $this->consumerUnit;
+    }
+
+    /**
+     * @param ConsumerUnit|null $consumerUnit
+     * @return Proposal
+     */
+    public function setConsumerUnit(?ConsumerUnit $consumerUnit): Proposal
+    {
+        $this->consumerUnit = $consumerUnit;
+        return $this;
+    }
+
+    /**
+     * @return Address|null
+     */
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param Address|null $address
+     * @return Proposal
+     */
+    public function setAddress(?Address $address): Proposal
+    {
+        $this->address = $address;
+        return $this;
+    }
+
+    /**
+     * @return Business|null
+     */
+    public function getBusiness(): ?Business
+    {
+        return $this->business;
+    }
+
+    /**
+     * @param Business|null $business
+     * @return Proposal
+     */
+    public function setBusiness(?Business $business): Proposal
+    {
+        $this->business = $business;
+        return $this;
+    }
+
+    /**
+     * @return Bank|null
+     */
+    public function getBank(): ?Bank
+    {
+        return $this->bank;
+    }
+
+    /**
+     * @param Bank|null $bank
+     * @return Proposal
+     */
+    public function setBank(?Bank $bank): Proposal
+    {
+        $this->bank = $bank;
+        return $this;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getReference(): ?array
+    {
+        return $this->reference;
+    }
+
+    /**
+     * @param array|null $reference
+     * @return Proposal
+     */
+    public function setReference(?array $reference): Proposal
+    {
+        $this->reference = $reference;
+        return $this;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getProducts(): ?array
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param array|null $products
+     * @return Proposal
+     */
+    public function setProducts(?array $products): Proposal
+    {
+        $this->products = $products;
         return $this;
     }
     /**
