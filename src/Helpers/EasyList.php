@@ -4,7 +4,7 @@ namespace O4l3x4ndr3\SdkEasyCredito\Helpers;
 
 class EasyList
 {
-    public static function states(?int $key) : string
+    public static function states(int|string|null $key) : string
     {
         $list = [
             0 => 'AC',
@@ -37,12 +37,12 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
     }
-    public static function identityIssuer(?int $key) : string
+    public static function identityIssuer(int|string|null $key) : string
     {
         $list = [
             0 => "SSP",
@@ -84,12 +84,12 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
     }
-    public static function creditStatus(?int $key) : string
+    public static function creditStatus(int|string|null $key) : string
     {
         $list = [
             0 => "PRE_PROCESSAMENTO",
@@ -107,12 +107,12 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
     }
-    public static function pipelineStatus(?int $key) : string
+    public static function pipelineStatus(int|string|null $key) : string
     {
         $list = [
             0 => "SIGNUP_ANALISIS",
@@ -124,12 +124,12 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
     }
-    public static function accountType(?int $key) : string
+    public static function accountType(int|string|null $key) : string
     {
         $list = [
             0 => "CONTA_CORRENTE_INDIVIDUAL",
@@ -139,12 +139,12 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
     }
-    public static function employmentSince(?int $key) : string
+    public static function employmentSince(int|string|null $key) : string
     {
         $list = [
             0 => "LESS_THAN_SIX_MONTHS",
@@ -158,12 +158,12 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
     }
-    public static function homeSince(?int $key) : string
+    public static function homeSince(int|string|null $key) : string
     {
         $list = [
             0 => "MENOR_6_MESES",
@@ -173,12 +173,12 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
     }
-    public static function homeType(?int $key) : string
+    public static function homeType(int|string|null $key) : string
     {
         $list = [
             0 => "ALUGADA",
@@ -190,12 +190,12 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
     }
-    public static function occupation(?int $key) : string
+    public static function occupation(int|string|null $key) : string
     {
         $list = [
             0 => "APOSENTADO_PENSIONISTA",
@@ -208,12 +208,12 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
     }
-    public static function education(?int $key) : string
+    public static function education(int|string|null $key) : string
     {
         $list = [
             0 => "NAO_ALFABETIZADO",
@@ -227,12 +227,12 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
     }
-    public static function relationshipStatus(?int $key) : string
+    public static function relationshipStatus(int|string|null $key) : string
     {
         $list = [
             0 => "SOLTEIRO",
@@ -248,7 +248,7 @@ class EasyList
         ];
 
         if (isset($key)) {
-            return $list[$key];
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
         }
 
         return false;
