@@ -4,6 +4,95 @@ namespace O4l3x4ndr3\SdkEasyCredito\Helpers;
 
 class EasyList
 {
+    public static function realState(int|string|null $key) : string
+    {
+        $list = [
+            0 => "house",
+            1 => "apartment",
+            2 => "commercial",
+            3 => "land",
+            4 => "others"
+        ];
+
+        if (isset($key)) {
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
+        }
+
+        return false;
+    }
+    public static function product(int|string|null $key) : string
+    {
+        $list = [
+            0 => "LOAN",
+            1 => "CARD",
+            2 => "REFINANCING_AUTO",
+            3 => "REFINANCING_HOME",
+            4 => "FINANCING_AUTO",
+            5 => "CAAS",
+            6 => "WORKING_CAPITAL",
+            7 => "DEBT"
+        ];
+
+        if (isset($key)) {
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
+        }
+
+        return false;
+    }
+    public static function network(int|string|null $key) : string
+    {
+        $list = [
+            0 => "VISA",
+            1 => "MASTERCARD",
+            2 => "ELO"
+        ];
+
+        if (isset($key)) {
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
+        }
+
+        return false;
+    }
+    public static function nationality(int|string|null $key) : string
+    {
+        $list = [
+            0 => "BRASILEIRO",
+            1 => "ESTRANGEIRO"
+        ];
+
+        if (isset($key)) {
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
+        }
+
+        return false;
+    }
+    public static function mimeType(int|string|null $key) : string
+    {
+        $list = [
+            0 => "image/jpeg",
+            1 => "image/png",
+            2 => "application/pdf"
+        ];
+
+        if (isset($key)) {
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
+        }
+
+        return false;
+    }
+    public static function gender(int|string|null $key) : string
+    {
+        $list = [
+            0 => "MASCULINO",
+            1 => "FEMININO"
+        ];
+
+        if (isset($key)) {
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
+        }
+
+        return false;
+    }
     public static function states(int|string|null $key) : string
     {
         $list = [
@@ -129,7 +218,7 @@ class EasyList
 
         return false;
     }
-    public static function accountType(int|string|null $key) : string
+    public static function account(int|string|null $key) : string
     {
         $list = [
             0 => "CONTA_CORRENTE_INDIVIDUAL",
@@ -178,7 +267,7 @@ class EasyList
 
         return false;
     }
-    public static function homeType(int|string|null $key) : string
+    public static function home(int|string|null $key) : string
     {
         $list = [
             0 => "ALUGADA",

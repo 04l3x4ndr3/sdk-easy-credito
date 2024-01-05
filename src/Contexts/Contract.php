@@ -1,7 +1,6 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Contexts;
-use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use O4l3x4ndr3\SdkEasyCredito\Configuration;
 use O4l3x4ndr3\SdkEasyCredito\Helpers\CallApi;
@@ -21,14 +20,11 @@ class Contract extends CallApi
 
     /**
      * Public Methods
+     * @throws GuzzleException
      */
     public function get(?string $customerServiceNumber): object
     {
-        try {
-            return $this->call('GET', '/v2.1/contract/' . $customerServiceNumber);
-        } catch (Exception|GuzzleException $e) {
-            return $e;
-        }
+        return $this->call('GET', '/v2.1/contract/' . $customerServiceNumber);
     }
 
     /**
