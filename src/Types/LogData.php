@@ -19,8 +19,14 @@ class LogData
      * @param string $ip
      * @param string $mac
      */
-    public function __construct(float $lat = 20, float $long = 40, string $occuranceDate = null, string $userAgent = null, string $ip = "0.0.0.0", string $mac = "00:00:00:00:00:00")
-    {
+    public function __construct(
+        ?float $lat = 20,
+        ?float $long = 40,
+        ?string $occuranceDate = null,
+        ?string $userAgent = null,
+        ?string $ip = "0.0.0.0",
+        ?string $mac = "00:00:00:00:00:00"
+    ) {
         if (!empty($_SERVER["HTTP_CLIENT_IP"])) {
             $expectedIp = $_SERVER["HTTP_CLIENT_IP"];
         }
