@@ -27,6 +27,7 @@ class Client
     protected ?string $occupation;
     protected ?float $income;
     protected ?array $products;
+    protected ?LogData $logData;
 
     /**
      * @param string|null $id
@@ -36,6 +37,7 @@ class Client
      * @param string|null $birthdate
      * @param string|null $phone
      * @param string|null $zipCode
+     * @param LogData|null $logData
      */
     public function __construct(
         ?string $id = null,
@@ -44,7 +46,8 @@ class Client
         ?string $email = null,
         ?string $birthdate = null,
         ?string $phone = null,
-        ?string $zipCode = null
+        ?string $zipCode = null,
+        ?LogData $logData = null
     ) {
         $this->id = $id;
         $this->cpf = $cpf;
@@ -55,6 +58,7 @@ class Client
         $this->zipCode = $zipCode;
         $this->dateCreated = $dateCreated ?? date("c");
         $this->lastUpdated = $lastUpdated ?? date("c");
+        $this->logData = $logData;
     }
 
     /**
@@ -416,6 +420,24 @@ class Client
         $this->products = $products;
         return $this;
     }
+
+    /**
+     * @return LogData|null
+     */
+    public function getLogData(): ?LogData
+    {
+        return $this->logData;
+    }
+
+    /**
+     * @param LogData|null $logData
+     * @return Client
+     */
+    public function setLogData(?LogData $logData): Client
+    {
+        $this->logData = $logData;
+        return $this;
+    }
     /**
      * Parse props to array
      *
@@ -430,7 +452,8 @@ class Client
             'birthday' => $this->birthdate,
             'email' => $this->email,
             'phone' => $this->phone,
-            'zipCode' => $this->zipCode
+            'zipCode' => $this->zipCode,
+            'logData' => $this->logData->toArray()
         ], function ($v) {
             return !empty($v);
         });
