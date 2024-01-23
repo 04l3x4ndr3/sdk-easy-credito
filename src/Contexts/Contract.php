@@ -36,6 +36,6 @@ class Contract extends CallApi
             'aceptedCheckSum' => $contract->getChecksum(),
             'logData' => $contract->getLogData()
         ];
-        return $this->call('POST', '/v2/process/document/'.$customerServiceNumber, $acceptedContract);
+        return $this->call('POST', '/v2/process/contract/'.$customerServiceNumber, $acceptedContract);
     }
 }
