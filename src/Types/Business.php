@@ -7,6 +7,7 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
 class Business
 {
     protected ?string $occupation;
+    protected ?string $occupyType;
     protected ?string $profession;
     protected ?string $companyName;
     protected ?string $phone;
@@ -29,6 +30,7 @@ class Business
      */
     public function __construct(
         ?string $occupation = null,
+        ?string $occupyType = null,
         ?string $profession = null,
         ?string $companyName = null,
         ?string $phone = null,
@@ -39,6 +41,7 @@ class Business
         ?Address $address = null
     ) {
         $this->occupation = $occupation;
+        $this->occupyType = $occupyType;
         $this->profession = $profession;
         $this->companyName = $companyName;
         $this->phone = $phone;
@@ -66,6 +69,25 @@ class Business
         $this->occupation = $occupation;
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getOccupyType(): ?string
+    {
+        return $this->occupyType;
+    }
+
+    /**
+     * @param string|null $occupyType
+     * @return Business
+     */
+    public function setOccupyType(?string $occupyType): Business
+    {
+        $this->occupyType = $occupyType;
+        return $this;
+    }
+
 
     /**
      * @return string
@@ -219,6 +241,7 @@ class Business
         return array_merge(
             array_filter([
                 'occupation' => $this->occupation,
+                'occupyType' => $this->occupyType,
                 'profession' => $this->profession,
                 'companyName' => $this->companyName,
                 'phone' => $this->phone,

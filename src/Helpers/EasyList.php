@@ -4,6 +4,25 @@ namespace O4l3x4ndr3\SdkEasyCredito\Helpers;
 
 class EasyList
 {
+    public static function occupyType(int|string|null $key): string
+    {
+        $list = [
+            0 => "INSS",
+            1 => "SIAPE",
+            2 => "GOVERNO_ESTADUAL",
+            3 => "PREFEITURA_MUNICIPAL",
+            4 => "FORCAS_ARMADAS",
+            5 => "TRIBUNAL_DE_JUSTICA",
+            6 => "ASSEMBLEIA_LEGISLATIVA "
+        ];
+
+        if (isset($key)) {
+            return is_int($key) ? $list[$key] : array_flip($list)[$key];
+        }
+
+        return false;
+    }
+
     public static function businessProfession(int|string|null $key): string
     {
         $list = [
