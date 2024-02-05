@@ -108,13 +108,11 @@ class File
      */
     public function toArray(): array
     {
-        return array_filter([
+        return [
             'type' => $this->type,
             'mimeType' => $this->mimeType,
             'name' => $this->name,
             'base64' => $this->base64
-        ], function ($v) {
-            return ! is_null($v);
-        });
+        ];
     }
 }
