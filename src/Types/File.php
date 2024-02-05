@@ -7,24 +7,24 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
  */
 class File
 {
-    protected ?string $documentType;
+    protected ?string $type;
     protected ?string $mimeType;
     protected ?string $name;
     protected ?string $base64;
 
     /**
-     * @param string|null $documentType
+     * @param string|null $type
      * @param string|null $mimeType
      * @param string|null $name
      * @param string|null $base64
      */
     public function __construct(
-        ?string $documentType = null,
+        ?string $type = null,
         ?string $mimeType = null,
         ?string $name = null,
         ?string $base64 = null
     ) {
-        $this->documentType = $documentType;
+        $this->type = $type;
         $this->mimeType = $mimeType;
         $this->name = $name;
         $this->base64 = $base64;
@@ -33,18 +33,18 @@ class File
     /**
      * @return string
      */
-    public function getDocumentType(): string
+    public function getType(): string
     {
-        return $this->documentType;
+        return $this->type;
     }
 
     /**
-     * @param string $documentType
+     * @param string $type
      * @return File
      */
-    public function setDocumentType(string $documentType): File
+    public function setType(string $type): File
     {
-        $this->documentType = $documentType;
+        $this->type = $type;
         return $this;
     }
 
@@ -109,7 +109,7 @@ class File
     public function toArray(): array
     {
         return array_filter([
-            'type' => $this->documentType,
+            'type' => $this->type,
             'mimeType' => $this->mimeType,
             'name' => $this->name,
             'base64' => $this->base64
