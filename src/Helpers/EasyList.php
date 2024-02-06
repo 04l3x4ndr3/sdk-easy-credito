@@ -13,7 +13,7 @@ class EasyList
             3 => "PREFEITURA_MUNICIPAL",
             4 => "FORCAS_ARMADAS",
             5 => "TRIBUNAL_DE_JUSTICA",
-            6 => "ASSEMBLEIA_LEGISLATIVA "
+            6 => "ASSEMBLEIA_LEGISLATIVA"
         ];
 
         if (isset($key)) {
@@ -783,7 +783,7 @@ class EasyList
             3 => "PROFISSIONAL_LIBERAL",
             4 => "ASSALARIADO",
             5 => "FUNCIONARIO_PUBLICO",
-            6 => "DESEMPREGADO "
+            6 => "DESEMPREGADO"
         ];
 
         if (isset($key)) {
