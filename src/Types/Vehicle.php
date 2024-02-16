@@ -39,7 +39,7 @@ class Vehicle
             'vehicleModel' => $this->vehicleModel,
             'codeFipe' => $this->codeFipe,
             'vehicleFipeValue' => $this->vehicleFipeValue,
-            'vehicleYear' => $this->vehicleYear
+            'vehicleModelYear' => $this->vehicleYear
         ], function ($v) {
             return ! is_null($v);
         });
