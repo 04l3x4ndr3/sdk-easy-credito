@@ -66,7 +66,7 @@ class Card extends Product
             parent::toArray(),
             array_filter([
                 'network' => $this->network,
-                'payday' => $this->payday
+                'payDay' => $this->payday
             ], function ($v) {
                 return !is_null($v);
             })
