@@ -366,6 +366,18 @@ class Proposal
         $this->products = $products;
         return $this;
     }
+
+    public function addProduct($product): ?array
+    {
+        $this->products[] = $product;
+        return $this->products;
+    }
+
+    public function addReference($reference): ?array
+    {
+        $this->reference[] = $reference;
+        return $this->reference;
+    }
     /**
      * Parse props to array
      *
