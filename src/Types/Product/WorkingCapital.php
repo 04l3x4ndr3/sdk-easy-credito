@@ -7,10 +7,10 @@ class WorkingCapital extends Product
 {
     protected float $value;
     protected int $installments;
-    protected string $cpnj;
+    protected string $cnpj;
     protected string $businessProfession;
     protected string $employeesCount;
-    protected float $businessIncomeCpnj;
+    protected float $businessIncomecnpj;
     protected string $loanObjectives;
     protected ?string $bank;
     protected string $accountType;
@@ -21,10 +21,10 @@ class WorkingCapital extends Product
     /**
      * @param float $value
      * @param int $installments
-     * @param string $cpnj
+     * @param string $cnpj
      * @param string $businessProfession
      * @param string $employeesCount
-     * @param float $businessIncomeCpnj
+     * @param float $businessIncomecnpj
      * @param string $loanObjectives
      * @param string|null $bank
      * @param string $accountType
@@ -35,10 +35,10 @@ class WorkingCapital extends Product
     public function __construct(
         float              $value,
         int                $installments,
-        string             $cpnj,
+        string             $cnpj,
         string $businessProfession,
         string     $employeesCount,
-        float              $businessIncomeCpnj,
+        float              $businessIncomecnpj,
         string     $loanObjectives,
         ?string               $bank,
         string        $accountType,
@@ -49,10 +49,10 @@ class WorkingCapital extends Product
         parent::__construct(null, "WORKING_CAPITAL", $logData);
         $this->value = $value;
         $this->installments = $installments;
-        $this->cpnj = $cpnj;
+        $this->cnpj = $cnpj;
         $this->businessProfession = $businessProfession;
         $this->employeesCount = $employeesCount;
-        $this->businessIncomeCpnj = $businessIncomeCpnj;
+        $this->businessIncomecnpj = $businessIncomecnpj;
         $this->loanObjectives = $loanObjectives;
         $this->bank = $bank;
         $this->accountType = $accountType;
@@ -99,18 +99,18 @@ class WorkingCapital extends Product
     /**
      * @return string
      */
-    public function getCpnj(): string
+    public function getcnpj(): string
     {
-        return $this->cpnj;
+        return $this->cnpj;
     }
 
     /**
-     * @param string $cpnj
+     * @param string $cnpj
      * @return WorkingCapital
      */
-    public function setCpnj(string $cpnj): WorkingCapital
+    public function setcnpj(string $cnpj): WorkingCapital
     {
-        $this->cpnj = $cpnj;
+        $this->cnpj = $cnpj;
         return $this;
     }
 
@@ -153,18 +153,18 @@ class WorkingCapital extends Product
     /**
      * @return float
      */
-    public function getBusinessIncomeCpnj(): float
+    public function getBusinessIncomecnpj(): float
     {
-        return $this->businessIncomeCpnj;
+        return $this->businessIncomecnpj;
     }
 
     /**
-     * @param float $businessIncomeCpnj
+     * @param float $businessIncomecnpj
      * @return WorkingCapital
      */
-    public function setBusinessIncomeCpnj(float $businessIncomeCpnj): WorkingCapital
+    public function setBusinessIncomecnpj(float $businessIncomecnpj): WorkingCapital
     {
-        $this->businessIncomeCpnj = $businessIncomeCpnj;
+        $this->businessIncomecnpj = $businessIncomecnpj;
         return $this;
     }
 
@@ -265,10 +265,10 @@ class WorkingCapital extends Product
             array_filter([
                 'value' => $this->value,
                 'installments' => $this->installments,
-                'cpnj' => $this->cpnj,
+                'cnpj' => $this->cnpj,
                 'businessProfession' => $this->businessProfession,
                 'employeesCount' => $this->employeesCount,
-                'businessIncomeCpnj' => $this->businessIncomeCpnj,
+                'businessIncomeCnpj' => $this->businessIncomecnpj,
                 'loanObjectives' => $this->loanObjectives,
                 'bank' => $this->bank,
                 'accountType' => $this->accountType,
