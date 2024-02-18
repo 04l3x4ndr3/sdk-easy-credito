@@ -2,7 +2,6 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Contexts;
 use GuzzleHttp\Exception\GuzzleException;
-use O4l3x4ndr3\SdkEasyCredito\Exceptions\EasyCreditoException;
 use O4l3x4ndr3\SdkEasyCredito\Types\Client;
 use O4l3x4ndr3\SdkEasyCredito\Types\File;
 use O4l3x4ndr3\SdkEasyCredito\Types\Proposal;
@@ -25,6 +24,7 @@ class Process extends CallApi
     /**
      * Public Methods
      * @throws GuzzleException
+     * @throws Exception
      */
     public function signup(?Client $client, bool $simpleSignup = false): object
     {
