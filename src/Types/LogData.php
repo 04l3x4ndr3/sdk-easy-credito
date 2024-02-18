@@ -32,7 +32,7 @@ class LogData
         $this->longitude = $long;
         $this->occuranceDate = $occuranceDate ?? date("c");
         $this->userAgent = $userAgent ?? $_SERVER["HTTP_USER_AGENT"];
-        $this->ip = $ip ;
+        $this->ip = $ip;
         $this->mac = $mac;
     }
 
@@ -152,14 +152,14 @@ class LogData
     public function toArray(): ?array
     {
         return array_filter([
-            "latitude" => $this->latitude ,
+            "latitude" => $this->latitude,
             "longitude" => $this->longitude,
             "occurrenceDate" => $this->occuranceDate,
             "userAgent" => $this->userAgent,
             "ip" => $this->ip,
             "mac" => $this->mac,
         ], function ($v) {
-            return !empty($v);
+            return !is_null($v);
         });
     }
 }
