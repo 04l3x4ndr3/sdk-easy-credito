@@ -4,8 +4,8 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
 class LogData
 {
-    protected ?float $lat;
-    protected ?float $long;
+    protected ?float $latitude;
+    protected ?float $longitude;
     protected ?string $occuranceDate;
     protected ?string $userAgent;
     protected ?string $ip;
@@ -20,65 +20,55 @@ class LogData
      * @param string|null $mac
      */
     public function __construct(
-        ?float  $lat = 20,
-        ?float  $long = 40,
+        ?float  $lat = null,
+        ?float  $long = null,
         ?string $occuranceDate = null,
         ?string $userAgent = null,
-        ?string $ip = "0.0.0.0",
-        ?string $mac = "00:00:00:00:00:00"
+        ?string $ip = null,
+        ?string $mac = null
     )
     {
-        if (!empty($_SERVER["HTTP_CLIENT_IP"])) {
-            $expectedIp = $_SERVER["HTTP_CLIENT_IP"];
-        } elseif (!empty($_SERVER["HTTP_X_FORWARDED_FOR"])) {
-            $expectedIp = $_SERVER["HTTP_X_FORWARDED_FOR"];
-        } else {
-            $expectedIp = $_SERVER["REMOTE_ADDR"];
-        }
-        exec("arp -a $expectedIp", $output);
-        $expectedMac = $output[0] ?? null;
-
-        $this->lat = $lat;
-        $this->long = $long;
+        $this->latitude = $lat;
+        $this->longitude = $long;
         $this->occuranceDate = $occuranceDate ?? date("c");
         $this->userAgent = $userAgent ?? $_SERVER["HTTP_USER_AGENT"];
-        $this->ip = $ip ?? $expectedIp;
-        $this->mac = $mac ?? $expectedMac;
+        $this->ip = $ip ;
+        $this->mac = $mac;
     }
 
     /**
      * @return float
      */
-    public function getLat(): float
+    public function getLatitude(): float
     {
-        return $this->lat;
+        return $this->latitude;
     }
 
     /**
-     * @param float $lat
+     * @param float|null $latitude
      * @return LogData
      */
-    public function setLat(float $lat): LogData
+    public function setLatitude(?float $latitude): LogData
     {
-        $this->lat = $lat;
+        $this->latitude = $latitude;
         return $this;
     }
 
     /**
      * @return float
      */
-    public function getLong(): float
+    public function getLongitude(): float
     {
-        return $this->long;
+        return $this->longitude;
     }
 
     /**
-     * @param float $long
+     * @param float|null $longitude
      * @return LogData
      */
-    public function setLong(float $long): LogData
+    public function setLongitude(?float $longitude): LogData
     {
-        $this->long = $long;
+        $this->longitude = $longitude;
         return $this;
     }
 
@@ -91,10 +81,10 @@ class LogData
     }
 
     /**
-     * @param string $occuranceDate
+     * @param string|null $occuranceDate
      * @return LogData
      */
-    public function setOccuranceDate(string $occuranceDate): LogData
+    public function setOccuranceDate(?string $occuranceDate): LogData
     {
         $this->occuranceDate = $occuranceDate;
         return $this;
@@ -112,7 +102,7 @@ class LogData
      * @param string $userAgent
      * @return LogData
      */
-    public function setUserAgent(string $userAgent): LogData
+    public function setUserAgent(?string $userAgent): LogData
     {
         $this->userAgent = $userAgent;
         return $this;
@@ -127,10 +117,10 @@ class LogData
     }
 
     /**
-     * @param string $ip
+     * @param string|null $ip
      * @return LogData
      */
-    public function setIp(string $ip): LogData
+    public function setIp(?string $ip): LogData
     {
         $this->ip = $ip;
         return $this;
@@ -162,12 +152,12 @@ class LogData
     public function toArray(): ?array
     {
         return array_filter([
-            "latitude" => $this->latitude ?? 0,
-            "longitude" => $this->longitude ?? 0,
-            "occurrenceDate" => $this->occurrenceDate ?? date("c"),
-            "userAgent" => $this->userAgent ?? $_SERVER['HTTP_USER_AGENT'],
-            "ip" => $this->ip ?? $_SERVER['REMOTE_ADDR'],
-            "mac" => $this->mac ?? "00:00:00:00:00:00"
+            "latitude" => $this->latitude ,
+            "longitude" => $this->longitude,
+            "occurrenceDate" => $this->occuranceDate,
+            "userAgent" => $this->userAgent,
+            "ip" => $this->ip,
+            "mac" => $this->mac,
         ], function ($v) {
             return !empty($v);
         });

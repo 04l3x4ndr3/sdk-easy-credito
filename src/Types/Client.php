@@ -454,7 +454,7 @@ class Client
             'email' => $this->email,
             'phone' => $this->phone,
             'zipCode' => $this->zipCode,
-            'logData' => $this->logData->toArray() ?? null
+            'logData' => ($this->logData)->toArray() ?? null
         ], function ($v) {
             return !empty($v);
         });
