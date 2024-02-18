@@ -226,7 +226,7 @@ class Proposal
         return $this;
     }
 
-    public function addProduct(Product $product): Proposal
+    public function addProduct(Product|ProductAuto|ProductCard|ProductDebt|ProductFinancingAuto|ProductHome|ProductLoan|ProductWorkingCapital $product): Proposal
     {
         $this->products[] = $product->toArray();
         return $this;
