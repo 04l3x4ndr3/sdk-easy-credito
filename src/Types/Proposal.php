@@ -43,22 +43,22 @@ class Proposal
      * @param array|null $products
      */
     public function __construct(
-        ?string $mother = null,
-        ?string $gender = null,
-        ?string $nationality = null,
-        ?string $hometownState = null,
-        ?string $hometown = null,
-        ?string $education = null,
-        ?string $relationshipStatus = null,
-        ?string $phoneLandline = null,
-        ?Document $identity = null,
+        ?string          $mother = null,
+        ?string          $gender = null,
+        ?string          $nationality = null,
+        ?string          $hometownState = null,
+        ?string          $hometown = null,
+        ?string          $education = null,
+        ?string          $relationshipStatus = null,
+        ?string          $phoneLandline = null,
+        ?Document        $identity = null,
         ?ProposalVehicle $vehicle = null,
-        ?ConsumerUnit $consumerUnit = null,
-        ?Address $address = null,
-        ?Business $business = null,
-        ?Bank $bank = null,
-        ?array $reference = null,
-        ?array $products = null
+        ?ConsumerUnit    $consumerUnit = null,
+        ?Address         $address = null,
+        ?Business        $business = null,
+        ?Bank            $bank = null,
+        ?array           $reference = null,
+        ?array           $products = null
     )
     {
         $this->mother = $mother;
@@ -395,16 +395,16 @@ class Proposal
             'education' => $this->education,
             'relationshipStatus' => $this->relationshipStatus,
             'phoneLandline' => $this->phoneLandline,
-            'identity' => $this->identity->toArray() ?? null,
-            'address' => $this->address->toArray() ?? null,
+            'identity' => isset($this->identity) ? $this->identity->toArray() : null,
+            'address' => isset($this->address) ? $this->address->toArray() : null,
             'vehicle' => isset($this->vehicle) ? $this->vehicle->toArray() : null,
             'consumerUnit' => isset($this->consumerUnit) ? $this->consumerUnit->toArray() : null,
-            'business' => $this->business->toArray() ?? null,
-            'bank' => $this->bank->toArray() ?? null,
+            'business' => isset($this->business) ? $this->business->toArray() : null,
+            'bank' => isset($this->bank) ? $this->bank->toArray() : null,
             'reference' => $this->reference,
             'products' => $this->products
         ], function ($v) {
-            return ! is_null($v);
+            return !is_null($v);
         });
     }
 }
