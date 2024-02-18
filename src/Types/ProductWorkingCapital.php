@@ -18,8 +18,8 @@ class ProductWorkingCapital implements Product
     private ?string $account;
 
     public function __construct(
-        ?int    $installments = null,
         ?float  $value = null,
+        ?int    $installments = null,
         ?string $cnpj = null,
         ?string $businessProfession = null,
         ?string $employeesCount = null,
@@ -32,8 +32,8 @@ class ProductWorkingCapital implements Product
     )
     {
         $this->type = 'WORKING_CAPITAL';
-        $this->installments = $installments;
         $this->value = $value;
+        $this->installments = $installments;
         $this->cnpj = $cnpj;
         $this->businessProfession = $businessProfession;
         $this->employeesCount = $employeesCount;
