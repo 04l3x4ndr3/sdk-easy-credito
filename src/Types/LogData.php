@@ -99,7 +99,7 @@ class LogData
     }
 
     /**
-     * @param string $userAgent
+     * @param string|null $userAgent
      * @return LogData
      */
     public function setUserAgent(?string $userAgent): LogData
