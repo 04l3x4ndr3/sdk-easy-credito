@@ -27,23 +27,23 @@ class Client
     private ?LogData $logData;
 
     public function __construct(
-        ?string  $cpf,
-        ?string  $name,
-        ?string  $email,
-        ?string  $birthdate,
-        ?string  $phone,
-        ?string  $zipCode,
-        ?bool    $hasCreditCard,
-        ?bool    $hasRestriction,
-        ?bool    $hasOwnHouse,
-        ?bool    $hasVehicle,
-        ?bool    $hasAndroid,
-        ?string  $education,
-        ?string  $banks,
-        ?string  $occupation,
-        ?float   $income,
-        ?array   $products,
-        ?LogData $logData
+        ?string  $cpf = null,
+        ?string  $name = null,
+        ?string  $email = null,
+        ?string  $birthdate = null,
+        ?string  $phone = null,
+        ?string  $zipCode = null,
+        ?bool    $hasCreditCard = null,
+        ?bool    $hasRestriction = null,
+        ?bool    $hasOwnHouse = null,
+        ?bool    $hasVehicle = null,
+        ?bool    $hasAndroid = null,
+        ?string  $education = null,
+        ?string  $banks = null,
+        ?string  $occupation = null,
+        ?float   $income = null,
+        ?array   $products = null,
+        ?LogData $logData = null
     )
     {
         $this->id = null;
