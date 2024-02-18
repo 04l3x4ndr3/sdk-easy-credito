@@ -2,9 +2,8 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-class ProductCard implements Product
+class ProductCard extends Product
 {
-    private ?string $type;
     private ?string $network;
     private ?int $payday;
 
@@ -13,14 +12,10 @@ class ProductCard implements Product
         ?int    $payday = null,
     )
     {
-        $this->type = 'CARD';
+        parent::__construct('CARD');
+
         $this->network = $network;
         $this->payday = $payday;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
     }
 
     public function getNetwork(): string

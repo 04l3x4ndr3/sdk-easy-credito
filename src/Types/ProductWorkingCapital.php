@@ -2,9 +2,8 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-class ProductWorkingCapital implements Product
+class ProductWorkingCapital extends Product
 {
-    private ?string $type;
     private ?int $installments;
     private ?float $value;
     private ?string $cnpj;
@@ -31,7 +30,8 @@ class ProductWorkingCapital implements Product
         ?string $account = null
     )
     {
-        $this->type = 'WORKING_CAPITAL';
+        parent::__construct('WORKING_CAPITAL');
+
         $this->value = $value;
         $this->installments = $installments;
         $this->cnpj = $cnpj;
@@ -43,11 +43,6 @@ class ProductWorkingCapital implements Product
         $this->accountType = $accountType;
         $this->agency = $agency;
         $this->account = $account;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
     }
 
     public function getInstallments(): ?int

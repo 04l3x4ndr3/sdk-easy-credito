@@ -2,9 +2,8 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-class ProductAuto implements Product
+class ProductAuto extends Product
 {
-    private ?string $type;
     private ?float $value;
     private ?int $installments;
     private ?string $vehicleBrand;
@@ -22,7 +21,8 @@ class ProductAuto implements Product
         ?string $codeFipe = null,
         ?float  $vehicleFipeValue = null)
     {
-        $this->type = "REFINANCING_AUTO";
+        parent::__construct('REFINANCING_AUTO');
+
         $this->value = $value;
         $this->installments = $installments;
         $this->vehicleBrand = $vehicleBrand;
@@ -117,6 +117,7 @@ class ProductAuto implements Product
     public function toArray(): ?array
     {
         return array_filter([
+            "type" => $this->type,
             "value" => $this->value,
             "installments" => $this->installments,
             "vehicleBrand" => $this->vehicleBrand,

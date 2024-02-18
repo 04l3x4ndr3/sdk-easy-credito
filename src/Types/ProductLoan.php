@@ -2,22 +2,17 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-class ProductLoan implements Product
+class ProductLoan extends Product
 {
-    private string $type;
     private float $value;
     private int $installments;
 
     public function __construct(?float $value = null, ?int $installments = null)
     {
-        $this->type = 'LOAN';
+        parent::__construct('LOAN');
+
         $this->value = $value;
         $this->installments = $installments;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
     }
 
     public function getValue(): float

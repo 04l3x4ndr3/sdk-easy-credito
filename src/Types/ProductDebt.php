@@ -2,18 +2,11 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-class ProductDebt implements Product
+class ProductDebt extends Product
 {
-    private ?string $type;
-
     public function __construct()
     {
-        $this->type = "DEBT";
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
+        parent::__construct('DEBT');
     }
 
     public function toArray(): ?array

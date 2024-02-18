@@ -2,10 +2,8 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-class ProductFinancingAuto implements Product
+class ProductFinancingAuto extends Product
 {
-
-    private ?string $type;
     private ?float $value;
     private ?string $vehicleBrand;
     private ?string $vehicleModel;
@@ -28,7 +26,8 @@ class ProductFinancingAuto implements Product
         ?bool   $used = false
     )
     {
-        $this->type = 'FINANCING_AUTO';
+        parent::__construct('FINANCING_AUTO');
+
         $this->value = $value;
         $this->vehicleBrand = $vehicleBrand;
         $this->vehicleModel = $vehicleModel;
@@ -38,11 +37,6 @@ class ProductFinancingAuto implements Product
         $this->vehicleFipeValue = $vehicleFipeValue;
         $this->downPayment = $downPayment;
         $this->used = $used;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
     }
 
     public function getValue(): ?float

@@ -2,9 +2,8 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-class ProductHome implements Product
+class ProductHome extends Product
 {
-    private ?string $type;
     private ?float $value;
     private ?int $installments;
     private ?string $realStateType;
@@ -19,17 +18,13 @@ class ProductHome implements Product
         ?float  $outstandingBalance = null,
     )
     {
-        $this->type = 'REFINANCING_HOME';
+        parent::__construct('REFINANCING_HOME');
+
         $this->value = $value;
         $this->installments = $installments;
         $this->realStateType = $realStateType;
         $this->realStateValue = $realStateValue;
         $this->outstandingBalance = $outstandingBalance;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
     }
 
     public function getValue(): ?float
