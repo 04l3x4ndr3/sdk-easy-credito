@@ -152,7 +152,7 @@ class Business
 
     public function toArray(): ?array
     {
-        $arAddress = isset($this->address) ? $this->address->toArray() : null;
+        $arAddress = isset($this->address) ? $this->address->toArray() : [];
 
         $arBussiness = array_merge([
             'occupation' => $this->occupation,
