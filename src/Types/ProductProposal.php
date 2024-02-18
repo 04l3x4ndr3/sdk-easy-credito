@@ -240,9 +240,9 @@ abstract class ProductProposal
     /**
      * Parse props to array
      *
-     * @return array
+     * @return array|null
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return array_filter([
             'customerServiceNumber' => $this->customerServiceNumber,

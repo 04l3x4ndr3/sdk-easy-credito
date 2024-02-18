@@ -79,17 +79,18 @@ class Contract
         $this->logData = $logData;
         return $this;
     }
+
     /**
      * Parse props to array
      *
-     * @return array
+     * @return array|null
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return array_filter([
             'checksum' => $this->checksum,
             'contract' => $this->contract,
-            'logData' => $this->logData->toArray()
+            'logData' => $this->logData->toArray() ?? null
         ], function ($v) {
             return ! is_null($v);
         });

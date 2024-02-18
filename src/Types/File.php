@@ -101,18 +101,21 @@ class File
         $this->base64 = $base64;
         return $this;
     }
+
     /**
      * Parse props to array
      *
-     * @return array
+     * @return array|null
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
-        return [
+        return array_filter([
             'type' => $this->type,
             'mimeType' => $this->mimeType,
             'name' => $this->name,
             'base64' => $this->base64
-        ];
+        ], function ($v){
+            return !is_null($v);
+        });
     }
 }

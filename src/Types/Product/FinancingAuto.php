@@ -74,7 +74,7 @@ class FinancingAuto extends Product
         $this->used = $used;
         return $this;
     }
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return array_merge(
             $this->refinancingAuto->toArray(),

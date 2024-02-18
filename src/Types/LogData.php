@@ -12,28 +12,27 @@ class LogData
     protected ?string $mac;
 
     /**
-     * @param float $lat
-     * @param float $long
+     * @param float|null $lat
+     * @param float|null $long
      * @param string|null $occuranceDate
      * @param string|null $userAgent
-     * @param string $ip
-     * @param string $mac
+     * @param string|null $ip
+     * @param string|null $mac
      */
     public function __construct(
-        ?float $lat = 20,
-        ?float $long = 40,
+        ?float  $lat = 20,
+        ?float  $long = 40,
         ?string $occuranceDate = null,
         ?string $userAgent = null,
         ?string $ip = "0.0.0.0",
         ?string $mac = "00:00:00:00:00:00"
-    ) {
+    )
+    {
         if (!empty($_SERVER["HTTP_CLIENT_IP"])) {
             $expectedIp = $_SERVER["HTTP_CLIENT_IP"];
-        }
-        elseif (!empty($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+        } elseif (!empty($_SERVER["HTTP_X_FORWARDED_FOR"])) {
             $expectedIp = $_SERVER["HTTP_X_FORWARDED_FOR"];
-        }
-        else {
+        } else {
             $expectedIp = $_SERVER["REMOTE_ADDR"];
         }
         exec("arp -a $expectedIp", $output);
@@ -154,19 +153,20 @@ class LogData
         $this->mac = $mac;
         return $this;
     }
+
     /**
      * Parse props to array
      *
-     * @return array
+     * @return array|null
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return array_filter([
-            "latitude" => $this->latitude ?? -16.6982283,
-            "longitude" => $this->longitude ?? -49.2581201,
+            "latitude" => $this->latitude ?? 0,
+            "longitude" => $this->longitude ?? 0,
             "occurrenceDate" => $this->occurrenceDate ?? date("c"),
-            "userAgent" => $this->userAgent ?? "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36",
-            "ip" => $this->ip ?? "0.0.0.0",
+            "userAgent" => $this->userAgent ?? $_SERVER['HTTP_USER_AGENT'],
+            "ip" => $this->ip ?? $_SERVER['REMOTE_ADDR'],
             "mac" => $this->mac ?? "00:00:00:00:00:00"
         ], function ($v) {
             return !empty($v);

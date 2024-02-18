@@ -19,6 +19,7 @@ class Business
 
     /**
      * @param string|null $occupation
+     * @param string|null $occupyType
      * @param string|null $profession
      * @param string|null $companyName
      * @param string|null $phone
@@ -29,17 +30,18 @@ class Business
      * @param Address|null $address
      */
     public function __construct(
-        ?string $occupation = null,
-        ?string $occupyType = null,
-        ?string $profession = null,
-        ?string $companyName = null,
-        ?string $phone = null,
-        ?float $income = null,
-        ?int $payday = null,
-        ?string $employmentSince = null,
-        ?string $benefitNumber = null,
+        ?string  $occupation = null,
+        ?string  $occupyType = null,
+        ?string  $profession = null,
+        ?string  $companyName = null,
+        ?string  $phone = null,
+        ?float   $income = null,
+        ?int     $payday = null,
+        ?string  $employmentSince = null,
+        ?string  $benefitNumber = null,
         ?Address $address = null
-    ) {
+    )
+    {
         $this->occupation = $occupation;
         $this->occupyType = $occupyType;
         $this->profession = $profession;
@@ -64,7 +66,7 @@ class Business
      * @param string $occupation
      * @return Business
      */
-    public function setOccupation(string $occupation): Business
+    public function setOccupation(?string $occupation): Business
     {
         $this->occupation = $occupation;
         return $this;
@@ -101,7 +103,7 @@ class Business
      * @param string $profession
      * @return Business
      */
-    public function setProfession(string $profession): Business
+    public function setProfession(?string $profession): Business
     {
         $this->profession = $profession;
         return $this;
@@ -119,7 +121,7 @@ class Business
      * @param string $companyName
      * @return Business
      */
-    public function setCompanyName(string $companyName): Business
+    public function setCompanyName(?string $companyName): Business
     {
         $this->companyName = $companyName;
         return $this;
@@ -137,7 +139,7 @@ class Business
      * @param string $phone
      * @return Business
      */
-    public function setPhone(string $phone): Business
+    public function setPhone(?string $phone): Business
     {
         $this->phone = $phone;
         return $this;
@@ -155,7 +157,7 @@ class Business
      * @param float $income
      * @return Business
      */
-    public function setIncome(float $income): Business
+    public function setIncome(?float $income): Business
     {
         $this->income = $income;
         return $this;
@@ -173,7 +175,7 @@ class Business
      * @param int $payday
      * @return Business
      */
-    public function setPayday(int $payday): Business
+    public function setPayday(?int $payday): Business
     {
         $this->payday = $payday;
         return $this;
@@ -191,7 +193,7 @@ class Business
      * @param string $employmentSince
      * @return Business
      */
-    public function setEmploymentSince(string $employmentSince): Business
+    public function setEmploymentSince(?string $employmentSince): Business
     {
         $this->employmentSince = $employmentSince;
         return $this;
@@ -209,11 +211,12 @@ class Business
      * @param string $benefitNumber
      * @return Business
      */
-    public function setBenefitNumber(string $benefitNumber): Business
+    public function setBenefitNumber(?string $benefitNumber): Business
     {
         $this->benefitNumber = $benefitNumber;
         return $this;
     }
+
     /**
      * @return Address|null
      */
@@ -231,15 +234,16 @@ class Business
         $this->address = $address;
         return $this;
     }
+
     /**
      * Parse props to array
      *
-     * @return array
+     * @return array|null
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
-        return array_merge(
-            array_filter([
+        return
+            array_filter(array_merge([
                 'occupation' => $this->occupation,
                 'occupyType' => $this->occupyType,
                 'profession' => $this->profession,
@@ -249,10 +253,8 @@ class Business
                 'payday' => $this->payday,
                 'employmentSince' => $this->employmentSince,
                 'benefitNumber' => $this->benefitNumber
-            ], function ($v) {
-                return ! is_null($v);
-            }),
-            $this->address->toArray()
-        );
+            ], $this->address->toArray()), function ($v) {
+                return !is_null($v);
+            });
     }
 }

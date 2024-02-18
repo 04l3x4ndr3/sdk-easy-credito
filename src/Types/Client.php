@@ -438,12 +438,13 @@ class Client
         $this->logData = $logData;
         return $this;
     }
+
     /**
      * Parse props to array
      *
-     * @return array
+     * @return array|null
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return array_filter([
             'id' => $this->id,
@@ -453,7 +454,7 @@ class Client
             'email' => $this->email,
             'phone' => $this->phone,
             'zipCode' => $this->zipCode,
-            'logData' => $this->logData->toArray()
+            'logData' => $this->logData->toArray() ?? null
         ], function ($v) {
             return !empty($v);
         });

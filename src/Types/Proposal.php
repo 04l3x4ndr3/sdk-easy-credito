@@ -91,7 +91,7 @@ class Proposal
      * @param string|null $mother
      * @return Proposal
      */
-    public function setMother(?string $mother): self
+    public function setMother(?string $mother): Proposal
     {
         $this->mother = $mother;
         return $this;
@@ -109,7 +109,7 @@ class Proposal
      * @param string|null $gender
      * @return Proposal
      */
-    public function setGender(?string $gender): self
+    public function setGender(?string $gender): Proposal
     {
         $this->gender = $gender;
         return $this;
@@ -127,7 +127,7 @@ class Proposal
      * @param string|null $nationality
      * @return Proposal
      */
-    public function setNationality(?string $nationality): self
+    public function setNationality(?string $nationality): Proposal
     {
         $this->nationality = $nationality;
         return $this;
@@ -145,7 +145,7 @@ class Proposal
      * @param string|null $hometownState
      * @return Proposal
      */
-    public function setHometownState(?string $hometownState): self
+    public function setHometownState(?string $hometownState): Proposal
     {
         $this->hometownState = $hometownState;
         return $this;
@@ -163,7 +163,7 @@ class Proposal
      * @param string|null $hometown
      * @return Proposal
      */
-    public function setHometown(?string $hometown): self
+    public function setHometown(?string $hometown): Proposal
     {
         $this->hometown = $hometown;
         return $this;
@@ -181,7 +181,7 @@ class Proposal
      * @param string|null $education
      * @return Proposal
      */
-    public function setEducation(?string $education): self
+    public function setEducation(?string $education): Proposal
     {
         $this->education = $education;
         return $this;
@@ -199,7 +199,7 @@ class Proposal
      * @param string|null $relationshipStatus
      * @return Proposal
      */
-    public function setRelationshipStatus(?string $relationshipStatus): self
+    public function setRelationshipStatus(?string $relationshipStatus): Proposal
     {
         $this->relationshipStatus = $relationshipStatus;
         return $this;
@@ -217,7 +217,7 @@ class Proposal
      * @param string|null $phoneLandline
      * @return Proposal
      */
-    public function setPhoneLandline(?string $phoneLandline): self
+    public function setPhoneLandline(?string $phoneLandline): Proposal
     {
         $this->phoneLandline = $phoneLandline;
         return $this;
@@ -235,7 +235,7 @@ class Proposal
      * @param Document|null $identity
      * @return Proposal
      */
-    public function setIdentity(?Document $identity): self
+    public function setIdentity(?Document $identity): Proposal
     {
         $this->identity = $identity;
         return $this;
@@ -253,7 +253,7 @@ class Proposal
      * @param ProposalVehicle|null $vehicle
      * @return Proposal
      */
-    public function setVehicle(?ProposalVehicle $vehicle): self
+    public function setVehicle(?ProposalVehicle $vehicle): Proposal
     {
         $this->vehicle = $vehicle;
         return $this;
@@ -271,7 +271,7 @@ class Proposal
      * @param ConsumerUnit|null $consumerUnit
      * @return Proposal
      */
-    public function setConsumerUnit(?ConsumerUnit $consumerUnit): self
+    public function setConsumerUnit(?ConsumerUnit $consumerUnit): Proposal
     {
         $this->consumerUnit = $consumerUnit;
         return $this;
@@ -289,7 +289,7 @@ class Proposal
      * @param Address|null $address
      * @return Proposal
      */
-    public function setAddress(?Address $address): self
+    public function setAddress(?Address $address): Proposal
     {
         $this->address = $address;
         return $this;
@@ -307,7 +307,7 @@ class Proposal
      * @param Business|null $business
      * @return Proposal
      */
-    public function setBusiness(?Business $business): self
+    public function setBusiness(?Business $business): Proposal
     {
         $this->business = $business;
         return $this;
@@ -325,7 +325,7 @@ class Proposal
      * @param Bank|null $bank
      * @return Proposal
      */
-    public function setBank(?Bank $bank): self
+    public function setBank(?Bank $bank): Proposal
     {
         $this->bank = $bank;
         return $this;
@@ -340,12 +340,12 @@ class Proposal
     }
 
     /**
-     * @param array|null $reference
+     * @param Reference|null $reference
      * @return Proposal
      */
-    public function setReference(?array $reference): self
+    public function setReference(?Reference $reference): Proposal
     {
-        $this->reference = $reference;
+        $this->reference = $reference->toArray();
         return $this;
     }
 
@@ -361,19 +361,19 @@ class Proposal
      * @param array|null $products
      * @return Proposal
      */
-    public function setProducts(?array $products): self
+    public function setProducts(?array $products): Proposal
     {
         $this->products = $products;
         return $this;
     }
 
-    public function addProduct(Product $product): self
+    public function addProduct(Product $product): Proposal
     {
         $this->products[] = $product->toArray();
         return $this;
     }
 
-    public function addReference(Reference $reference): self
+    public function addReference(Reference $reference): Proposal
     {
         $this->reference[] = $reference->toArray();
         return $this;
@@ -395,12 +395,12 @@ class Proposal
             'education' => $this->education,
             'relationshipStatus' => $this->relationshipStatus,
             'phoneLandline' => $this->phoneLandline,
-            'identity' => $this->identity->toArray(),
-            'address' => $this->address->toArray(),
+            'identity' => $this->identity->toArray() ?? null,
+            'address' => $this->address->toArray() ?? null,
             'vehicle' => isset($this->vehicle) ? $this->vehicle->toArray() : null,
             'consumerUnit' => isset($this->consumerUnit) ? $this->consumerUnit->toArray() : null,
-            'business' => $this->business->toArray(),
-            'bank' => $this->bank->toArray(),
+            'business' => $this->business->toArray() ?? null,
+            'bank' => $this->bank->toArray() ?? null,
             'reference' => $this->reference,
             'products' => $this->products
         ], function ($v) {

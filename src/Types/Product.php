@@ -80,7 +80,11 @@ class Product
         $this->logData = $logData;
         return $this;
     }
-    public function toArray(): array
+
+    /**
+     * @return array|null
+     */
+    public function toArray(): ?array
     {
         if(isset($this->customerServiceNumber)) {
             return array_filter([

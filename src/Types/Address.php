@@ -79,7 +79,7 @@ class Address
      * @param string $address
      * @return Address
      */
-    public function setAddress(string $address): Address
+    public function setAddress(?string $address): Address
     {
         $this->address = $address;
         return $this;
@@ -97,7 +97,7 @@ class Address
      * @param int $number
      * @return Address
      */
-    public function setNumber(int $number): Address
+    public function setNumber(?int $number): Address
     {
         $this->number = $number;
         return $this;
@@ -115,7 +115,7 @@ class Address
      * @param string $complement
      * @return Address
      */
-    public function setComplement(string $complement): Address
+    public function setComplement(?string $complement): Address
     {
         $this->complement = $complement;
         return $this;
@@ -133,7 +133,7 @@ class Address
      * @param string $district
      * @return Address
      */
-    public function setDistrict(string $district): Address
+    public function setDistrict(?string $district): Address
     {
         $this->district = $district;
         return $this;
@@ -151,7 +151,7 @@ class Address
      * @param string $state
      * @return Address
      */
-    public function setState(string $state): Address
+    public function setState(?string $state): Address
     {
         $this->state = $state;
         return $this;
@@ -169,7 +169,7 @@ class Address
      * @param string $city
      * @return Address
      */
-    public function setCity(string $city): Address
+    public function setCity(?string $city): Address
     {
         $this->city = $city;
         return $this;
@@ -187,7 +187,7 @@ class Address
      * @param string $homeType
      * @return Address
      */
-    public function setHomeType(string $homeType): Address
+    public function setHomeType(?string $homeType): Address
     {
         $this->homeType = $homeType;
         return $this;
@@ -205,17 +205,18 @@ class Address
      * @param string $homeSince
      * @return Address
      */
-    public function setHomeSince(string $homeSince): Address
+    public function setHomeSince(?string $homeSince): Address
     {
         $this->homeSince = $homeSince;
         return $this;
     }
+
     /**
      * Parse props to array
      *
-     * @return array
+     * @return array|null
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return array_filter([
             'zipCode' => $this->zipCode,

@@ -27,12 +27,13 @@ class Vehicle
         $this->vehicleFipeValue = $vehicleFipeValue;
         $this->vehicleYear = $vehicleYear;
     }
+
     /**
      * Parse props to array
      *
-     * @return array
+     * @return array|null
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return array_filter([
             'vehicleBrand' => $this->vehicleBrand,

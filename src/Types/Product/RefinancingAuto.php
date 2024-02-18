@@ -66,23 +66,23 @@ class RefinancingAuto extends Product
     }
 
     /**
-     * @return \O4l3x4ndr3\SdkEasyCredito\Types\Vehicle
+     * @return Vehicle
      */
-    public function getVehicle(): \O4l3x4ndr3\SdkEasyCredito\Types\Vehicle
+    public function getVehicle(): Vehicle
     {
         return $this->vehicle;
     }
 
     /**
-     * @param \O4l3x4ndr3\SdkEasyCredito\Types\Vehicle $vehicle
+     * @param Vehicle $vehicle
      * @return RefinancingAuto
      */
-    public function setVehicle(\O4l3x4ndr3\SdkEasyCredito\Types\Vehicle $vehicle): RefinancingAuto
+    public function setVehicle(Vehicle $vehicle): RefinancingAuto
     {
         $this->vehicle = $vehicle;
         return $this;
     }
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return array_merge(
             parent::toArray(),

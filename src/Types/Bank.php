@@ -59,7 +59,7 @@ class Bank
      * @param string $type
      * @return Bank
      */
-    public function setType(string $type): Bank
+    public function setType(?string $type): Bank
     {
         $this->type = $type;
         return $this;
@@ -77,7 +77,7 @@ class Bank
      * @param string $agency
      * @return Bank
      */
-    public function setAgency(string $agency): Bank
+    public function setAgency(?string $agency): Bank
     {
         $this->agency = $agency;
         return $this;
@@ -95,17 +95,18 @@ class Bank
      * @param string $account
      * @return Bank
      */
-    public function setAccount(string $account): Bank
+    public function setAccount(?string $account): Bank
     {
         $this->account = $account;
         return $this;
     }
+
     /**
      * Parse props to array
      *
-     * @return array
+     * @return array|null
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return array_filter([
             'bank' => $this->bank,
