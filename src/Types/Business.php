@@ -242,19 +242,21 @@ class Business
      */
     public function toArray(): ?array
     {
-        return
-            array_filter(array_merge([
-                'occupation' => $this->occupation,
-                'occupyType' => $this->occupyType,
-                'profession' => $this->profession,
-                'companyName' => $this->companyName,
-                'phone' => $this->phone,
-                'income' => $this->income,
-                'payday' => $this->payday,
-                'employmentSince' => $this->employmentSince,
-                'benefitNumber' => $this->benefitNumber
-            ], $this->address->toArray()), function ($v) {
-                return !is_null($v);
-            });
+        $arAddress = isset($this->address) ? $this->address->toArray() : [];
+        $arBussiness = array_merge([
+            'occupation' => $this->occupation,
+            'occupyType' => $this->occupyType,
+            'profession' => $this->profession,
+            'companyName' => $this->companyName,
+            'phone' => $this->phone,
+            'income' => $this->income,
+            'payday' => $this->payday,
+            'employmentSince' => $this->employmentSince,
+            'benefitNumber' => $this->benefitNumber
+        ], $arAddress);
+
+        return array_filter($arBussiness, function ($v) {
+            return !is_null($v);
+        });
     }
 }
