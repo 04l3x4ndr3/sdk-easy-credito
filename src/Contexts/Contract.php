@@ -34,7 +34,7 @@ class Contract extends CallApi
     public function post(?\O4l3x4ndr3\SdkEasyCredito\Types\Contract $contract, ?string $customerServiceNumber): object
     {
         $acceptedContract = [
-            'aceptedCheckSum' => $contract->getChecksum(),
+            'aceptedCheckSum' => $contract->getAceptedCheckSum(),
             'logData' => $contract->getLogData()->toArray()
         ];
         return $this->call('POST', '/v2.1/contract/'.$customerServiceNumber, $acceptedContract);

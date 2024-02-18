@@ -1,6 +1,6 @@
 <?php
 
-namespace O4l3x4ndr3\SdkEasyCredito\Types;
+namespace O4l3x4ndr3\SdkEasyCredito\Types\Callbacks;
 
 /**
  * Modelos das produtos que compõe propostas RECEBIDAS pela Tok e ENVIADAS pela EasyCrédito

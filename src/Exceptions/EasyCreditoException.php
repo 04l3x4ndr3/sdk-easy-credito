@@ -1,13 +1,11 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Exceptions;
-use Exception;
+
 use GuzzleHttp\Exception\GuzzleException;
-class EasyCreditoException extends Exception
+
+class EasyCreditoException extends GuzzleException
 {
-    /**
-     * @throws Exception
-     */
     public function __construct($message = '', $code = 0, GuzzleException $previous = null)
     {
         parent::__construct($message, $code, $previous);

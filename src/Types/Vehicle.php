@@ -1,25 +1,22 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
-/**
- * Modelo de Carro na tabela FIPE
- */
+
 class Vehicle
 {
-    protected string $vehicleBrand;
-    protected string $vehicleModel;
-    protected string $codeFipe;
-    protected float $vehicleFipeValue;
-    protected int $vehicleYear;
+    private ?string $vehicleBrand;
+    private ?string $vehicleModel;
+    private ?string $codeFipe;
+    private ?float $vehicleFipeValue;
+    private ?int $vehicleYear;
 
-    /**
-     * @param string $vehicleBrand
-     * @param string $vehicleModel
-     * @param string $codeFipe
-     * @param float $vehicleFipeValue
-     * @param int $vehicleYear
-     */
-    public function __construct(string $vehicleBrand, string $vehicleModel, string $codeFipe, float $vehicleFipeValue, int $vehicleYear)
+    public function __construct(
+        ?string $vehicleBrand = null,
+        ?string $vehicleModel = null,
+        ?string $codeFipe = null,
+        ?float  $vehicleFipeValue = null,
+        ?int    $vehicleYear = null
+    )
     {
         $this->vehicleBrand = $vehicleBrand;
         $this->vehicleModel = $vehicleModel;
@@ -28,11 +25,61 @@ class Vehicle
         $this->vehicleYear = $vehicleYear;
     }
 
-    /**
-     * Parse props to array
-     *
-     * @return array|null
-     */
+    public function getVehicleBrand(): ?string
+    {
+        return $this->vehicleBrand;
+    }
+
+    public function setVehicleBrand(?string $vehicleBrand): Vehicle
+    {
+        $this->vehicleBrand = $vehicleBrand;
+        return $this;
+    }
+
+    public function getVehicleModel(): ?string
+    {
+        return $this->vehicleModel;
+    }
+
+    public function setVehicleModel(?string $vehicleModel): Vehicle
+    {
+        $this->vehicleModel = $vehicleModel;
+        return $this;
+    }
+
+    public function getCodeFipe(): ?string
+    {
+        return $this->codeFipe;
+    }
+
+    public function setCodeFipe(?string $codeFipe): Vehicle
+    {
+        $this->codeFipe = $codeFipe;
+        return $this;
+    }
+
+    public function getVehicleFipeValue(): ?float
+    {
+        return $this->vehicleFipeValue;
+    }
+
+    public function setVehicleFipeValue(?float $vehicleFipeValue): Vehicle
+    {
+        $this->vehicleFipeValue = $vehicleFipeValue;
+        return $this;
+    }
+
+    public function getVehicleYear(): ?int
+    {
+        return $this->vehicleYear;
+    }
+
+    public function setVehicleYear(?int $vehicleYear): Vehicle
+    {
+        $this->vehicleYear = $vehicleYear;
+        return $this;
+    }
+
     public function toArray(): ?array
     {
         return array_filter([
@@ -42,7 +89,7 @@ class Vehicle
             'vehicleFipeValue' => $this->vehicleFipeValue,
             'vehicleModelYear' => $this->vehicleYear
         ], function ($v) {
-            return ! is_null($v);
+            return !is_null($v);
         });
     }
 }
