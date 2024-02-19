@@ -215,6 +215,11 @@ class Proposal
         return $this;
     }
 
+    public function addReference(?Reference $reference): Proposal {
+        $this->reference[] = $reference->toArray();
+        return $this;
+    }
+
     public function getProducts(): ?array
     {
         return $this->products;
