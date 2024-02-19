@@ -19,6 +19,7 @@ class Business
 
     /**
      * @param string|null $occupation
+     * @param string|null $occupyType
      * @param string|null $profession
      * @param string|null $companyName
      * @param string|null $phone
@@ -108,18 +109,18 @@ class Business
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCompanyName(): string
+    public function getCompanyName(): ?string
     {
         return $this->companyName;
     }
 
     /**
-     * @param string $companyName
+     * @param string|null $companyName
      * @return Business
      */
-    public function setCompanyName(string $companyName): Business
+    public function setCompanyName(?string $companyName): Business
     {
         $this->companyName = $companyName;
         return $this;
@@ -134,10 +135,10 @@ class Business
     }
 
     /**
-     * @param string $phone
+     * @param string|null $phone
      * @return Business
      */
-    public function setPhone(string $phone): Business
+    public function setPhone(?string $phone): Business
     {
         $this->phone = $phone;
         return $this;
