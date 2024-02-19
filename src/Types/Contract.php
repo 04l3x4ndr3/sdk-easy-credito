@@ -4,7 +4,7 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
 class Contract
 {
-    private ?string $acceptedCheckSum;
+    private ?array $acceptedCheckSum;
     private ?LogData $logData;
 
     public function __construct(
@@ -16,14 +16,14 @@ class Contract
         $this->logData = $logData;
     }
 
-    public function getAcceptedCheckSum(): string
+    public function getAcceptedCheckSum(): ?array
     {
         return $this->acceptedCheckSum;
     }
 
-    public function setAcceptedCheckSum(string $acceptedCheckSum): Contract
+    public function addAcceptedCheckSum(string $acceptedCheckSum): Contract
     {
-        $this->acceptedCheckSum = $acceptedCheckSum;
+        $this->acceptedCheckSum[] = $acceptedCheckSum;
         return $this;
     }
 
