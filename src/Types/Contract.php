@@ -4,40 +4,26 @@ namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
 class Contract
 {
-    private ?string $aceptedCheckSum;
-    private ?string $contract;
+    private ?string $acceptedCheckSum;
     private ?LogData $logData;
 
     public function __construct(
-        ?string  $checksum = null,
-        ?string  $contract = null,
+        ?string  $acceptedCheckSum = null,
         ?LogData $logData = null
     )
     {
-        $this->aceptedCheckSum = $checksum;
-        $this->contract = $contract;
+        $this->acceptedCheckSum = $acceptedCheckSum;
         $this->logData = $logData;
     }
 
-    public function getAceptedCheckSum(): string
+    public function getAcceptedCheckSum(): string
     {
-        return $this->aceptedCheckSum;
+        return $this->acceptedCheckSum;
     }
 
-    public function setAceptedCheckSum(string $aceptedCheckSum): Contract
+    public function setAcceptedCheckSum(string $acceptedCheckSum): Contract
     {
-        $this->aceptedCheckSum = $aceptedCheckSum;
-        return $this;
-    }
-
-    public function getContract(): string
-    {
-        return $this->contract;
-    }
-
-    public function setContract(string $contract): Contract
-    {
-        $this->contract = $contract;
+        $this->acceptedCheckSum = $acceptedCheckSum;
         return $this;
     }
 
@@ -57,8 +43,7 @@ class Contract
         $arrLogData = isset($this->logData) ? $this->logData->toArray() : null;
 
         return array_filter([
-            'checksum' => $this->aceptedCheckSum,
-            'contract' => $this->contract,
+            'aceptedCheckSum' => $this->acceptedCheckSum,
             'logData' => $arrLogData
         ], function ($v) {
             return !is_null($v);

@@ -30,7 +30,7 @@ class Contract extends CallApi
     {
         $logData = !empty($contract->getLogData()) ? $contract->getLogData()->toArray() : null;
         $acceptedContract = [
-            'aceptedCheckSum' => $contract->getAceptedCheckSum(),
+            'aceptedCheckSum' => $contract->getAcceptedCheckSum(),
             'logData' => $logData
         ];
         return $this->call('POST', '/v2.1/contract/' . $customerServiceNumber, $acceptedContract);
