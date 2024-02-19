@@ -6,15 +6,15 @@ class ProductHome extends Product
 {
     private ?float $value;
     private ?int $installments;
-    private ?string $realStateType;
-    private ?float $realStateValue;
+    private ?string $realEstateType;
+    private ?float $realEstateValue;
     private ?float $outstandingBalance;
 
     public function __construct(
         ?float  $value = null,
         ?int    $installments = null,
-        ?string $realStateType = null,
-        ?float  $realStateValue = null,
+        ?string $realEstateType = null,
+        ?float  $realEstateValue = null,
         ?float  $outstandingBalance = null,
     )
     {
@@ -22,8 +22,8 @@ class ProductHome extends Product
 
         $this->value = $value;
         $this->installments = $installments;
-        $this->realStateType = $realStateType;
-        $this->realStateValue = $realStateValue;
+        $this->realEstateType = $realEstateType;
+        $this->realEstateValue = $realEstateValue;
         $this->outstandingBalance = $outstandingBalance;
     }
 
@@ -49,25 +49,25 @@ class ProductHome extends Product
         return $this;
     }
 
-    public function getRealStateType(): ?string
+    public function getrealEstateType(): ?string
     {
-        return $this->realStateType;
+        return $this->realEstateType;
     }
 
-    public function setRealStateType(?string $realStateType): ProductHome
+    public function setrealEstateType(?string $realEstateType): ProductHome
     {
-        $this->realStateType = $realStateType;
+        $this->realEstateType = $realEstateType;
         return $this;
     }
 
-    public function getRealStateValue(): ?float
+    public function getrealEstateValue(): ?float
     {
-        return $this->realStateValue;
+        return $this->realEstateValue;
     }
 
-    public function setRealStateValue(?float $realStateValue): ProductHome
+    public function setrealEstateValue(?float $realEstateValue): ProductHome
     {
-        $this->realStateValue = $realStateValue;
+        $this->realEstateValue = $realEstateValue;
         return $this;
     }
 
@@ -88,8 +88,8 @@ class ProductHome extends Product
             'type' => $this->type,
             'value' => $this->value,
             'installments' => $this->installments,
-            'realEstateType' => $this->realStateType,
-            'realEstateValue' => $this->realStateValue,
+            'realEstateType' => $this->realEstateType,
+            'realEstateValue' => $this->realEstateValue,
             'outstandingBalance' => $this->outstandingBalance
         ], function ($v) {
             return !is_null($v);
