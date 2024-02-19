@@ -1,6 +1,6 @@
 <?php
 
-namespace O4l3x4ndr3\SdkEasyCredito\Types;
+namespace O4l3x4ndr3\SdkEasyCredito\Types\Callbacks;
 
 /**
  * Modelos das produtos que compõe propostas RECEBIDAS pela Tok e ENVIADAS pela EasyCrédito
@@ -240,9 +240,9 @@ abstract class ProductProposal
     /**
      * Parse props to array
      *
-     * @return array
+     * @return array|null
      */
-    public function toArray(): array
+    public function toArray(): ?array
     {
         return array_filter([
             'customerServiceNumber' => $this->customerServiceNumber,

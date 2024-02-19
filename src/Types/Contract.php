@@ -2,96 +2,51 @@
 
 namespace O4l3x4ndr3\SdkEasyCredito\Types;
 
-/**
- * Modelo de Contrato
- */
 class Contract
 {
-    protected ?string $checksum;
-    protected ?string $contract;
-    protected ?LogData $logData;
+    private ?array $acceptedCheckSum;
+    private ?LogData $logData;
 
-    /**
-     * @param string|null $checksum
-     * @param string|null $contract
-     * @param LogData|null $logData
-     */
     public function __construct(
-        ?string $checksum = null,
-        ?string $contract = null,
+        ?string  $acceptedCheckSum = null,
         ?LogData $logData = null
-    ) {
-        $this->checksum = $checksum;
-        $this->contract = $contract;
+    )
+    {
+        $this->acceptedCheckSum = $acceptedCheckSum;
         $this->logData = $logData;
     }
 
-    /**
-     * @return string
-     */
-    public function getChecksum(): string
+    public function getAcceptedCheckSum(): ?array
     {
-        return $this->checksum;
+        return $this->acceptedCheckSum;
     }
 
-    /**
-     * @param string $checksum
-     * @return Contract
-     */
-    public function setChecksum(string $checksum): Contract
+    public function addAcceptedCheckSum(string $acceptedCheckSum): Contract
     {
-        $this->checksum = $checksum;
+        $this->acceptedCheckSum[] = $acceptedCheckSum;
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getContract(): string
-    {
-        return $this->contract;
-    }
-
-    /**
-     * @param string $contract
-     * @return Contract
-     */
-    public function setContract(string $contract): Contract
-    {
-        $this->contract = $contract;
-        return $this;
-    }
-
-    /**
-     * @return LogData|null
-     */
     public function getLogData(): ?LogData
     {
         return $this->logData;
     }
 
-    /**
-     * @param LogData|null $logData
-     * @return Contract
-     */
     public function setLogData(?LogData $logData): Contract
     {
         $this->logData = $logData;
         return $this;
     }
-    /**
-     * Parse props to array
-     *
-     * @return array
-     */
-    public function toArray(): array
+
+    public function toArray(): ?array
     {
+        $arrLogData = isset($this->logData) ? $this->logData->toArray() : null;
+
         return array_filter([
-            'checksum' => $this->checksum,
-            'contract' => $this->contract,
-            'logData' => $this->logData->toArray()
+            'aceptedCheckSum' => $this->acceptedCheckSum,
+            'logData' => $arrLogData
         ], function ($v) {
-            return ! is_null($v);
+            return !is_null($v);
         });
     }
 }
