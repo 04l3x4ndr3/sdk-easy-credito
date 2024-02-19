@@ -88,8 +88,8 @@ class ProductHome extends Product
             'type' => $this->type,
             'value' => $this->value,
             'installments' => $this->installments,
-            'realStateType' => $this->realStateType,
-            'realStateValue' => $this->realStateValue,
+            'realEstateType' => $this->realStateType,
+            'realEstateValue' => $this->realStateValue,
             'outstandingBalance' => $this->outstandingBalance
         ], function ($v) {
             return !is_null($v);
