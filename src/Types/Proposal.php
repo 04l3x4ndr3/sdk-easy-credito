@@ -18,7 +18,7 @@ class Proposal
     protected ?Address $address;
     protected ?Business $business;
     protected ?Bank $bank;
-    protected ?Reference $reference;
+    protected ?array $reference;
     protected ?array $products;
 
     public function __construct(
@@ -204,14 +204,19 @@ class Proposal
         return $this;
     }
 
-    public function getReference(): ?Reference
+    public function getReference(): ?array
     {
         return $this->reference;
     }
 
-    public function setReference(?Reference $reference): Proposal
+    public function setReference(?array $reference): Proposal
     {
-        $this->reference = $reference->toArray();
+        $this->reference = $reference;
+        return $this;
+    }
+
+    public function addReference(?Reference $reference): Proposal {
+        $this->reference[] = $reference->toArray();
         return $this;
     }
 
