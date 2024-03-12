@@ -115,12 +115,4 @@ class CallApi
             throw new Exception($e->getResponse()->getBody()->getContents(), $e->getCode(), $e);
         }
     }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig(): Configuration
-    {
-        return $this->config;
-    }
 }
