@@ -1,27 +1,36 @@
 <?php
 
 namespace O4l3x4ndr3\SdkEasyCredito\Helpers;
+
 use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use O4l3x4ndr3\SdkEasyCredito\Configuration;
-class CallApi {
-	private Configuration $config;
-	private ?array $header;
-	private ?array $credential;
 
-	/**
-	 * @param Configuration|null $config
-	 */
-	public function __construct(?Configuration $config = NULL)
-	{
-		$this->config = $config ?? new Configuration();
-		$this->credential = $this->config->getCredential();
-		$this->header = array_merge([
-			'User-Agent' => USER_AGENT,
-			'Content-Type' => CONTENT_TYPE_JSON
-		], $this->config->getHttpHeader());
-	}
+class CallApi
+{
+    const USER_AGENT = "SdkEasyCredito";
+    const CONTENT_TYPE_JSON = 'application/json';
+    const CONTENT_TYPE_URL_URLENCODED = 'application/x-www-form-urlencoded';
+    const TOKEN_TYPE = 'Bearer';
+
+    private Configuration $config;
+    private ?array $header;
+    private ?array $credential;
+
+    /**
+     * @param Configuration|null $config
+     */
+    public function __construct(?Configuration $config = NULL)
+    {
+        $this->config = $config ?? new Configuration();
+        $this->credential = $this->config->getCredential();
+        $this->header = array_merge([
+            'User-Agent' => self::USER_AGENT,
+            'Content-Type' => self::CONTENT_TYPE_JSON
+        ], $this->config->getHttpHeader());
+    }
 
     /**
      * @return array|null
@@ -61,22 +70,22 @@ class CallApi {
         return $this;
     }
 
-	/** TODO: Implements
-	 * @return object
-	 * @throws GuzzleException
-	 */
-	public function accessToken(): object
-	{
-		$client = new Client();
-		$options = [
-			'headers' => [
-				'Content-Type' => CONTENT_TYPE_URL_URLENCODED,
-			],
-			'form_params' => $this->config->getCredential()
-		];
-		$res = $client->request('POST',Configuration::URL_AUTH, $options);
-		return json_decode($res->getBody());
-	}
+    /** TODO: Implements
+     * @return object
+     * @throws GuzzleException
+     */
+    public function accessToken(): object
+    {
+        $client = new Client();
+        $options = [
+            'headers' => [
+                'Content-Type' => self::CONTENT_TYPE_URL_URLENCODED,
+            ],
+            'form_params' => $this->config->getCredential()
+        ];
+        $res = $client->request('POST', Configuration::URL_AUTH, $options);
+        return json_decode($res->getBody());
+    }
 
     /** TODO: Implements
      * @param string $method
@@ -86,38 +95,24 @@ class CallApi {
      * @throws Exception
      * @throws GuzzleException
      */
-	public function call(string $method, string $endpoint, ?array $body = NULL): array | object
-	{
-		$token = $this->accessToken();
-
-		$client = new Client();
-		$options = array_filter([
-			'headers' => [
-				'Content-type' => CONTENT_TYPE_JSON,
-				'Authorization' => TOKEN_TYPE . " {$token->access_token}"
-			],
-			'json' => $body
-		]);
+    public function call(string $method, string $endpoint, ?array $body = NULL): array|object
+    {
         try {
+            $token = $this->accessToken();
+
+            $client = new Client();
+            $options = array_filter([
+                'headers' => [
+                    'Content-type' => self::CONTENT_TYPE_JSON,
+                    'Authorization' => self::TOKEN_TYPE . " {$token->access_token}"
+                ],
+                'json' => $body
+            ]);
+
             $res = $client->request($method, "{$this->config->getUrl()}{$endpoint}", $options);
-        } catch (GuzzleException $g) {
-            throw new Exception($g->getMessage(), $g->getCode(), $g);
+            return json_decode($res->getBody());
+        } catch (ClientException $e) {
+            throw new Exception($e->getResponse()->getBody()->getContents(), $e->getCode(), $e);
         }
-		return json_decode($res->getBody());
-	}
-
-	/**
-	 * @return Configuration
-	 */
-	public function getConfig(): Configuration
-	{
-		return $this->config;
-	}
+    }
 }
-
-const EASYCREDITO_AUTH = "https://auth.easycredito.com.br/client/auth";
-const EASYCREDITO_DOMAIN = "https://demo-api.easycredito.com.br/api/external";
-const USER_AGENT = "SdkEasyCredito";
-const CONTENT_TYPE_JSON = 'application/json';
-const CONTENT_TYPE_URL_URLENCODED = 'application/x-www-form-urlencoded';
-const TOKEN_TYPE = 'Bearer';
