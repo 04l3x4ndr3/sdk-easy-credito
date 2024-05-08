@@ -26,9 +26,9 @@ class  Configuration
     public function __construct(?string $scope = NULL, ?string $clientId = NULL, ?string $clientSecret = NULL)
     {
         $this->credentials = [
-            'scope' => $scope ?? EASYCREDITO_SCOPE,
-            'client_id' => $clientId ?? EASYCREDITO_CLIENT_ID,
-            'client_secret' => $clientSecret ?? EASYCREDITO_CLIENT_SECRET
+            'scope' => EASYCREDITO_SCOPE ?? $scope,
+            'client_id' => EASYCREDITO_CLIENT_ID ?? $clientId,
+            'client_secret' => EASYCREDITO_CLIENT_SECRET ?? $clientSecret
         ];
         $this->httpHeader = [];
         $this->environment = EASYCREDITO_ENVIRONMENT ?? self::ENV_STAGE;
